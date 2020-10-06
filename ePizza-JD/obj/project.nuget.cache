@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "O9TR3A5I2wq5sMQA+/7meJFAwAKX6N4bsnBX5Py8igSlqeIIXkq38543n/b0MTjOh4ty2okI3VfAH2yUMg8XiQ==",
+  "success": true,
+  "projectFilePath": "E:\\VS2019\\projects\\FSWD\\ePizza\\ePizza-JD\\ePizza-JD.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Rick\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.10.9\\microsoft.visualstudio.azure.containers.tools.targets.1.10.9.nupkg.sha512"
+  ],
+  "logs": []
+}
