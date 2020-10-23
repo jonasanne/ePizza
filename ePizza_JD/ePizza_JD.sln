@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30503.244
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ePizza_JD.Models", "ePizza_JD.Models\ePizza_JD.Models.csproj", "{DD3A4F39-FBB0-4789-9F15-EC71F2FCD453}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ePizza_JD.WebApp", "ePizza_JD.WebApp\ePizza_JD.WebApp.csproj", "{221AF5EC-B5A9-4B28-B2A6-137FD5A160F9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DD3A4F39-FBB0-4789-9F15-EC71F2FCD453}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD3A4F39-FBB0-4789-9F15-EC71F2FCD453}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD3A4F39-FBB0-4789-9F15-EC71F2FCD453}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD3A4F39-FBB0-4789-9F15-EC71F2FCD453}.Release|Any CPU.Build.0 = Release|Any CPU
+		{221AF5EC-B5A9-4B28-B2A6-137FD5A160F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{221AF5EC-B5A9-4B28-B2A6-137FD5A160F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{221AF5EC-B5A9-4B28-B2A6-137FD5A160F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{221AF5EC-B5A9-4B28-B2A6-137FD5A160F9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C37EE34A-02E2-439A-BCBD-3FE0787EA7CD}
+	EndGlobalSection
+EndGlobal
