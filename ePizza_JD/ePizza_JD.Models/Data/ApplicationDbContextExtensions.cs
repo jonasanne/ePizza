@@ -16,12 +16,12 @@ namespace ePizza_JD.Models.Data
             //prijzen
             // + 20% per size
             new Pizza{
-            PizzaId = Guid.NewGuid(),
+            PizzaId = Guid.Parse("b3117bca-96da-463b-a433-62587fd8bd88"),
             Name= "Margherita",
             Price = 7.7,
             },
             new Pizza{
-            PizzaId = Guid.NewGuid(),
+            PizzaId = Guid.Parse("6bd07325-bda2-451f-bbcb-3bf1025834c4"),
             Name= "Pepperoni Lovers",
             Price = 8.7,
             },
@@ -66,8 +66,6 @@ namespace ePizza_JD.Models.Data
             Price = 10.4,
             },
         };
-
-
         private static List<Topping> _toppings = new List<Topping>()
         {
             new Topping()
@@ -186,6 +184,105 @@ namespace ePizza_JD.Models.Data
 
 
         };
+        private static List<Customer> _customers = new List<Customer>()
+        {
+            new Customer()
+            {
+                CustomerId = Guid.Parse("90a28cce-eb65-4e55-a485-3e26bb6869eb"),
+                Name= "Ronald Steenbruggen",
+                ZipCode = 8900,
+                City = "Ieper",
+                StreetName = "Stationsstraat",
+                HouseNumber= 373,
+                PhoneNumber = "0486 70 71 99"
+            },
+            new Customer()
+            {
+                CustomerId = Guid.Parse("691919d7-888f-4ddb-b5cd-83954b2094a9"),
+                Name= "Jort Langedijk",
+                City = "Brakel",
+                ZipCode = 9660,
+                StreetName = "Industrieweg",
+                HouseNumber= 165,
+                PhoneNumber = "0472 56 03 05"
+            },
+        };
+        private static List<Order> _orders = new List<Order>()
+        {
+            new Order()
+            {
+                OrderId = Guid.Parse("e68a3f79-ba5a-49f3-95c7-5e38298e7fde"),
+                Date= DateTime.Now,
+                Time = 30, //minutes
+                PizzaId = Guid.Parse("b3117bca-96da-463b-a433-62587fd8bd88"),
+                Quantity = 1,
+                Size= Order.Sizes.Medium,
+                Type=Order.Types.Normal,
+            },
+            new Order()
+            {
+                OrderId = Guid.Parse("bba2eded-d219-4618-b0ce-c3a983772772"),
+                Date= DateTime.Now,
+                Time = 30, //minutes
+                PizzaId = Guid.Parse("6bd07325-bda2-451f-bbcb-3bf1025834c4"),
+                Quantity = 1,
+                Size= Order.Sizes.Large,
+                Type=Order.Types.Vegetarian,
+            },
+
+        };
+        private static List<Review> _reviews = new List<Review>()
+        {
+            new Review()
+            {
+                ReviewId = Guid.Parse("c456b9e8-d32c-4d6e-8b32-da50c5edc856"),
+                Date= DateTime.Now,
+                Title = "Amazing pizza!",
+                Rating = 4,
+            },
+            new Review()
+            {
+                ReviewId = Guid.Parse("0eae9dca-640f-408e-8aa5-325f40cb3eee"),
+                Date= DateTime.Now,
+                Title = "Pizzashop online",
+                Description = "Fast delivery and amazingly great taste!",
+                Rating = 4.5,
+            },
+
+        };
+        private static List<OrderReviews> _orderReviews = new List<OrderReviews>()
+        {
+            new OrderReviews()
+            {
+                ReviewId = Guid.Parse("c456b9e8-d32c-4d6e-8b32-da50c5edc856"),
+                OrderId = Guid.Parse("e68a3f79-ba5a-49f3-95c7-5e38298e7fde"),
+               
+            },
+            new OrderReviews()
+            {
+                ReviewId = Guid.Parse("0eae9dca-640f-408e-8aa5-325f40cb3eee"),
+                OrderId = Guid.Parse("bba2eded-d219-4618-b0ce-c3a983772772"),
+               
+            },
+
+        };
+        private static List<CustomerOrders> _customerOrders = new List<CustomerOrders>()
+        {
+            new CustomerOrders()
+            {
+               CustomerId =Guid.Parse("90a28cce-eb65-4e55-a485-3e26bb6869eb"),
+               OrderId = Guid.Parse("bba2eded-d219-4618-b0ce-c3a983772772")
+            },
+            new CustomerOrders()
+            {
+               CustomerId = Guid.Parse("691919d7-888f-4ddb-b5cd-83954b2094a9"),
+               OrderId = Guid.Parse("e68a3f79-ba5a-49f3-95c7-5e38298e7fde")
+            },
+
+        };
+
+
+
 
         public async static Task SeedRolesAsync(RoleManager<IdentityRole> roleManager)
         {
@@ -251,11 +348,10 @@ namespace ePizza_JD.Models.Data
                     };
                     
                 };
-
                 //add toppings
                 if (!context.Toppings.Any())
                 {
-                    Debug.WriteLine("Seeding pizzas");
+                    Debug.WriteLine("Seeding Toppings");
                     foreach(Topping topping in _toppings)
                     {
                         await context.Toppings.AddAsync(topping);
@@ -263,6 +359,63 @@ namespace ePizza_JD.Models.Data
                     };
 
                 };
+                //add Customers
+                if (!context.Customers.Any())
+                {
+                    Debug.WriteLine("Seeding Customers");
+                    foreach(Customer Customer in _customers)
+                    {
+                        await context.Customers.AddAsync(Customer);
+                        await context.SaveChangesAsync();
+                    };
+
+                };
+                //add Orders
+                if (!context.Orders.Any())
+                {
+                    Debug.WriteLine("Seeding Orders");
+                    foreach(Order Order in _orders)
+                    {
+                        await context.Orders.AddAsync(Order);
+                        await context.SaveChangesAsync();
+                    };
+
+                };
+                //add Reviews
+                if (!context.Reviews.Any())
+                {
+                    Debug.WriteLine("Seeding Reviews");
+                    foreach(Review Review in _reviews)
+                    {
+                        await context.Reviews.AddAsync(Review);
+                        await context.SaveChangesAsync();
+                    };
+
+                };
+                //add OrderReviews
+                if (!context.OrderReviews.Any())
+                {
+                    Debug.WriteLine("Seeding orderReviews");
+                    foreach(OrderReviews oReview in _orderReviews)
+                    {
+                        await context.OrderReviews.AddAsync(oReview);
+                        await context.SaveChangesAsync();
+                    };
+
+                };
+                //add CustomerOrders
+                if (!context.CustomerOrders.Any())
+                {
+                    Debug.WriteLine("Seeding orderReviews");
+                    foreach(CustomerOrders customerOrder in _customerOrders)
+                    {
+                        await context.CustomerOrders.AddAsync(customerOrder);
+                        await context.SaveChangesAsync();
+                    };
+
+                };
+                //TODO: add PizzaToppings
+
 
             }
             catch (Exception ex)

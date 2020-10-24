@@ -28,7 +28,7 @@ namespace ePizza_JD.Models
 
         public Guid OrderId { get; set; }
         public DateTime Date { get; set; } 
-        public DateTime Time { get; set; }
+        public int Time { get; set; } // minutes
         [Required]
         public int Quantity { get; set; }
 
@@ -41,8 +41,9 @@ namespace ePizza_JD.Models
         [EnumDataType(typeof(Sizes), ErrorMessage = "{0} is geen geldige keuze.")]
         [Range(0, 2, ErrorMessage = "Wrong Choice.")]
         public Types Type { get; set; }
-        public string ImgUrl { get; set; }
         public Guid PizzaId { get; set; }
+
+
 
 
         //navigation Properties

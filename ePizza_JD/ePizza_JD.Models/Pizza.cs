@@ -18,6 +18,7 @@ namespace ePizza_JD.Models
 
         [Required]
         public double Price { get; set; }
+        public string ImgUrl { get; set; }
 
 
 

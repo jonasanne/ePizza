@@ -20,7 +20,7 @@ namespace ePizza_JD.Models
 
         [Required]
         [Range(0, 5,ErrorMessage ="{0} geen correct getal")]
-        public float Rating { get; set; } //op 5
+        public double Rating { get; set; } //op 5
 
         public DateTime Date { get; set; } = DateTime.Now;
 
