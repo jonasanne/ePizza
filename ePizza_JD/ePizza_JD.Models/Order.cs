@@ -8,11 +8,40 @@ namespace ePizza_JD.Models
 {
     public class Order
     {
+        public enum Sizes
+        {
+            [Display(Name = "Medium")]
+            Medium = 0,
+            [Display(Name = "Large")]
+            Large = 1,
+        };
+        public enum Types
+        {
+            [Display(Name = "Glutenfree")]
+            Glutenfree = 2,
+            [Display(Name = "Vegetarian")]
+            Vegetarian = 1,
+            [Display(Name = "Normal")]
+            Normal = 0,
+        };
+
+
         public Guid OrderId { get; set; }
         public DateTime Date { get; set; } 
         public DateTime Time { get; set; }
         [Required]
-        public int Quantity { get; set; } 
+        public int Quantity { get; set; }
+
+        [Required]
+        [EnumDataType(typeof(Sizes), ErrorMessage = "{0} is geen geldige keuze.")]
+        [Range(0, 1, ErrorMessage = "Wrong Choice.")]
+        public Sizes Size { get; set; } 
+
+        [Required]
+        [EnumDataType(typeof(Sizes), ErrorMessage = "{0} is geen geldige keuze.")]
+        [Range(0, 2, ErrorMessage = "Wrong Choice.")]
+        public Types Type { get; set; }
+        public string ImgUrl { get; set; }
         public Guid PizzaId { get; set; }
 
 

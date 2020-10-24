@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ePizza_JD.WebApp.Data;
 
 namespace ePizza_JD.WebApp.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201024173538_sizeInOrder")]
+    partial class sizeInOrder
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -269,9 +271,6 @@ namespace ePizza_JD.WebApp.Data.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("ImgUrl")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<Guid>("PizzaId")
                         .HasColumnType("uniqueidentifier");
 
@@ -283,9 +282,6 @@ namespace ePizza_JD.WebApp.Data.Migrations
 
                     b.Property<DateTime>("Time")
                         .HasColumnType("datetime2");
-
-                    b.Property<int>("Type")
-                        .HasColumnType("int");
 
                     b.HasKey("OrderId");
 
@@ -390,8 +386,8 @@ namespace ePizza_JD.WebApp.Data.Migrations
                         .HasColumnType("nvarchar(100)")
                         .HasMaxLength(100);
 
-                    b.Property<double>("Price")
-                        .HasColumnType("float");
+                    b.Property<float>("Price")
+                        .HasColumnType("real");
 
                     b.HasKey("ToppingId");
 

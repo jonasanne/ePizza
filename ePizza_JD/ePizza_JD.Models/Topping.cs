@@ -14,8 +14,9 @@ namespace ePizza_JD.Models
         [Required(ErrorMessage = "Naam is verplicht")]
         [MaxLength(100)]
         public string Name { get; set; }
+
         [Required]
-        public float Price { get; set; }
+        public double Price { get; set; }
 
 
         //navigation properties

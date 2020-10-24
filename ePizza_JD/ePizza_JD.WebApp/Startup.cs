@@ -12,14 +12,19 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ePizza_JD.WebApp.Data;
+using ePizza_JD.Models.Data;
+using Newtonsoft.Json;
 
 namespace ePizza_JD.WebApp
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        private readonly IWebHostEnvironment env;
+
+        public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
             Configuration = configuration;
+            this.env = env;
         }
 
         public IConfiguration Configuration { get; }
@@ -27,17 +32,34 @@ namespace ePizza_JD.WebApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //services.AddControllers();
+
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+
+
+            //identity (NIET DEFAULTIDENTITY)
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders().AddDefaultUI();
+
+
             services.AddControllersWithViews();
             services.AddRazorPages();
+
+            //registreren van cors
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader());
+            }
+            );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ApplicationDbContext context, IServiceProvider serviceProvider)
         {
             if (env.IsDevelopment())
             {
@@ -65,6 +87,20 @@ namespace ePizza_JD.WebApp
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
+
+
+
+
+
+            //rolemanager en usermanager ophalen
+            var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+            var userManager = serviceProvider.GetRequiredService<UserManager<IdentityUser>>();
+
+
+            //Seeder oproepen
+            context.SeedData().Wait();
+            ApplicationDbContextExtensions.SeedRolesAsync(roleManager).Wait();
+            ApplicationDbContextExtensions.SeedUsersAsync(userManager).Wait();
         }
     }
 }
