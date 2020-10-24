@@ -13,5 +13,12 @@ namespace ePizza_JD.Models
         public int HouseNumber { get; set; }
         public int ZipCode { get; set; }
         public string PhoneNumber { get; set; }
+
+
+
+        //navigation properties
+        public ICollection<CustomerOrders> CustomerOrders { get; set; }
+
+
     }
 }

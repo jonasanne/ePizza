@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,10 +8,23 @@ namespace ePizza_JD.Models
 {
     public class Review
     {
-        public Guid ReviewId { get; set; }
-        public Guid PizzaId { get; set; }
+        [Key]
+        public Guid ReviewId { get; set; } = Guid.NewGuid();
+
+
+        [MaxLength(200)]
         public string Title { get; set; }
+
+        [MaxLength(500)]
         public string Description { get; set; }
-        public float Rating { get; set; }
+
+        [Required]
+        [Range(0, 5,ErrorMessage ="{0} geen correct getal")]
+        public float Rating { get; set; } //op 5
+
+        public DateTime Date { get; set; } = DateTime.Now;
+
+        //navigation Properties
+        public ICollection<OrderReviews> OrderReviews { get; set; }
     }
 }
