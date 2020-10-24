@@ -281,9 +281,6 @@ namespace ePizza_JD.Models.Data
 
         };
 
-
-
-
         public async static Task SeedRolesAsync(RoleManager<IdentityRole> roleManager)
         {
             IdentityResult roleResult;
