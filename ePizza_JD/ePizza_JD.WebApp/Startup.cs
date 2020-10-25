@@ -14,6 +14,7 @@ using Microsoft.Extensions.Hosting;
 using ePizza_JD.WebApp.Data;
 using ePizza_JD.Models.Data;
 using Newtonsoft.Json;
+using ePizza_JD.Models.Repositories;
 
 namespace ePizza_JD.WebApp
 {
@@ -56,6 +57,16 @@ namespace ePizza_JD.WebApp
                     .AllowAnyHeader());
             }
             );
+
+
+            //registreren van interfaces en repositories
+            services.AddScoped<IPizzaRepo, PizzaRepo>();
+            services.AddScoped<IOrderRepo, OrderRepo>();
+            services.AddScoped<IReviewRepo, ReviewRepo>();
+            services.AddScoped<IToppingRepo, ToppingRepo>();
+            
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
