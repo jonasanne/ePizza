@@ -15,7 +15,7 @@ namespace ePizza_JD.Models
             [Display(Name = "Large")]
             Large = 1,
         };
-        public enum Types
+        public enum PizzaTypes
         {
             [Display(Name = "Glutenfree")]
             Glutenfree = 2,
@@ -23,6 +23,13 @@ namespace ePizza_JD.Models
             Vegetarian = 1,
             [Display(Name = "Normal")]
             Normal = 0,
+        };
+        public enum OrderTypes
+        {
+            [Display(Name = "Takeaway")]
+            takeaway = 0,
+            [Display(Name = "Delivery")]
+            delivery = 1,
         };
 
 
@@ -40,7 +47,12 @@ namespace ePizza_JD.Models
         [Required]
         [EnumDataType(typeof(Sizes), ErrorMessage = "{0} is geen geldige keuze.")]
         [Range(0, 2, ErrorMessage = "Wrong Choice.")]
-        public Types Type { get; set; }
+        public PizzaTypes PizzaType { get; set; }
+
+        [Required]
+        [EnumDataType(typeof(Sizes), ErrorMessage = "{0} is geen geldige keuze.")]
+        [Range(0, 1, ErrorMessage = "Wrong Choice.")]
+        public OrderTypes OrderType { get; set; }
         public Guid PizzaId { get; set; }
 
 
@@ -51,6 +63,7 @@ namespace ePizza_JD.Models
 
         public ICollection<OrderReviews> OrderReviews { get; set; }
         public ICollection<CustomerOrders> CustomerOrders { get; set; }
+        public ICollection<RestaurantOrder> RestaurantOrder { get; set; }
 
 
 

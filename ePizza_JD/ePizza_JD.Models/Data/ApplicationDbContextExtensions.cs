@@ -228,7 +228,8 @@ namespace ePizza_JD.Models.Data
                 PizzaId = Guid.Parse("b3117bca-96da-463b-a433-62587fd8bd88"),
                 Quantity = 1,
                 Size= Order.Sizes.Medium,
-                Type=Order.Types.Normal,
+                PizzaType=Order.PizzaTypes.Normal,
+                OrderType = Order.OrderTypes.delivery
             },
             new Order()
             {
@@ -238,7 +239,8 @@ namespace ePizza_JD.Models.Data
                 PizzaId = Guid.Parse("6bd07325-bda2-451f-bbcb-3bf1025834c4"),
                 Quantity = 1,
                 Size= Order.Sizes.Large,
-                Type=Order.Types.Vegetarian,
+                PizzaType=Order.PizzaTypes.Vegetarian,
+                OrderType = Order.OrderTypes.takeaway
             },
 
         };
@@ -291,6 +293,45 @@ namespace ePizza_JD.Models.Data
             },
 
         };
+        private static List<Restaurant> _restaurants = new List<Restaurant>()
+        {
+            new Restaurant()
+            {
+                RestaurantId= Guid.NewGuid(),
+                StreetName = "Lange Elzenstraat",
+                HouseNumber =  160,
+                City= "Brugge",
+                PhoneNumber = "0471 32 89746",
+                ZipCode= 8200,
+                RestaurantName = "The little italian"
+            },
+            new Restaurant()
+            {
+                RestaurantId= Guid.NewGuid(),
+                StreetName = "Stationsstraat",
+                HouseNumber =  351,
+                City= "Ieper",
+                PhoneNumber = "0491 82 74431",
+                ZipCode= 8900,
+                RestaurantName = "Pastasciutta"
+            },
+            new Restaurant()
+            {
+                RestaurantId= Guid.NewGuid(),
+                StreetName = "Herentalsebaan",
+                HouseNumber =  399,
+                City= "Antwerpen",
+                PhoneNumber = "0494 26 36224",
+                ZipCode= 2000,
+                RestaurantName = "Mamma in cucina"
+            },
+
+
+        };
+
+
+
+
 
         public async static Task SeedRolesAsync(RoleManager<IdentityRole> roleManager)
         {
@@ -423,6 +464,23 @@ namespace ePizza_JD.Models.Data
 
                 };
                 //TODO: add PizzaToppings
+
+                //add restaurants
+                if (!context.Restaurants.Any())
+                {
+                    Debug.WriteLine("Seeding restaurants");
+                    foreach (Restaurant resto in _restaurants)
+                    {
+                        await context.Restaurants.AddAsync(resto);
+                        await context.SaveChangesAsync();
+                    };
+
+                };
+
+
+                //TODO : add restaurantOrders
+
+
 
 
             }

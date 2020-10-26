@@ -187,13 +187,3 @@ E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.WebApp\bin\Debug\netcoreapp3.
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.WebApp\obj\Debug\netcoreapp3.1\ePizza_JD.WebApp.csproj.CoreCompileInputs.cache
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.WebApp\obj\Debug\netcoreapp3.1\ePizza_JD.WebApp.MvcApplicationPartsAssemblyInfo.cs
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.WebApp\obj\Debug\netcoreapp3.1\ePizza_JD.WebApp.MvcApplicationPartsAssemblyInfo.cache
-E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.WebApp\obj\Debug\netcoreapp3.1\Razor\Views\Pizzas\Create.cshtml.g.cs
-E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.WebApp\obj\Debug\netcoreapp3.1\Razor\Views\Pizzas\Delete.cshtml.g.cs
-E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.WebApp\obj\Debug\netcoreapp3.1\Razor\Views\Pizzas\Details.cshtml.g.cs
-E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.WebApp\obj\Debug\netcoreapp3.1\Razor\Views\Pizzas\Edit.cshtml.g.cs
-E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.WebApp\obj\Debug\netcoreapp3.1\Razor\Views\Pizzas\Index.cshtml.g.cs
-E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.WebApp\obj\Debug\netcoreapp3.1\Razor\Views\Orders\Create.cshtml.g.cs
-E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.WebApp\obj\Debug\netcoreapp3.1\Razor\Views\Orders\Delete.cshtml.g.cs
-E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.WebApp\obj\Debug\netcoreapp3.1\Razor\Views\Orders\Details.cshtml.g.cs
-E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.WebApp\obj\Debug\netcoreapp3.1\Razor\Views\Orders\Edit.cshtml.g.cs
-E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.WebApp\obj\Debug\netcoreapp3.1\Razor\Views\Orders\Index.cshtml.g.cs

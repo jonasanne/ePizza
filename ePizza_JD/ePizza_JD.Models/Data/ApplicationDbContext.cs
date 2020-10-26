@@ -25,6 +25,8 @@ namespace ePizza_JD.WebApp.Data
         public virtual DbSet<CustomerOrders> CustomerOrders  { get; set; }
         public virtual DbSet<PizzaToppings> PizzaToppings  { get; set; }
         public virtual DbSet<OrderReviews> OrderReviews  { get; set; }
+        public virtual DbSet<RestaurantOrder> RestaurantOrders { get; set; }
+        public virtual DbSet<Restaurant> Restaurants { get; set; }
 
 
 
@@ -50,6 +52,12 @@ namespace ePizza_JD.WebApp.Data
             {
                 e.HasKey(e => new { e.OrderId, e.ReviewId });
             });
+            builder.Entity<RestaurantOrder>(e =>
+            {
+                e.HasKey(e => new { e.OrderId, e.RestaurantId });
+            });
+
+
 
         }
     }
