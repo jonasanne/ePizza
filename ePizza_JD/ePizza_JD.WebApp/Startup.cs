@@ -54,7 +54,8 @@ namespace ePizza_JD.WebApp
                 options.AddPolicy("CorsPolicy",
                     builder => builder.AllowAnyOrigin()
                     .AllowAnyMethod()
-                    .AllowAnyHeader());
+                    .AllowAnyHeader()
+                    .AllowCredentials()); // must voor SignalR
             }
             );
 
