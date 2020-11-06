@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "AOC7tHQDpGmL+3BkD2yF3JskzV88eDI0XeGv9xmHhO00K7ccSnSRMeJjYEmL23wWLzm2Ja4IUdrP5CdyiHUxhg==",
+  "dgSpecHash": "9VCiwTcxSyBy88kReOFft2Dyn5gKGnfhVeck5CQSI1EmO37jor3kUsiADvzceyfgBuvN2Ypck09V4D9L92S5hQ==",
   "success": true,
   "projectFilePath": "E:\\VS2019\\projects\\FSWD\\ePizza\\ePizza_JD\\ePizza_JD.API\\ePizza_JD.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Rick\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.8\\microsoft.aspnetcore.cryptography.internal.3.1.8.nupkg.sha512",
     "C:\\Users\\Rick\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\3.1.8\\microsoft.aspnetcore.cryptography.keyderivation.3.1.8.nupkg.sha512",
+    "C:\\Users\\Rick\\.nuget\\packages\\microsoft.aspnetcore.diagnostics.entityframeworkcore\\3.1.9\\microsoft.aspnetcore.diagnostics.entityframeworkcore.3.1.9.nupkg.sha512",
     "C:\\Users\\Rick\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Rick\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\3.1.8\\microsoft.aspnetcore.identity.entityframeworkcore.3.1.8.nupkg.sha512",
     "C:\\Users\\Rick\\.nuget\\packages\\microsoft.aspnetcore.razor\\2.2.0\\microsoft.aspnetcore.razor.2.2.0.nupkg.sha512",

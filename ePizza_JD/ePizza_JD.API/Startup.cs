@@ -32,7 +32,6 @@ namespace ePizza_JD.API
         {
             services.AddControllers();
 
-
             //1. context
             var connectionString = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
@@ -74,6 +73,10 @@ namespace ePizza_JD.API
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseExceptionHandler("/error");
             }
 
             app.UseSwagger(); //enable swagger

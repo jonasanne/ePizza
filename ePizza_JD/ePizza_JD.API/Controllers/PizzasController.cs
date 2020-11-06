@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ePizza_JD.Models;
 using ePizza_JD.WebApp.Data;
+using System.Diagnostics;
 
 namespace ePizza_JD.API.Controllers
 {
@@ -34,14 +35,28 @@ namespace ePizza_JD.API.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Pizza>> GetPizza(Guid id)
         {
-            var pizza = await _context.Pizzas.FindAsync(id);
-
-            if (pizza == null)
+            var pizza = new Pizza();
+            try
             {
-                return NotFound();
-            }
+                pizza = await _context.Pizzas.FindAsync(id);
 
-            return pizza;
+                if (pizza == null)
+                {
+                    return NotFound();
+                }
+
+                return pizza;
+            }
+            catch (Exception ex)
+            {
+
+                Debug.WriteLine($"expection : {ex}");
+                return RedirectToAction("HandleErrorCode", "Error", new
+                {
+                    Statuscode = 400,
+                    errorMessage = $"ophalen van de pizza: '{pizza.Name}' is mislukt"
+                });
+            }
         }
 
         // PUT: api/Pizzas/5
@@ -82,26 +97,54 @@ namespace ePizza_JD.API.Controllers
         [HttpPost]
         public async Task<ActionResult<Pizza>> PostPizza(Pizza pizza)
         {
+
+            try
+            {
+
             _context.Pizzas.Add(pizza);
             await _context.SaveChangesAsync();
-
             return CreatedAtAction("GetPizza", new { id = pizza.PizzaId }, pizza);
+
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"expection : {ex}");
+                return RedirectToAction("HandleErrorCode", "Error", new
+                {
+                    Statuscode = 400,
+                    errorMessage = $"Bewaren van de pizza: '{pizza.Name}' is mislukt"
+                }) ;
+            }
         }
 
         // DELETE: api/Pizzas/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<Pizza>> DeletePizza(Guid id)
         {
-            var pizza = await _context.Pizzas.FindAsync(id);
-            if (pizza == null)
+            //todo ophalen van pizza
+            var pizza = new Pizza();
+            try
             {
-                return NotFound();
+                pizza = await _context.Pizzas.FindAsync(id);
+                if (pizza == null)
+                {
+                    return NotFound();
+                }
+
+                _context.Pizzas.Remove(pizza);
+                await _context.SaveChangesAsync();
+
+                return pizza;
             }
-
-            _context.Pizzas.Remove(pizza);
-            await _context.SaveChangesAsync();
-
-            return pizza;
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"expection : {ex}");
+                return RedirectToAction("HandleErrorCode", "Error", new
+                {
+                    Statuscode = 400,
+                    errorMessage = $"verwijderen van de pizza: '{pizza.Name}' is mislukt"
+                });
+            }
         }
 
         private bool PizzaExists(Guid id)
