@@ -4,10 +4,15 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using AutoMapper;
+using ePizza_JD.Models;
+using ePizza_JD.Models.Data;
 using ePizza_JD.WebApp.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -35,6 +40,7 @@ namespace ePizza_JD.API
             //1. context
             var connectionString = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
+            services.AddDefaultIdentity<IdentityUser>().AddRoles<IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
 
             //2b. Cors 
             services.AddCors(options =>
@@ -44,31 +50,24 @@ namespace ePizza_JD.API
                     builder.AllowAnyMethod()
                     .AllowAnyHeader()
                     //.AllowAnyOrigin() // niet toegelaten indien credentials
-                    .WithOrigins("https://localhost", "http://localhost")
+                    .WithOrigins("https://localhost", "http://localhost" , "https://epizza.netlify.app/")
                     .AllowCredentials()
                     ;
                 });
             });
 
-
-
             //3. Repos
 
             //4. Mapper
-
+            services.AddAutoMapper(typeof(ePizza_JDProfiles));
             //5. Swagger
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ePizza_JD", Version = "v1" });
             });
-
-
-
-
         }
-
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ApplicationDbContext context, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager )
         {
             if (env.IsDevelopment())
             {
@@ -86,7 +85,7 @@ namespace ePizza_JD.API
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "ePizza_JD");
             });
 
-
+            app.UseCors("MyAllowOrigins");
 
             app.UseHttpsRedirection();
 
@@ -98,6 +97,16 @@ namespace ePizza_JD.API
             {
                 endpoints.MapControllers();
             });
+
+            context.SeedRoles(roleManager);
+            context.SeedUsers(userManager);
+
+            
+             
+
+
+
+
         }
     }
 }

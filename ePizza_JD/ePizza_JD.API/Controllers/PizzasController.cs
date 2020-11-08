@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using ePizza_JD.Models;
 using ePizza_JD.WebApp.Data;
 using System.Diagnostics;
+using AutoMapper;
 
 namespace ePizza_JD.API.Controllers
 {
@@ -18,17 +19,21 @@ namespace ePizza_JD.API.Controllers
     public class PizzasController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
+        private readonly IMapper mapper;
 
-        public PizzasController(ApplicationDbContext context)
+        public PizzasController(ApplicationDbContext context, IMapper mapper)
         {
             _context = context;
+            this.mapper = mapper;
         }
 
         // GET: api/Pizzas
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Pizza>>> GetPizzas()
+        public async Task<ActionResult<IEnumerable<PizzaDTO>>> GetPizzas()
         {
-            return await _context.Pizzas.ToListAsync();
+            var pizzas=  await _context.Pizzas.ToListAsync();
+            var PizzasDTO = mapper.Map<IEnumerable<PizzaDTO>>(pizzas);
+            return Ok(PizzasDTO);
         }
 
         // GET: api/Pizzas/5
@@ -39,12 +44,10 @@ namespace ePizza_JD.API.Controllers
             try
             {
                 pizza = await _context.Pizzas.FindAsync(id);
-
                 if (pizza == null)
                 {
                     return NotFound();
                 }
-
                 return pizza;
             }
             catch (Exception ex)

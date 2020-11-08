@@ -1,6 +1,6 @@
 ﻿using ePizza_JD.WebApp.Data;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore.Internal;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ePizza_JD.Models.Data
 {
-    public static class ApplicationDbContextExtensions
+    public static class ModelBuilderExtensions
     {
         private static List<Pizza> _pizzas = new List<Pizza>()
         {
@@ -83,105 +83,105 @@ namespace ePizza_JD.Models.Data
                 ToppingId = Guid.NewGuid(),
                 Name = "Ham",
                 Price = 1.4,
-                
+
             },
             new Topping()
             {
                 ToppingId = Guid.NewGuid(),
                 Name = "Mozzarella",
                 Price = 1.4,
-                
+
             },
             new Topping()
             {
                 ToppingId = Guid.NewGuid(),
                 Name = "Pepperoni",
                 Price = 1.4,
-                
+
             },
             new Topping()
             {
                 ToppingId = Guid.NewGuid(),
                 Name = "Champignons",
                 Price = 1.4,
-                
+
             },
             new Topping()
             {
                 ToppingId = Guid.NewGuid(),
                 Name = "Pineapple",
                 Price = 1.4,
-                
+
             },
             new Topping()
             {
                 ToppingId = Guid.NewGuid(),
                 Name = "Chilipepper",
                 Price = 1.4,
-                
+
             },
             new Topping()
             {
                 ToppingId = Guid.NewGuid(),
                 Name = "Red onion",
                 Price = 1.4,
-                
+
             },
             new Topping()
             {
                 ToppingId = Guid.NewGuid(),
                 Name = "Grilled Chicken",
                 Price = 1.4,
-                
+
             },
             new Topping()
             {
                 ToppingId = Guid.NewGuid(),
                 Name = "Barbecue sauce",
                 Price = 1.4,
-                
+
             },
             new Topping()
             {
                 ToppingId = Guid.Parse("16a1fa18-101d-4f91-ba66-561e6bd8331b"),
                 Name = "Tomato Sauce",
                 Price = 1.4,
-                
-            },     
+
+            },
             new Topping()
             {
                 ToppingId = Guid.NewGuid(),
                 Name = "Pork",
                 Price = 1.4,
-                
+
             },
             new Topping()
             {
                 ToppingId = Guid.Parse("3e153375-e8aa-4c4b-8836-c69213111eb0"),
                 Name = "Emmental",
                 Price = 1.4,
-                
+
             },
             new Topping()
             {
                 ToppingId = Guid.NewGuid(),
                 Name = "Goat cheese",
                 Price = 1.4,
-                
-            }, 
+
+            },
             new Topping()
             {
                 ToppingId = Guid.NewGuid(),
                 Name = "Gorgonzola",
                 Price = 1.4,
-                
-            }, 
+
+            },
             new Topping()
             {
                 ToppingId = Guid.NewGuid(),
                 Name = "Paprika",
                 Price = 1.4,
-                
+
             },
 
 
@@ -262,13 +262,13 @@ namespace ePizza_JD.Models.Data
             {
                 ReviewId = Guid.Parse("c456b9e8-d32c-4d6e-8b32-da50c5edc856"),
                 OrderId = Guid.Parse("e68a3f79-ba5a-49f3-95c7-5e38298e7fde"),
-               
+
             },
             new OrderReviews()
             {
                 ReviewId = Guid.Parse("0eae9dca-640f-408e-8aa5-325f40cb3eee"),
                 OrderId = Guid.Parse("bba2eded-d219-4618-b0ce-c3a983772772"),
-               
+
             },
 
         };
@@ -337,124 +337,21 @@ namespace ePizza_JD.Models.Data
         };
 
 
-        public async static Task SeedData(this ApplicationDbContext context)
+        public static ApplicationDbContext _context { get; set; }
+
+
+        public static void Seed(this ModelBuilder modelBuilder)
         {
-            try
-            {
-                //add pizzas
-                if (!context.Pizzas.Any())
-                {
-                    Debug.WriteLine("Seeding pizzas");
-
-                    foreach (Pizza pizza in _pizzas)
-                    {
-                        await context.Pizzas.AddAsync(pizza);
-                        await context.SaveChangesAsync();
-                    };
-                    
-                };
-                //add toppings
-                if (!context.Toppings.Any())
-                {
-                    Debug.WriteLine("Seeding Toppings");
-                    foreach(Topping topping in _toppings)
-                    {
-                        await context.Toppings.AddAsync(topping);
-                        await context.SaveChangesAsync();
-                    };
-
-                };
-                //add Customers
-                if (!context.Customers.Any())
-                {
-                    Debug.WriteLine("Seeding Customers");
-                    foreach(Customer Customer in _customers)
-                    {
-                        await context.Customers.AddAsync(Customer);
-                        await context.SaveChangesAsync();
-                    };
-
-                };
-                //add Orders
-                if (!context.Orders.Any())
-                {
-                    Debug.WriteLine("Seeding Orders");
-                    foreach(Order Order in _orders)
-                    {
-                        await context.Orders.AddAsync(Order);
-                        await context.SaveChangesAsync();
-                    };
-
-                };
-                //add Reviews
-                if (!context.Reviews.Any())
-                {
-                    Debug.WriteLine("Seeding Reviews");
-                    foreach(Review Review in _reviews)
-                    {
-                        await context.Reviews.AddAsync(Review);
-                        await context.SaveChangesAsync();
-                    };
-
-                };
-                //add OrderReviews
-                if (!context.OrderReviews.Any())
-                {
-                    Debug.WriteLine("Seeding orderReviews");
-                    foreach(OrderReviews oReview in _orderReviews)
-                    {
-                        await context.OrderReviews.AddAsync(oReview);
-                        await context.SaveChangesAsync();
-                    };
-
-                };
-                //add CustomerOrders
-                if (!context.CustomerOrders.Any())
-                {
-                    Debug.WriteLine("Seeding orderReviews");
-                    foreach(CustomerOrders customerOrder in _customerOrders)
-                    {
-                        await context.CustomerOrders.AddAsync(customerOrder);
-                        await context.SaveChangesAsync();
-                    };
-
-                };
-                // add PizzaToppings
-                if (!context.PizzaToppings.Any())
-                {
-                    Debug.WriteLine("Seeding PizzaToppings");
-                    foreach (PizzaToppings pt in _pizzaToppings)
-                    {
-                        await context.PizzaToppings.AddAsync(pt);
-                        await context.SaveChangesAsync();
-                    };
-
-                };
-                //add restaurants
-                if (!context.Restaurants.Any())
-                {
-                    Debug.WriteLine("Seeding restaurants");
-                    foreach (Restaurant resto in _restaurants)
-                    {
-                        await context.Restaurants.AddAsync(resto);
-                        await context.SaveChangesAsync();
-                    };
-
-                };
-
-                //TODO : add restaurantOrders
-
-
-
-
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex.InnerException.Message);
-                throw new InvalidOperationException("Failed to build data");
-            }
-
-
+            Console.WriteLine("Seeding Tables");
+            modelBuilder.Entity<Pizza>().HasData(_pizzas);
+            modelBuilder.Entity<Topping>().HasData(_toppings);
+            modelBuilder.Entity<Customer>().HasData(_customers);
+            modelBuilder.Entity<Order>().HasData(_orders);
+            modelBuilder.Entity<Review>().HasData(_reviews);
+            modelBuilder.Entity<OrderReviews>().HasData(_orderReviews);
+            modelBuilder.Entity<CustomerOrders>().HasData(_customerOrders);
+            modelBuilder.Entity<Restaurant>().HasData(_restaurants);
+            modelBuilder.Entity<PizzaToppings>().HasData(_pizzaToppings);
         }
 
 

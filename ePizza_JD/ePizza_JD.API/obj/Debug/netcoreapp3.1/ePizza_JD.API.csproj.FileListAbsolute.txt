@@ -161,7 +161,12 @@ E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API\bin\Debug\netcoreapp3.1\M
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
-E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API\obj\Debug\netcoreapp3.1\ePizza_JD.API.csproj.CoreCompileInputs.cache
-E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API\obj\Debug\netcoreapp3.1\ePizza_JD.API.MvcApplicationPartsAssemblyInfo.cs
-E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API\obj\Debug\netcoreapp3.1\ePizza_JD.API.MvcApplicationPartsAssemblyInfo.cache
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API\bin\Debug\netcoreapp3.1\AutoMapper.dll
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API\bin\Debug\netcoreapp3.1\ePizza_JD.API.StaticWebAssets.xml
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.UI.Views.V3.dll
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.UI.Views.V4.dll
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.UI.dll
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileProviders.Abstractions.dll
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileProviders.Embedded.dll

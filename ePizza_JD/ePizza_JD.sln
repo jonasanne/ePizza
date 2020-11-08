@@ -5,13 +5,9 @@ VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ePizza_JD.Models", "ePizza_JD.Models\ePizza_JD.Models.csproj", "{DD3A4F39-FBB0-4789-9F15-EC71F2FCD453}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ePizza_JD.WebApp", "ePizza_JD.WebApp\ePizza_JD.WebApp.csproj", "{221AF5EC-B5A9-4B28-B2A6-137FD5A160F9}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ePizza_JD.API", "ePizza_JD.API\ePizza_JD.API.csproj", "{C4F39A0E-4C5E-4BA4-AEAB-26D969E8ED55}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ePizza_JD.API", "ePizza_JD.API\ePizza_JD.API.csproj", "{C4F39A0E-4C5E-4BA4-AEAB-26D969E8ED55}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{D73E2531-1DC3-4BBE-B8A2-652BBE0F39E0}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontend", "Frontend", "{685F567B-BB77-4843-AC92-A065F46C21EC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +19,6 @@ Global
 		{DD3A4F39-FBB0-4789-9F15-EC71F2FCD453}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD3A4F39-FBB0-4789-9F15-EC71F2FCD453}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD3A4F39-FBB0-4789-9F15-EC71F2FCD453}.Release|Any CPU.Build.0 = Release|Any CPU
-		{221AF5EC-B5A9-4B28-B2A6-137FD5A160F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{221AF5EC-B5A9-4B28-B2A6-137FD5A160F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{221AF5EC-B5A9-4B28-B2A6-137FD5A160F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{221AF5EC-B5A9-4B28-B2A6-137FD5A160F9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C4F39A0E-4C5E-4BA4-AEAB-26D969E8ED55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C4F39A0E-4C5E-4BA4-AEAB-26D969E8ED55}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4F39A0E-4C5E-4BA4-AEAB-26D969E8ED55}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -37,7 +29,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{DD3A4F39-FBB0-4789-9F15-EC71F2FCD453} = {D73E2531-1DC3-4BBE-B8A2-652BBE0F39E0}
-		{221AF5EC-B5A9-4B28-B2A6-137FD5A160F9} = {685F567B-BB77-4843-AC92-A065F46C21EC}
 		{C4F39A0E-4C5E-4BA4-AEAB-26D969E8ED55} = {D73E2531-1DC3-4BBE-B8A2-652BBE0F39E0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
