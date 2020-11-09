@@ -178,4 +178,3 @@ E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API\obj\Debug\netcoreapp3.1\e
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API\obj\Debug\netcoreapp3.1\ePizza_JD.API.MvcApplicationPartsAssemblyInfo.cs
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API\obj\Debug\netcoreapp3.1\ePizza_JD.API.MvcApplicationPartsAssemblyInfo.cache
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.json
-E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API\bin\Debug\netcoreapp3.1\Properties\ServiceDependencies\ePizzaAPI - Web Deploy\profile.arm.json
