@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using ePizza_JD.Models;
 using ePizza_JD.Models.Data;
+using ePizza_JD.Models.Repositories;
 using ePizza_JD.WebApp.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -36,9 +37,13 @@ namespace ePizza_JD.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-
+            //zonder dit error bij ophalen data
+            services.AddControllersWithViews()
+            .AddNewtonsoftJson(options =>
+            options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            );
             //1. context
-            var connectionString = Configuration.GetConnectionString("DefaultConnection");
+            var connectionString = Configuration.GetConnectionString("DB");
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
             services.AddDefaultIdentity<IdentityUser>().AddRoles<IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
 
@@ -57,6 +62,7 @@ namespace ePizza_JD.API
             });
 
             //3. Repos
+            services.AddScoped(typeof(IPizzaRepo), typeof(PizzaRepo));
 
             //4. Mapper
             services.AddAutoMapper(typeof(ePizza_JDProfiles));

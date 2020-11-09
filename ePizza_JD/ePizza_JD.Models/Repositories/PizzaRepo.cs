@@ -44,19 +44,17 @@ namespace ePizza_JD.Models.Repositories
                     var result = context.Pizzas.Remove(pizza);
                     await context.SaveChangesAsync();
                 }
-
             }
             catch (Exception exc)
             {
                 Console.WriteLine(exc.InnerException.Message);
             }
         }
-
         public async Task<IEnumerable<Pizza>> GetPizzasAsync()
         {
             try
             {
-                return await context.Pizzas.OrderBy(n => n.Name).ToListAsync();
+                return await context.Pizzas.OrderBy(n => n.Name).Include(p=> p.PizzaToppings).ToListAsync();
             }
             catch (Exception ex)
             {

@@ -334,7 +334,7 @@ namespace ePizza_JD.Models.Migrations
                         new
                         {
                             OrderId = new Guid("e68a3f79-ba5a-49f3-95c7-5e38298e7fde"),
-                            Date = new DateTime(2020, 11, 8, 20, 36, 59, 779, DateTimeKind.Local).AddTicks(4950),
+                            Date = new DateTime(2020, 11, 8, 22, 12, 6, 980, DateTimeKind.Local).AddTicks(2458),
                             OrderType = 1,
                             PizzaId = new Guid("b3117bca-96da-463b-a433-62587fd8bd88"),
                             PizzaType = 0,
@@ -345,7 +345,7 @@ namespace ePizza_JD.Models.Migrations
                         new
                         {
                             OrderId = new Guid("bba2eded-d219-4618-b0ce-c3a983772772"),
-                            Date = new DateTime(2020, 11, 8, 20, 36, 59, 782, DateTimeKind.Local).AddTicks(9811),
+                            Date = new DateTime(2020, 11, 8, 22, 12, 6, 983, DateTimeKind.Local).AddTicks(7033),
                             OrderType = 0,
                             PizzaId = new Guid("6bd07325-bda2-451f-bbcb-3bf1025834c4"),
                             PizzaType = 1,
@@ -428,56 +428,56 @@ namespace ePizza_JD.Models.Migrations
                         },
                         new
                         {
-                            PizzaId = new Guid("ae4fdbb8-97a0-4c60-a16b-321ce2c135ab"),
+                            PizzaId = new Guid("0d712c40-b04a-4342-a917-0987a7238df6"),
                             ImgUrl = "https://cdn-catalog.pizzahut.be/images/be/20170830145952504.jpg",
                             Name = "Hawaiian",
                             Price = 9.5
                         },
                         new
                         {
-                            PizzaId = new Guid("ff5c0325-1ed6-4efd-9a86-5cc780e3fa9d"),
+                            PizzaId = new Guid("bfddd0b6-bd7f-48f2-8061-c1f36fc97b6e"),
                             ImgUrl = "https://cdn-catalog.pizzahut.be/images/be/20170830145601044.jpg",
                             Name = "Barbecue Chicken",
                             Price = 10.199999999999999
                         },
                         new
                         {
-                            PizzaId = new Guid("2639a641-15c2-4c04-a2a3-a8539bf6789a"),
+                            PizzaId = new Guid("de697af5-de2f-4225-bf11-0b7470e78f94"),
                             ImgUrl = "https://cdn-catalog.pizzahut.be/images/be/20170830150015440.jpg",
                             Name = "Hot 'n Spicy",
                             Price = 10.199999999999999
                         },
                         new
                         {
-                            PizzaId = new Guid("9afd4308-3f2d-4650-983a-1d767012915c"),
+                            PizzaId = new Guid("aa0c01f8-8f8a-499e-a416-e7db817e031b"),
                             ImgUrl = "https://cdn-catalog.pizzahut.be/images/be/20170830145444334.jpg",
                             Name = "4 Cheeses",
                             Price = 10.9
                         },
                         new
                         {
-                            PizzaId = new Guid("7ddbbb5b-ff70-4031-b9ff-55424b01d0d1"),
+                            PizzaId = new Guid("24d65f7c-8424-424a-85ff-c0a77716d73d"),
                             ImgUrl = "https://cdn-catalog.pizzahut.be/images/be/20171229145324596.jpg",
                             Name = "Tuna",
                             Price = 9.4000000000000004
                         },
                         new
                         {
-                            PizzaId = new Guid("f885605c-6987-41f6-b009-e040e96010d9"),
+                            PizzaId = new Guid("5da832eb-fa3a-464b-8742-6154c63f27c8"),
                             ImgUrl = "https://cdn-catalog.pizzahut.be/images/be/20170830145855396.jpg",
                             Name = "Forestiere",
                             Price = 10.300000000000001
                         },
                         new
                         {
-                            PizzaId = new Guid("89dc0bbc-2075-4d3b-a655-09e9905784b1"),
+                            PizzaId = new Guid("eda48766-fea5-4b5e-8430-d69b8091264e"),
                             ImgUrl = "https://cdn-catalog.pizzahut.be/images/be/20170830145618975.jpg",
                             Name = "Parma",
                             Price = 8.0999999999999996
                         },
                         new
                         {
-                            PizzaId = new Guid("0d7740cc-ddc2-4c9e-99a7-0d78765b0ae6"),
+                            PizzaId = new Guid("182ac64a-f6bf-4ed7-88ea-f05c4f2b4f63"),
                             ImgUrl = "https://cdn-catalog.pizzahut.be/images/be/20170830145527344.jpg",
                             Name = "Barbecue",
                             Price = 10.4
@@ -495,6 +495,9 @@ namespace ePizza_JD.Models.Migrations
                     b.Property<int>("TimeToPrepare")
                         .HasColumnType("int");
 
+                    b.Property<string>("ToppingName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("PizzaId", "ToppingId");
 
                     b.HasIndex("ToppingId");
@@ -506,13 +509,15 @@ namespace ePizza_JD.Models.Migrations
                         {
                             PizzaId = new Guid("b3117bca-96da-463b-a433-62587fd8bd88"),
                             ToppingId = new Guid("16a1fa18-101d-4f91-ba66-561e6bd8331b"),
-                            TimeToPrepare = 0
+                            TimeToPrepare = 0,
+                            ToppingName = "Tomato Sauce"
                         },
                         new
                         {
                             PizzaId = new Guid("b3117bca-96da-463b-a433-62587fd8bd88"),
                             ToppingId = new Guid("3e153375-e8aa-4c4b-8836-c69213111eb0"),
-                            TimeToPrepare = 0
+                            TimeToPrepare = 0,
+                            ToppingName = "Emmental"
                         });
                 });
 
@@ -547,7 +552,7 @@ namespace ePizza_JD.Models.Migrations
                     b.HasData(
                         new
                         {
-                            RestaurantId = new Guid("6248f61e-b919-4bda-9bc0-9ee889cccc1b"),
+                            RestaurantId = new Guid("e7e2be71-8253-46c8-8006-a4584df72968"),
                             City = "Brugge",
                             HouseNumber = 160,
                             PhoneNumber = "0471 32 89746",
@@ -557,7 +562,7 @@ namespace ePizza_JD.Models.Migrations
                         },
                         new
                         {
-                            RestaurantId = new Guid("4d0b42c7-b7b4-44eb-a369-cfd88ca3caff"),
+                            RestaurantId = new Guid("56942d34-dec4-47e8-8d57-09950ca7e39d"),
                             City = "Ieper",
                             HouseNumber = 351,
                             PhoneNumber = "0491 82 74431",
@@ -567,7 +572,7 @@ namespace ePizza_JD.Models.Migrations
                         },
                         new
                         {
-                            RestaurantId = new Guid("e7de5a88-d7d2-43a6-aa9e-1648fb75e4f2"),
+                            RestaurantId = new Guid("a3ed2a10-5ffb-4f0f-8931-8fca67d122b6"),
                             City = "Antwerpen",
                             HouseNumber = 399,
                             PhoneNumber = "0494 26 36224",
@@ -620,14 +625,14 @@ namespace ePizza_JD.Models.Migrations
                         new
                         {
                             ReviewId = new Guid("c456b9e8-d32c-4d6e-8b32-da50c5edc856"),
-                            Date = new DateTime(2020, 11, 8, 20, 36, 59, 783, DateTimeKind.Local).AddTicks(5864),
+                            Date = new DateTime(2020, 11, 8, 22, 12, 6, 983, DateTimeKind.Local).AddTicks(8655),
                             Rating = 4.0,
                             Title = "Amazing pizza!"
                         },
                         new
                         {
                             ReviewId = new Guid("0eae9dca-640f-408e-8aa5-325f40cb3eee"),
-                            Date = new DateTime(2020, 11, 8, 20, 36, 59, 783, DateTimeKind.Local).AddTicks(7888),
+                            Date = new DateTime(2020, 11, 8, 22, 12, 6, 984, DateTimeKind.Local).AddTicks(139),
                             Description = "Fast delivery and amazingly great taste!",
                             Rating = 4.5,
                             Title = "Pizzashop online"
@@ -655,55 +660,55 @@ namespace ePizza_JD.Models.Migrations
                     b.HasData(
                         new
                         {
-                            ToppingId = new Guid("16706f3d-7ed8-4aef-b8e4-528879e6afe4"),
+                            ToppingId = new Guid("26a5832b-0703-4cfd-84ab-2b0dcd06c8b7"),
                             Name = "Ham",
                             Price = 1.3999999999999999
                         },
                         new
                         {
-                            ToppingId = new Guid("d57f6276-045f-4482-97fd-9b06d9f8cffb"),
+                            ToppingId = new Guid("e0e52f4d-dc26-44ed-bef9-c06dcf1deffb"),
                             Name = "Mozzarella",
                             Price = 1.3999999999999999
                         },
                         new
                         {
-                            ToppingId = new Guid("7c1c5fdb-412a-47d0-9f97-828ffda19621"),
+                            ToppingId = new Guid("d7d67226-d4ea-4ffe-a9f1-f02a8e375a23"),
                             Name = "Pepperoni",
                             Price = 1.3999999999999999
                         },
                         new
                         {
-                            ToppingId = new Guid("6d6ccb96-02f1-466c-8793-0046c9b3e786"),
+                            ToppingId = new Guid("8da43f2a-8927-4fab-8ea9-11890145ffb0"),
                             Name = "Champignons",
                             Price = 1.3999999999999999
                         },
                         new
                         {
-                            ToppingId = new Guid("a1fcea67-cea1-4c3b-a620-c214b5f4770e"),
+                            ToppingId = new Guid("d255b839-bbdc-4b86-9a0d-6b23cd03dcaa"),
                             Name = "Pineapple",
                             Price = 1.3999999999999999
                         },
                         new
                         {
-                            ToppingId = new Guid("bd78bd22-11b6-4b4f-bbe2-bb5efe63a2c7"),
+                            ToppingId = new Guid("092cbb78-03bc-4b02-af23-4c0e94b88bdb"),
                             Name = "Chilipepper",
                             Price = 1.3999999999999999
                         },
                         new
                         {
-                            ToppingId = new Guid("50439b1b-b37e-4e15-8ca5-f9b4f1077a28"),
+                            ToppingId = new Guid("25f4f72a-14dc-42dc-83b3-92c9ee1fb90f"),
                             Name = "Red onion",
                             Price = 1.3999999999999999
                         },
                         new
                         {
-                            ToppingId = new Guid("a0fd4fe8-8aa1-4b4d-a75e-80689a49ff59"),
+                            ToppingId = new Guid("e97bfd04-f464-4fa0-9712-85e47f536f64"),
                             Name = "Grilled Chicken",
                             Price = 1.3999999999999999
                         },
                         new
                         {
-                            ToppingId = new Guid("f462cf3c-c42a-426d-8812-834f8dbcac49"),
+                            ToppingId = new Guid("95a39c80-598e-4a72-85c7-082476b8ba0f"),
                             Name = "Barbecue sauce",
                             Price = 1.3999999999999999
                         },
@@ -715,7 +720,7 @@ namespace ePizza_JD.Models.Migrations
                         },
                         new
                         {
-                            ToppingId = new Guid("44a954ae-e473-492d-a6c8-d1ba49a90fdf"),
+                            ToppingId = new Guid("e8396e06-7cb4-4588-b2f6-a91f81624d9b"),
                             Name = "Pork",
                             Price = 1.3999999999999999
                         },
@@ -727,19 +732,19 @@ namespace ePizza_JD.Models.Migrations
                         },
                         new
                         {
-                            ToppingId = new Guid("b12e92b7-843d-4f91-8363-36637af6722b"),
+                            ToppingId = new Guid("5958ed99-60a4-40b3-858b-c99be491e0a4"),
                             Name = "Goat cheese",
                             Price = 1.3999999999999999
                         },
                         new
                         {
-                            ToppingId = new Guid("d6ee33a1-f9c2-43e1-8386-46a623da8de9"),
+                            ToppingId = new Guid("e7bff715-211c-43d9-9873-b395d961cbbf"),
                             Name = "Gorgonzola",
                             Price = 1.3999999999999999
                         },
                         new
                         {
-                            ToppingId = new Guid("2e9e2461-6853-4f79-9f8d-28ffc42b8152"),
+                            ToppingId = new Guid("f3b72b4a-a12d-4547-84bd-7cd5a150e918"),
                             Name = "Paprika",
                             Price = 1.3999999999999999
                         });

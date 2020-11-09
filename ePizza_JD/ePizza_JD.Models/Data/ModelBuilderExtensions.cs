@@ -327,11 +327,13 @@ namespace ePizza_JD.Models.Data
             {
                 PizzaId = Guid.Parse("b3117bca-96da-463b-a433-62587fd8bd88"),
                 ToppingId = Guid.Parse("16a1fa18-101d-4f91-ba66-561e6bd8331b"),
+                ToppingName ="Tomato Sauce"
             },
             new PizzaToppings()
             {
                 PizzaId = Guid.Parse("b3117bca-96da-463b-a433-62587fd8bd88"),
                 ToppingId = Guid.Parse("3e153375-e8aa-4c4b-8836-c69213111eb0"),
+                ToppingName= "Emmental"
             },
 
         };

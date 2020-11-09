@@ -9,6 +9,7 @@ using ePizza_JD.Models;
 using ePizza_JD.WebApp.Data;
 using System.Diagnostics;
 using AutoMapper;
+using ePizza_JD.Models.Repositories;
 
 namespace ePizza_JD.API.Controllers
 {
@@ -20,20 +21,33 @@ namespace ePizza_JD.API.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly IMapper mapper;
+        private readonly IPizzaRepo pizzaRepo;
 
-        public PizzasController(ApplicationDbContext context, IMapper mapper)
+        public PizzasController(ApplicationDbContext context, IMapper mapper , IPizzaRepo pizzaRepo)
         {
             _context = context;
             this.mapper = mapper;
+            this.pizzaRepo = pizzaRepo;
         }
 
         // GET: api/Pizzas
         [HttpGet]
         public async Task<ActionResult<IEnumerable<PizzaDTO>>> GetPizzas()
         {
-            var pizzas=  await _context.Pizzas.ToListAsync();
-            var PizzasDTO = mapper.Map<IEnumerable<PizzaDTO>>(pizzas);
-            return Ok(PizzasDTO);
+            try
+            {
+
+            var pizzas = await pizzaRepo.GetPizzasAsync();
+            //var PizzasDTO = mapper.Map<IEnumerable<PizzaDTO>>(pizzas);
+
+            return Ok(pizzas);
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         // GET: api/Pizzas/5

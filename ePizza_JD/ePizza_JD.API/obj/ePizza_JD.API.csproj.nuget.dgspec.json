@@ -70,6 +70,10 @@
               "target": "Package",
               "version": "[3.1.9, )"
             },
+            "Microsoft.AspNetCore.MVC.NewtonsoftJson": {
+              "target": "Package",
+              "version": "[3.1.9, )"
+            },
             "Microsoft.Aspnetcore.mvc.Versioning": {
               "target": "Package",
               "version": "[4.2.0, )"

@@ -51,7 +51,11 @@ namespace ePizza_JD.WebApp.Data
             builder.Entity<PizzaToppings>(e =>
             {
                 e.HasKey(e => new { e.PizzaId, e.ToppingId });
+                e.HasOne(e => e.Topping).WithMany(m => m.PizzaToppings).HasForeignKey(m => m.ToppingId);
+                e.HasOne(e => e.Pizza).WithMany(m => m.PizzaToppings).HasForeignKey(m => m.PizzaId);
+                
             });
+
             builder.Entity<OrderReviews>(e =>
             {
                 e.HasKey(e => new { e.OrderId, e.ReviewId });
@@ -64,6 +68,7 @@ namespace ePizza_JD.WebApp.Data
             builder.Seed(); // seeden van testdata
         }
 
+        //seeden van roles
         public void SeedRoles(RoleManager<IdentityRole> roleManager)
         {
             //add admin role
@@ -90,6 +95,7 @@ namespace ePizza_JD.WebApp.Data
                 IdentityResult result = roleManager.CreateAsync(Role).Result;
             }
         }
+        //seeden van users
         public void SeedUsers(UserManager<IdentityUser> userManager)
         {
             //add admin "Docent@howest.be"
@@ -125,8 +131,6 @@ namespace ePizza_JD.WebApp.Data
                 }
             }
         }
-
-
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
     }
