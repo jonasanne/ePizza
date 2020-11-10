@@ -1,0 +1,528 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "ePizza_JD",
+    "version": "v1"
+  },
+  "paths": {
+    "/Error/{statusCode}/{errorMessage}": {
+      "get": {
+        "tags": [
+          "Error"
+        ],
+        "operationId": "GetErrorInfo",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "statusCode",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "path",
+            "name": "errorMessage",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Pizzas": {
+      "get": {
+        "tags": [
+          "Pizzas"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/PizzaDTO"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Pizzas"
+        ],
+        "consumes": [
+          "application/json",
+          "application/json-path+json",
+          "multipart/form-data",
+          "application/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Pizza"
+            }
+          }
+        }
+      }
+    },
+    "/api/Pizzas/{id}": {
+      "get": {
+        "tags": [
+          "Pizzas"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Pizza"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Pizzas"
+        ],
+        "consumes": [
+          "application/json",
+          "application/json-path+json",
+          "multipart/form-data",
+          "application/form-data"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Pizzas"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Pizza"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "PizzaDTO": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "price": {
+          "format": "double",
+          "type": "number"
+        },
+        "imgUrl": {
+          "type": "string"
+        },
+        "topppings": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Sizes": {
+      "format": "int32",
+      "enum": [
+        0,
+        1
+      ],
+      "type": "integer"
+    },
+    "PizzaTypes": {
+      "format": "int32",
+      "enum": [
+        0,
+        1,
+        2
+      ],
+      "type": "integer"
+    },
+    "OrderTypes": {
+      "format": "int32",
+      "enum": [
+        0,
+        1
+      ],
+      "type": "integer"
+    },
+    "Customer": {
+      "type": "object",
+      "properties": {
+        "customerId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "streetName": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "houseNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "zipCode": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "phoneNumber": {
+          "type": "string"
+        },
+        "customerOrders": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CustomerOrders"
+          }
+        }
+      }
+    },
+    "CustomerOrders": {
+      "type": "object",
+      "properties": {
+        "customerId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "orderId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "customer": {
+          "$ref": "#/definitions/Customer"
+        },
+        "order": {
+          "$ref": "#/definitions/Order"
+        }
+      }
+    },
+    "Restaurant": {
+      "type": "object",
+      "properties": {
+        "restaurantId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "restaurantName": {
+          "type": "string"
+        },
+        "streetName": {
+          "type": "string"
+        },
+        "houseNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "phoneNumber": {
+          "type": "string"
+        },
+        "zipCode": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "city": {
+          "type": "string"
+        },
+        "restaurantOrder": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RestaurantOrder"
+          }
+        }
+      }
+    },
+    "RestaurantOrder": {
+      "type": "object",
+      "properties": {
+        "orderId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "restaurantId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "restaurant": {
+          "$ref": "#/definitions/Restaurant"
+        },
+        "order": {
+          "$ref": "#/definitions/Order"
+        }
+      }
+    },
+    "Order": {
+      "required": [
+        "orderType",
+        "pizzaType",
+        "quantity",
+        "size"
+      ],
+      "type": "object",
+      "properties": {
+        "orderId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "date": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "time": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "quantity": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "size": {
+          "$ref": "#/definitions/Sizes"
+        },
+        "pizzaType": {
+          "$ref": "#/definitions/PizzaTypes"
+        },
+        "orderType": {
+          "$ref": "#/definitions/OrderTypes"
+        },
+        "pizzaId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "pizza": {
+          "$ref": "#/definitions/Pizza"
+        },
+        "orderReviews": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OrderReviews"
+          }
+        },
+        "customerOrders": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CustomerOrders"
+          }
+        },
+        "restaurantOrder": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RestaurantOrder"
+          }
+        }
+      }
+    },
+    "Review": {
+      "required": [
+        "rating"
+      ],
+      "type": "object",
+      "properties": {
+        "reviewId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "title": {
+          "maxLength": 200,
+          "type": "string"
+        },
+        "description": {
+          "maxLength": 500,
+          "type": "string"
+        },
+        "rating": {
+          "format": "double",
+          "maximum": 5,
+          "minimum": 0,
+          "type": "number"
+        },
+        "date": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "orderReviews": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OrderReviews"
+          }
+        }
+      }
+    },
+    "OrderReviews": {
+      "type": "object",
+      "properties": {
+        "orderId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "reviewId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "subject": {
+          "type": "string"
+        },
+        "order": {
+          "$ref": "#/definitions/Order"
+        },
+        "review": {
+          "$ref": "#/definitions/Review"
+        }
+      }
+    },
+    "Topping": {
+      "required": [
+        "name",
+        "price"
+      ],
+      "type": "object",
+      "properties": {
+        "toppingId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 100,
+          "type": "string"
+        },
+        "price": {
+          "format": "double",
+          "type": "number"
+        },
+        "pizzaToppings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PizzaToppings"
+          }
+        }
+      }
+    },
+    "PizzaToppings": {
+      "required": [
+        "timeToPrepare"
+      ],
+      "type": "object",
+      "properties": {
+        "pizzaId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "toppingId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "toppingName": {
+          "type": "string"
+        },
+        "timeToPrepare": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pizza": {
+          "$ref": "#/definitions/Pizza"
+        },
+        "topping": {
+          "$ref": "#/definitions/Topping"
+        }
+      }
+    },
+    "Pizza": {
+      "required": [
+        "name",
+        "price"
+      ],
+      "type": "object",
+      "properties": {
+        "pizzaId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 100,
+          "type": "string"
+        },
+        "price": {
+          "format": "double",
+          "type": "number"
+        },
+        "imgUrl": {
+          "type": "string"
+        },
+        "orderReviews": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OrderReviews"
+          }
+        },
+        "pizzaToppings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PizzaToppings"
+          }
+        }
+      }
+    }
+  }
+}

@@ -177,5 +177,17 @@ E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API\obj\Release\netcoreapp3.1
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API\obj\Release\netcoreapp3.1\ePizza_JD.API.dll
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API\obj\Release\netcoreapp3.1\ePizza_JD.API.pdb
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API\obj\Release\netcoreapp3.1\ePizza_JD.API.genruntimeconfig.cache
-E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API\bin\Release\netcoreapp3.1\Properties\ServiceDependencies\ePizzaAPI - Web Deploy\profile.arm.json
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API\bin\Release\netcoreapp3.1\Properties\serviceDependencies.json
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API\bin\Release\netcoreapp3.1\Properties\ServiceDependencies\ePizza - Web Deploy\profile.arm.json
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API\bin\Release\netcoreapp3.1\Microsoft.ApplicationInsights.dll
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API\bin\Release\netcoreapp3.1\Microsoft.ApplicationInsights.AspNetCore.dll
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API\bin\Release\netcoreapp3.1\Microsoft.AI.DependencyCollector.dll
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API\bin\Release\netcoreapp3.1\Microsoft.AI.EventCounterCollector.dll
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API\bin\Release\netcoreapp3.1\Microsoft.AI.PerfCounterCollector.dll
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API\bin\Release\netcoreapp3.1\Microsoft.AI.WindowsServer.dll
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API\bin\Release\netcoreapp3.1\Microsoft.AI.ServerTelemetryChannel.dll
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API\bin\Release\netcoreapp3.1\Microsoft.Extensions.DiagnosticAdapter.dll
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API\bin\Release\netcoreapp3.1\Microsoft.Extensions.Logging.ApplicationInsights.dll
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API\bin\Release\netcoreapp3.1\Microsoft.Extensions.PlatformAbstractions.dll
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API\bin\Release\netcoreapp3.1\System.Diagnostics.PerformanceCounter.dll
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API\bin\Release\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Diagnostics.PerformanceCounter.dll

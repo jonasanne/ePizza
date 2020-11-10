@@ -55,7 +55,7 @@ namespace ePizza_JD.API
                     builder.AllowAnyMethod()
                     .AllowAnyHeader()
                     //.AllowAnyOrigin() // niet toegelaten indien credentials
-                    .WithOrigins("https://localhost", "http://localhost" , "https://epizza.netlify.app/")
+                    .WithOrigins("https://localhost", "http://localhost:8080" , "https://epizza.netlify.app")
                     .AllowCredentials()
                     ;
                 });

@@ -6,4 +6,3 @@ E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.Models\bin\Debug\netcoreapp3.
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.Models\bin\Debug\netcoreapp3.1\ePizza_JD.Models.pdb
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.Models\obj\Debug\netcoreapp3.1\ePizza_JD.Models.dll
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.Models\obj\Debug\netcoreapp3.1\ePizza_JD.Models.pdb
-E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.Models\obj\Debug\netcoreapp3.1\ePizza_JD.Models.csproj.CoreCompileInputs.cache
