@@ -13,6 +13,7 @@ namespace ePizza_JD.Models
         public string Name { get; set; }
         public double Price { get; set; }
         public string ImgUrl { get; set; }
+
         [DisplayName("Toppings")]
         public string[] Topppings { get; set; }
     }

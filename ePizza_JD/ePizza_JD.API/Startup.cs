@@ -63,6 +63,8 @@ namespace ePizza_JD.API
 
             //3. Repos
             services.AddScoped(typeof(IPizzaRepo), typeof(PizzaRepo));
+            services.AddScoped(typeof(IGenericRepo<>), typeof(GenericRepo<>));
+
 
             //4. Mapper
             services.AddAutoMapper(typeof(ePizza_JDProfiles));

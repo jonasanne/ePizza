@@ -67,7 +67,7 @@ namespace ePizza_JD.Models.Repositories
         {
             try
             {
-                return context.Pizzas.FirstOrDefaultAsync<Pizza>(e => e.PizzaId == Id);
+                return context.Pizzas.Include(p => p.PizzaToppings).FirstOrDefaultAsync(e => e.PizzaId == Id);
             }
             catch (Exception exc)
             {

@@ -10,6 +10,7 @@ using ePizza_JD.WebApp.Data;
 using System.Diagnostics;
 using AutoMapper;
 using ePizza_JD.Models.Repositories;
+using Microsoft.VisualStudio.Web.CodeGeneration.Contracts.Messaging;
 
 namespace ePizza_JD.API.Controllers
 {
@@ -22,12 +23,14 @@ namespace ePizza_JD.API.Controllers
         private readonly ApplicationDbContext _context;
         private readonly IMapper mapper;
         private readonly IPizzaRepo pizzaRepo;
+        private readonly IGenericRepo<Pizza> genericRepo;
 
-        public PizzasController(ApplicationDbContext context, IMapper mapper , IPizzaRepo pizzaRepo)
+        public PizzasController(ApplicationDbContext context, IMapper mapper , IPizzaRepo pizzaRepo, IGenericRepo<Pizza> genericRepo)
         {
             _context = context;
             this.mapper = mapper;
             this.pizzaRepo = pizzaRepo;
+            this.genericRepo = genericRepo;
         }
 
         // GET: api/Pizzas
@@ -52,17 +55,20 @@ namespace ePizza_JD.API.Controllers
 
         // GET: api/Pizzas/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Pizza>> GetPizza(Guid id)
+        public async Task<ActionResult<PizzaDTO>> GetPizza(Guid id)
         {
             var pizza = new Pizza();
             try
             {
-                pizza = await _context.Pizzas.FindAsync(id);
+
+                //pizza = await _context.Pizzas.FindAsync(id);
+                pizza = await pizzaRepo.GetPizzaByIdAsync(id);
+                var PizzaDTO = mapper.Map<PizzaDTO>(pizza);
                 if (pizza == null)
                 {
                     return NotFound();
                 }
-                return pizza;
+                return Ok(PizzaDTO);
             }
             catch (Exception ex)
             {
@@ -80,28 +86,49 @@ namespace ePizza_JD.API.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutPizza(Guid id, Pizza pizza)
+        public async Task<IActionResult> PutPizza(Guid id, PizzaDTO pizzaDTO)
         {
-            if (id != pizza.PizzaId)
+            //1. altijd null check naast supplementaire Id check
+            if (id != pizzaDTO.Id || pizzaDTO == null)
             {
                 return BadRequest();
             }
 
-            _context.Entry(pizza).State = EntityState.Modified;
+            ////2. mapping
+            var pizza = mapper.Map<Pizza>(pizzaDTO);
+            if (pizza == null)
+            {
+                return BadRequest(new { Message = "Onvoldoende Data bij de pizza" });
+
+            }
+
+            //3 validatie
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(new { Message = $"Geen geldige input. {ModelState}" });
+                
+            }
 
             try
             {
-                await _context.SaveChangesAsync();
+                Pizza pizzaSearch = (await genericRepo.GetByExpressionAsync(c => c.PizzaId == pizza.PizzaId)).FirstOrDefault();
+                await genericRepo.Update(mapper.Map<Pizza>(pizzaDTO), id);
+                //await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!PizzaExists(id))
+                if (!genericRepo.Exists(pizza, id).Result)
+
                 {
                     return NotFound();
                 }
                 else
                 {
-                    throw;
+                    return RedirectToAction("HandleErrorCode", "Error", new
+                    {
+                        statusCode = 400,
+                        errorMessage = $"De Pizza: '{pizza.Name}' werd niet aangepast."
+                    });
                 }
             }
 
@@ -142,14 +169,14 @@ namespace ePizza_JD.API.Controllers
             var pizza = new Pizza();
             try
             {
-                pizza = await _context.Pizzas.FindAsync(id);
+                pizza = await pizzaRepo.GetPizzaByIdAsync(id);
+                //pizza = await _context.Pizzas.FindAsync(id);
                 if (pizza == null)
                 {
                     return NotFound();
                 }
 
-                _context.Pizzas.Remove(pizza);
-                await _context.SaveChangesAsync();
+                await pizzaRepo.DeletePizza(id);
 
                 return pizza;
             }
