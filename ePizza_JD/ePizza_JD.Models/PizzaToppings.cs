@@ -10,10 +10,14 @@ namespace ePizza_JD.Models
         public Guid PizzaId { get; set; }
         public Guid ToppingId { get; set; }
         public string ToppingName { get; set; }
-        [Required]
-        public int TimeToPrepare { get; set; } //minuten
+
+        //noodzakelijk???
+        //[Required]
+        //public int TimeToPrepare { get; set; } //minuten
 
         public Pizza Pizza { get; set; }
+
+
         public Topping Topping { get; set; }
     }
 }
