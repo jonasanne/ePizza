@@ -40,13 +40,12 @@ namespace ePizza_JD.API
             //zonder dit error bij ophalen data
             services.AddControllersWithViews()
             .AddNewtonsoftJson(options =>
-            options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
-            );
+            options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             //1. context
             //online server
-            var connectionString = Configuration.GetConnectionString("DB");
+            //var connectionString = Configuration.GetConnectionString("DB");
             //local
-            //var connectionString = Configuration.GetConnectionString("LocalDB");
+            var connectionString = Configuration.GetConnectionString("LocalDB");
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
             services.AddDefaultIdentity<IdentityUser>().AddRoles<IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
 
@@ -63,12 +62,9 @@ namespace ePizza_JD.API
                     ;
                 });
             });
-
             //3. Repos
             services.AddScoped(typeof(IPizzaRepo), typeof(PizzaRepo));
             services.AddScoped(typeof(IGenericRepo<>), typeof(GenericRepo<>));
-
-
             //4. Mapper
             services.AddAutoMapper(typeof(ePizza_JDProfiles));
             //5. Swagger
@@ -76,6 +72,7 @@ namespace ePizza_JD.API
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ePizza_JD", Version = "v1" });
             });
+
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ApplicationDbContext context, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager )
@@ -111,13 +108,6 @@ namespace ePizza_JD.API
 
             context.SeedRoles(roleManager);
             context.SeedUsers(userManager);
-
-            
-             
-
-
-
-
         }
     }
 }

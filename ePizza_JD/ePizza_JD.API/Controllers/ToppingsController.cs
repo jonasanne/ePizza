@@ -55,14 +55,16 @@ namespace ePizza_JD.API.Controllers
         [HttpGet("{id:Guid}")]
         public async Task<ActionResult<ToppingDTO>> GetToppingById(Guid id)
         {
-            var topping = await _context.Toppings.FindAsync(id);
+            var toppings = await genericRepo.GetByExpressionAsync(m => m.ToppingId == id);
 
-            if (topping == null)
+            // Vergeet de count niet! categories is een collectie en nooit null
+            if (toppings == null || toppings.Count() == 0)
             {
-                return NotFound();
+                return NotFound(new { message = "Topping niet gevonden." });
+                //return NotFound();
             }
-
-            return Ok(topping);
+            Topping topping = toppings.FirstOrDefault<Topping>();
+            return Ok(mapper.Map<ToppingDTO>(topping));
         }
 
         // GET: api/Topping/Name/barbecue
@@ -136,7 +138,7 @@ namespace ePizza_JD.API.Controllers
                     return RedirectToAction("HandleErrorCode", "Error", new
                     {
                         statusCode = 400,
-                        errorMessage = $"De categorie '{topping.Name}' werd niet aangepast."
+                        errorMessage = $"De Topping met naam: '{topping.Name}' werd niet aangepast."
                     });
                 }
             }

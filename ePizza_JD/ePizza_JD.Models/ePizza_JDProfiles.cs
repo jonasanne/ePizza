@@ -12,12 +12,24 @@ namespace ePizza_JD.Models
         {
             InitPizzaMapper();
             InitToppingMapper();
+            InitRestaurantMapper();
 
+        }
+
+        private void InitRestaurantMapper()
+        {
+            //Restaurant Mapping:------------------------------------------------
+            //--- relaties mappen naar vlakke structuur
+            //--- Identity Column niet meenemen
+            CreateMap<Restaurant, RestaurantDTO>()
+                .ForMember(dest => dest.Id, src => src.MapFrom(t => t.RestaurantId))
+                .ForMember(dest => dest.Name, src => src.MapFrom(t => t.RestaurantName))
+                .ReverseMap();
         }
 
         private void InitToppingMapper()
         {
-            //CATEGORY Mapping:------------------------------------------------
+            //Topping Mapping:------------------------------------------------
             //--- relaties mappen naar vlakke structuur
             //--- Identity Column niet meenemen
             CreateMap<Topping, ToppingDTO>()
