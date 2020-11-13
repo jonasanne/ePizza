@@ -43,7 +43,10 @@ namespace ePizza_JD.API
             options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
             );
             //1. context
+            //online server
             var connectionString = Configuration.GetConnectionString("DB");
+            //local
+            //var connectionString = Configuration.GetConnectionString("LocalDB");
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
             services.AddDefaultIdentity<IdentityUser>().AddRoles<IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
 

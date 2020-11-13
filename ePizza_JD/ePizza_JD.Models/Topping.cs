@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace ePizza_JD.Models
         [Required]
         public double Price { get; set; }
 
-
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         //navigation properties
         public ICollection<PizzaToppings> PizzaToppings { get; set; }
 
