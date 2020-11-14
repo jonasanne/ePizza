@@ -42,13 +42,10 @@ namespace ePizza_JD.API.Controllers
 
                 var pizzas = await pizzaRepo.GetPizzasAsync();
                 var PizzasDTO = mapper.Map<IEnumerable<PizzaDTO>>(pizzas);
-
                 return Ok(PizzasDTO);
-
             }
             catch (Exception)
             {
-
                 throw;
             }
         }

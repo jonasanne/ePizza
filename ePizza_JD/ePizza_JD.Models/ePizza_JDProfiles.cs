@@ -13,7 +13,15 @@ namespace ePizza_JD.Models
             InitPizzaMapper();
             InitToppingMapper();
             InitRestaurantMapper();
+            InitCustomerMapper();
 
+        }
+
+        private void InitCustomerMapper()
+        {
+            CreateMap<Customer, CustomerDTO>()
+                .ForMember(dest => dest.Id, src => src.MapFrom(t => t.CustomerId))
+                .ReverseMap();
         }
 
         private void InitRestaurantMapper()
