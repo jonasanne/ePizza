@@ -170,7 +170,7 @@ namespace ePizza_JD.API.Controllers
             var customers = await genericRepo.GetByExpressionAsync(c => c.CustomerId == id);
             if (customers == null || customers.Count() == 0)
             {
-                return NotFound(new { message = "Restaurant niet gevonden." });
+                return NotFound(new { message = "Customer niet gevonden." });
             }
 
             Customer customer = customers.FirstOrDefault<Customer>();
