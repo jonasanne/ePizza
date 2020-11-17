@@ -48,7 +48,7 @@ namespace ePizza_JD.Models
 
         private void InitPizzaMapper()
         {
-            //CATEGORY Mapping:------------------------------------------------
+            //Pizza Mapping:------------------------------------------------
             //--- relaties mappen naar vlakke structuur
             //--- Identity Column niet meenemen
             CreateMap<Pizza, PizzaDTO>()
@@ -56,6 +56,10 @@ namespace ePizza_JD.Models
             //.ForMember(dest=> dest.Topppings, src => src.MapFrom(p => p.PizzaToppings))
             .ReverseMap();
 
+            CreateMap<Pizza, PizzaEditCreateDTO>()
+            .ForMember(dest => dest.Id, src => src.MapFrom(p => p.PizzaId))
+            .ForMember(dest => dest.Toppings, src => src.MapFrom(p => p.PizzaToppings))
+            .ReverseMap();
 
 
 

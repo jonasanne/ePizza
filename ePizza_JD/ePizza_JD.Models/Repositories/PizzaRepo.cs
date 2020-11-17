@@ -54,7 +54,9 @@ namespace ePizza_JD.Models.Repositories
         {
             try
             {
-                return await context.Pizzas.OrderBy(n => n.Name).Include(p=> p.PizzaToppings).ToListAsync();
+                //TODO verder uitwerken
+                return await context.Pizzas.OrderBy(n => n.Name).Include(p=> p.PizzaToppings).ThenInclude(t => t.Topping).ToListAsync();
+            
             }
             catch (Exception ex)
             {
@@ -92,3 +94,7 @@ namespace ePizza_JD.Models.Repositories
         }
     }
 }
+
+
+//restaurant project, order project,  class library verliezen en models inside api's
+//program.cs aanpassen 

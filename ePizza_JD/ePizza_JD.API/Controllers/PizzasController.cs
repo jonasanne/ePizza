@@ -11,8 +11,9 @@ using System.Diagnostics;
 using AutoMapper;
 using ePizza_JD.Models.Repositories;
 using Microsoft.VisualStudio.Web.CodeGeneration.Contracts.Messaging;
+using System.Text.Encodings.Web;
 
-namespace ePizza_JD.API.Controllers
+namespace ePizza_JD.API.Controller
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -52,7 +53,7 @@ namespace ePizza_JD.API.Controllers
 
         // GET: api/Pizzas/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<PizzaDTO>> GetPizza(Guid id)
+        public async Task<ActionResult<PizzaDTO>> GetPizzaById(Guid id)
         {
             var pizza = new Pizza();
             try
@@ -135,26 +136,67 @@ namespace ePizza_JD.API.Controllers
         // POST: api/Pizzas
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status409Conflict)]
         [HttpPost]
-        public async Task<ActionResult<Pizza>> PostPizza(Pizza pizza)
+        public async Task<ActionResult<PizzaEditCreateDTO>> PostPizza([FromBody] [Bind("Name")] PizzaEditCreateDTO pizzaDTO)
         {
+
+            if (pizzaDTO == null)
+            {
+                return BadRequest(new { Message = "Geen categorie input" });
+            };
+
+            //Pizza newPizza = new Pizza()
+            //{
+            //    Name = pizzaDTO.Name,
+            //    Price = pizzaDTO.Price,
+            //    ImgUrl = pizzaDTO.ImgUrl,
+
+            //};
+
+            //foreach (var topping in pizzaDTO.Toppings)
+            //{
+            //    PizzaToppings newTopping = new PizzaToppings(){ 
+            //        ToppingId = topping.Id,
+            //       ToppingName = topping.Name,
+            //       PizzaId = newPizza.PizzaId
+            //    };
+
+            //    newPizza.PizzaToppings.Add(newTopping);
+            //};
+
+
+            //var pizza = mapper.Map<Pizza>(pizzaDTO);
+            //if (pizza == null)
+            //{
+            //    return BadRequest(new { Message = "Onvoldoende data bij de pizza" });
+            //}
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
             try
             {
 
-            _context.Pizzas.Add(pizza);
-            await _context.SaveChangesAsync();
-            return CreatedAtAction("GetPizza", new { id = pizza.PizzaId }, pizza);
 
+
+                //await genericRepo.Create(pizza);
+                return Ok(pizzaDTO);
+                //return CreatedAtAction(nameof(GetPizzaById), new { id = pizza.PizzaId }, mapper.Map<PizzaEditCreateDTO>(pizza));
             }
-            catch (Exception ex)
+            catch (Exception exc)
             {
-                Debug.WriteLine($"expection : {ex}");
+
+                //Customised gebruikers error
                 return RedirectToAction("HandleErrorCode", "Error", new
                 {
-                    Statuscode = 400,
-                    errorMessage = $"Bewaren van de pizza: '{pizza.Name}' is mislukt"
-                }) ;
+                    statusCode = 400,
+                    //errorMessage = $"Het bewaren van pizza met naam: '{pizza.Name}' is mislukt."
+                });
             }
         }
 
@@ -162,30 +204,32 @@ namespace ePizza_JD.API.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<Pizza>> DeletePizza(Guid id)
         {
-            //todo ophalen van pizza
-            var pizza = new Pizza();
+            var pizzas = await genericRepo.GetByExpressionAsync(c => c.PizzaId == id);
+            if (pizzas == null || pizzas.Count() == 0)
+            {
+                return NotFound(new { message = "Pizza niet gevonden." });
+            }
+
+            Pizza pizza= pizzas.FirstOrDefault<Pizza>();
             try
             {
-                pizza = await pizzaRepo.GetPizzaByIdAsync(id);
-                //pizza = await _context.Pizzas.FindAsync(id);
-                if (pizza == null)
-                {
-                    return NotFound();
-                }
 
-                await pizzaRepo.DeletePizza(id);
+                await genericRepo.Delete(pizza);
 
-                return pizza;
             }
-            catch (Exception ex)
+            catch
             {
-                Debug.WriteLine($"expection : {ex}");
+                //Customised gebruikers error
                 return RedirectToAction("HandleErrorCode", "Error", new
                 {
-                    Statuscode = 400,
-                    errorMessage = $"verwijderen van de pizza: '{pizza.Name}' is mislukt"
+                    statusCode = 400,
+                    errorMessage = $"Het verwijderen van pizza '{pizza.Name}' is mislukt."
                 });
+
             }
+
+            return Ok(mapper.Map<PizzaDTO>(pizza));
+
         }
 
         private bool PizzaExists(Guid id)

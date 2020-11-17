@@ -47,22 +47,28 @@ namespace ePizza_JD.WebApp.Data
             builder.Entity<CustomerOrders>(e =>
             {
                 e.HasKey(e => new { e.CustomerId, e.OrderId });
+                e.HasOne(e => e.Customer).WithMany(m => m.CustomerOrders).HasForeignKey(m => m.CustomerId);
+                e.HasOne(e => e.Order).WithMany(m => m.CustomerOrders).HasForeignKey(m => m.OrderId);
             });
             builder.Entity<PizzaToppings>(e =>
             {
                 e.HasKey(e => new { e.PizzaId, e.ToppingId });
                 e.HasOne(e => e.Topping).WithMany(m => m.PizzaToppings).HasForeignKey(m => m.ToppingId);
                 e.HasOne(e => e.Pizza).WithMany(m => m.PizzaToppings).HasForeignKey(m => m.PizzaId);
-                
             });
 
             builder.Entity<OrderReviews>(e =>
             {
                 e.HasKey(e => new { e.OrderId, e.ReviewId });
+                e.HasOne(e => e.Review).WithMany(r => r.OrderReviews).HasForeignKey(r => r.ReviewId);
+                e.HasOne(e => e.Order).WithMany(r => r.OrderReviews).HasForeignKey(r => r.OrderId);
+                
             });
             builder.Entity<RestaurantOrder>(e =>
             {
                 e.HasKey(e => new { e.OrderId, e.RestaurantId });
+                e.HasOne(e => e.Restaurant).WithMany(r => r.RestaurantOrder).HasForeignKey(r => r.RestaurantId);
+                e.HasOne(e => e.Order).WithMany(r => r.RestaurantOrder).HasForeignKey(r => r.OrderId);
             });
             OnModelCreatingPartial(builder);
             builder.Seed(); // seeden van testdata

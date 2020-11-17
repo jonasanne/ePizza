@@ -37,15 +37,17 @@ namespace ePizza_JD.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
             //zonder dit error bij ophalen data
             services.AddControllersWithViews()
             .AddNewtonsoftJson(options =>
             options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
             //1. context
             //online server
-            var connectionString = Configuration.GetConnectionString("DB");
+            //var connectionString = Configuration.GetConnectionString("DB");
             //local
-            //var connectionString = Configuration.GetConnectionString("LocalDB");
+            var connectionString = Configuration.GetConnectionString("LocalDB");
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
             services.AddDefaultIdentity<IdentityUser>().AddRoles<IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
 
@@ -64,8 +66,12 @@ namespace ePizza_JD.API
             //3. Repos
             services.AddScoped(typeof(IPizzaRepo), typeof(PizzaRepo));
             services.AddScoped(typeof(IGenericRepo<>), typeof(GenericRepo<>));
+
+
             //4. Mapper
             services.AddAutoMapper(typeof(ePizza_JDProfiles));
+
+
             //5. Swagger
             services.AddSwaggerGen(c =>
             {

@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ePizza_JD.API.Controllers
 {
+    [ApiExplorerSettings(IgnoreApi = true)]
     [Route("Error/")]
     [ApiController]
     public class ErrorController : ControllerBase
