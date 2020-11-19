@@ -16,6 +16,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using RestaurantServices.Repositories;
 
 namespace RestaurantServices
 {
@@ -60,6 +61,8 @@ namespace RestaurantServices
             });
             //3. Repos
             services.AddScoped(typeof(IGenericRepo<>), typeof(GenericRepo<>));
+
+            services.AddScoped(typeof(IRestaurantRepo), typeof(RestaurantRepo));
 
 
             //4. Mapper

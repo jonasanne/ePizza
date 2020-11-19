@@ -9,6 +9,7 @@ using ePizza_JD.Models;
 using AutoMapper;
 using System.Net;
 using ePizza_JD.WebApp.Data;
+using RestaurantServices.Repositories;
 
 namespace ePizza_JD.API.Controllers
 {
@@ -19,26 +20,28 @@ namespace ePizza_JD.API.Controllers
         private readonly RestaurantServicesDbContext _context;
         private readonly IMapper mapper;
         private readonly IGenericRepo<Restaurant> genericRepo;
+        private readonly IRestaurantRepo restaurantRepo;
 
-        public RestaurantsController(RestaurantServicesDbContext context, IMapper mapper, IGenericRepo<Restaurant> genericRepo)
+        public RestaurantsController(RestaurantServicesDbContext context, IMapper mapper, IGenericRepo<Restaurant> genericRepo, IRestaurantRepo restaurantRepo)
         {
             _context = context;
             this.mapper = mapper;
             this.genericRepo = genericRepo;
+            this.restaurantRepo = restaurantRepo;
         }
 
         // GET: api/Restaurants
         [HttpGet]
-        [ProducesResponseType(typeof(IEnumerable<RestaurantDTO>), StatusCodes.Status200OK)]
-        public async Task<ActionResult<IEnumerable<RestaurantDTO>>> GetRestaurants()
+        [ProducesResponseType(typeof(IEnumerable<Restaurant>), StatusCodes.Status200OK)]
+        public async Task<ActionResult<IEnumerable<Restaurant>>> GetRestaurants()
         {
             try
             {
 
-                var restaurants = await genericRepo.GetAllAsync();
-                var restaurantDTOs = mapper.Map<IEnumerable<RestaurantDTO>>(restaurants);
+                var restaurants = await restaurantRepo.GetRestaurantsAsync();
+                //var restaurantDTOs = mapper.Map<IEnumerable<RestaurantDTO>>(restaurants);
 
-                return Ok(restaurantDTOs);
+                return Ok(restaurants);
 
             }
             catch (Exception)
@@ -196,7 +199,7 @@ namespace ePizza_JD.API.Controllers
 
         private bool RestaurantExists(Guid id)
         {
-            return _context.Restaurants.Any(e => e.RestaurantId == id);
+            return _context.Restaurant.Any(e => e.RestaurantId == id);
         }
     }
 }

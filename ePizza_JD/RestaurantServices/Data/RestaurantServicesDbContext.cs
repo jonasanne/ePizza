@@ -21,7 +21,7 @@ namespace ePizza_JD.WebApp.Data
         }
         //create tables
         //public virtual DbSet<RestaurantOrder> RestaurantOrders { get; set; }
-        public virtual DbSet<Restaurant> Restaurants { get; set; }
+        public virtual DbSet<Restaurant> Restaurant { get; set; }
 
 
 
