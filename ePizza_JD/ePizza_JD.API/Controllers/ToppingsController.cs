@@ -16,11 +16,11 @@ namespace ePizza_JD.API.Controllers
     [ApiController]
     public class ToppingsController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
+        private readonly PizzaServiceDbContext _context;
         private readonly IGenericRepo<Topping> genericRepo;
         private readonly IMapper mapper;
 
-        public ToppingsController(ApplicationDbContext context, IGenericRepo<Topping> genericRepo, IMapper mapper)
+        public ToppingsController(PizzaServiceDbContext context, IGenericRepo<Topping> genericRepo, IMapper mapper)
         {
             _context = context;
             this.genericRepo = genericRepo;

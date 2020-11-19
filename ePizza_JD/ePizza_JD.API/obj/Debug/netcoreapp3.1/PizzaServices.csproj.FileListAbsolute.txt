@@ -1,0 +1,5 @@
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API\obj\Debug\netcoreapp3.1\PizzaServices.csprojAssemblyReference.cache
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API\obj\Debug\netcoreapp3.1\PizzaServices.AssemblyInfoInputs.cache
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API\obj\Debug\netcoreapp3.1\PizzaServices.AssemblyInfo.cs
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API\obj\Debug\netcoreapp3.1\PizzaServices.csproj.CoreCompileInputs.cache
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API\obj\Debug\netcoreapp3.1\PizzaServices.MvcApplicationPartsAssemblyInfo.cache

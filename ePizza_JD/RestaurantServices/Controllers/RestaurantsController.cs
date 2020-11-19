@@ -6,9 +6,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ePizza_JD.Models;
-using ePizza_JD.WebApp.Data;
 using AutoMapper;
 using System.Net;
+using ePizza_JD.WebApp.Data;
 
 namespace ePizza_JD.API.Controllers
 {
@@ -16,11 +16,11 @@ namespace ePizza_JD.API.Controllers
     [ApiController]
     public class RestaurantsController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
+        private readonly RestaurantServicesDbContext _context;
         private readonly IMapper mapper;
         private readonly IGenericRepo<Restaurant> genericRepo;
 
-        public RestaurantsController(ApplicationDbContext context, IMapper mapper, IGenericRepo<Restaurant> genericRepo)
+        public RestaurantsController(RestaurantServicesDbContext context, IMapper mapper, IGenericRepo<Restaurant> genericRepo)
         {
             _context = context;
             this.mapper = mapper;

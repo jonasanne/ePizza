@@ -21,12 +21,12 @@ namespace ePizza_JD.API.Controller
     [Produces("application/json")]
     public class PizzasController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
+        private readonly PizzaServiceDbContext _context;
         private readonly IMapper mapper;
         private readonly IPizzaRepo pizzaRepo;
         private readonly IGenericRepo<Pizza> genericRepo;
 
-        public PizzasController(ApplicationDbContext context, IMapper mapper , IPizzaRepo pizzaRepo, IGenericRepo<Pizza> genericRepo)
+        public PizzasController(PizzaServiceDbContext context, IMapper mapper , IPizzaRepo pizzaRepo, IGenericRepo<Pizza> genericRepo)
         {
             _context = context;
             this.mapper = mapper;

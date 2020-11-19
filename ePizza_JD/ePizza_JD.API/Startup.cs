@@ -48,8 +48,8 @@ namespace ePizza_JD.API
             //var connectionString = Configuration.GetConnectionString("DB");
             //local
             var connectionString = Configuration.GetConnectionString("LocalDB");
-            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
-            services.AddDefaultIdentity<IdentityUser>().AddRoles<IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddDbContext<PizzaServiceDbContext>(options => options.UseSqlServer(connectionString));
+            services.AddDefaultIdentity<IdentityUser>().AddRoles<IdentityRole>().AddEntityFrameworkStores<PizzaServiceDbContext>();
 
             //2b. Cors 
             services.AddCors(options =>
@@ -80,7 +80,7 @@ namespace ePizza_JD.API
 
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ApplicationDbContext context, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager )
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, PizzaServiceDbContext context, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager )
         {
             if (env.IsDevelopment())
             {

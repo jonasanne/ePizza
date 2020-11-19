@@ -3693,26 +3693,30 @@
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "ePizza_JD.Models/1.0.0": {
+      "RestaurantServices/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
+          "AutoMapper": "10.1.1",
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "8.1.0",
-          "Microsoft.ApplicationInsights": "2.15.0",
-          "Microsoft.ApplicationInsights.AspNetCore": "2.15.0",
-          "Microsoft.ApplicationInsights.Web": "2.15.0",
-          "Microsoft.AspNetCore.Identity": "2.2.0",
-          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "3.1.9",
-          "Microsoft.EntityFrameworkCore": "3.1.9",
-          "Microsoft.EntityFrameworkCore.Relational": "3.1.9",
-          "Microsoft.EntityFrameworkCore.SqlServer": "3.1.8"
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "3.1.10",
+          "Microsoft.AspNetCore.Mvc.NewtonsoftJson": "3.1.10",
+          "Microsoft.EntityFrameworkCore": "3.1.10",
+          "Microsoft.EntityFrameworkCore.SqlServer": "3.1.10",
+          "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.10.9",
+          "Microsoft.aspnetcore.Identity": "2.2.0",
+          "Microsoft.aspnetcore.Identity.UI": "3.1.10",
+          "Swashbuckle.AspNetCore": "5.6.3"
         },
         "compile": {
-          "bin/placeholder/ePizza_JD.Models.dll": {}
+          "bin/placeholder/RestaurantServices.dll": {}
         },
         "runtime": {
-          "bin/placeholder/ePizza_JD.Models.dll": {}
-        }
+          "bin/placeholder/RestaurantServices.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       }
     }
   },
@@ -11173,10 +11177,10 @@
         "system.xml.xmlserializer.nuspec"
       ]
     },
-    "ePizza_JD.Models/1.0.0": {
+    "RestaurantServices/1.0.0": {
       "type": "project",
-      "path": "../ePizza_JD.Models/ePizza_JD.Models.csproj",
-      "msbuildProject": "../ePizza_JD.Models/ePizza_JD.Models.csproj"
+      "path": "../RestaurantServices/RestaurantServices.csproj",
+      "msbuildProject": "../RestaurantServices/RestaurantServices.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -11198,8 +11202,8 @@
       "Microsoft.EntityFrameworkCore.Tools >= 3.1.9",
       "Microsoft.VisualStudio.Azure.Containers.Tools.Targets >= 1.10.9",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.1.4",
-      "Swashbuckle.AspNetCore >= 5.6.3",
-      "ePizza_JD.Models >= 1.0.0"
+      "RestaurantServices >= 1.0.0",
+      "Swashbuckle.AspNetCore >= 5.6.3"
     ]
   },
   "packageFolders": {
@@ -11209,9 +11213,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\VS2019\\projects\\FSWD\\ePizza\\ePizza_JD\\ePizza_JD.API\\ePizza_JD.API.csproj",
-      "projectName": "ePizza_JD.API",
-      "projectPath": "E:\\VS2019\\projects\\FSWD\\ePizza\\ePizza_JD\\ePizza_JD.API\\ePizza_JD.API.csproj",
+      "projectUniqueName": "E:\\VS2019\\projects\\FSWD\\ePizza\\ePizza_JD\\ePizza_JD.API\\PizzaServices.csproj",
+      "projectName": "PizzaServices",
+      "projectPath": "E:\\VS2019\\projects\\FSWD\\ePizza\\ePizza_JD\\ePizza_JD.API\\PizzaServices.csproj",
       "packagesPath": "C:\\Users\\Rick\\.nuget\\packages\\",
       "outputPath": "E:\\VS2019\\projects\\FSWD\\ePizza\\ePizza_JD\\ePizza_JD.API\\obj\\",
       "projectStyle": "PackageReference",
@@ -11233,8 +11237,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "E:\\VS2019\\projects\\FSWD\\ePizza\\ePizza_JD\\ePizza_JD.Models\\ePizza_JD.Models.csproj": {
-              "projectPath": "E:\\VS2019\\projects\\FSWD\\ePizza\\ePizza_JD\\ePizza_JD.Models\\ePizza_JD.Models.csproj"
+            "E:\\VS2019\\projects\\FSWD\\ePizza\\ePizza_JD\\RestaurantServices\\RestaurantServices.csproj": {
+              "projectPath": "E:\\VS2019\\projects\\FSWD\\ePizza\\ePizza_JD\\RestaurantServices\\RestaurantServices.csproj"
             }
           }
         }
@@ -11344,5 +11348,52 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1605",
+      "level": "Error",
+      "message": "Detected package downgrade: Microsoft.EntityFrameworkCore from 3.1.10 to 3.1.9. Reference the package directly from the project to select a different version. \r\n PizzaServices -> RestaurantServices -> Microsoft.EntityFrameworkCore (>= 3.1.10) \r\n PizzaServices -> Microsoft.EntityFrameworkCore (>= 3.1.9)",
+      "libraryId": "Microsoft.EntityFrameworkCore",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1605",
+      "level": "Error",
+      "message": "Detected package downgrade: Microsoft.AspNetCore.Mvc.NewtonsoftJson from 3.1.10 to 3.1.9. Reference the package directly from the project to select a different version. \r\n PizzaServices -> RestaurantServices -> Microsoft.AspNetCore.Mvc.NewtonsoftJson (>= 3.1.10) \r\n PizzaServices -> Microsoft.AspNetCore.Mvc.NewtonsoftJson (>= 3.1.9)",
+      "libraryId": "Microsoft.AspNetCore.Mvc.NewtonsoftJson",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1605",
+      "level": "Error",
+      "message": "Detected package downgrade: Microsoft.EntityFrameworkCore.SqlServer from 3.1.10 to 3.1.9. Reference the package directly from the project to select a different version. \r\n PizzaServices -> RestaurantServices -> Microsoft.EntityFrameworkCore.SqlServer (>= 3.1.10) \r\n PizzaServices -> Microsoft.EntityFrameworkCore.SqlServer (>= 3.1.9)",
+      "libraryId": "Microsoft.EntityFrameworkCore.SqlServer",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1605",
+      "level": "Error",
+      "message": "Detected package downgrade: Microsoft.aspnetcore.Identity.UI from 3.1.10 to 3.1.9. Reference the package directly from the project to select a different version. \r\n PizzaServices -> RestaurantServices -> Microsoft.aspnetcore.Identity.UI (>= 3.1.10) \r\n PizzaServices -> Microsoft.AspNetCore.Identity.UI (>= 3.1.9)",
+      "libraryId": "Microsoft.aspnetcore.Identity.UI",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1605",
+      "level": "Error",
+      "message": "Detected package downgrade: Microsoft.AspNetCore.Identity.EntityFrameworkCore from 3.1.10 to 3.1.9. Reference the package directly from the project to select a different version. \r\n PizzaServices -> RestaurantServices -> Microsoft.AspNetCore.Identity.EntityFrameworkCore (>= 3.1.10) \r\n PizzaServices -> Microsoft.AspNetCore.Identity.EntityFrameworkCore (>= 3.1.9)",
+      "libraryId": "Microsoft.AspNetCore.Identity.EntityFrameworkCore",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    }
+  ]
 }
