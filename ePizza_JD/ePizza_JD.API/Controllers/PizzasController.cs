@@ -12,11 +12,13 @@ using AutoMapper;
 using ePizza_JD.Models.Repositories;
 using Microsoft.VisualStudio.Web.CodeGeneration.Contracts.Messaging;
 using System.Text.Encodings.Web;
+using System.Net;
 
 namespace ePizza_JD.API.Controller
 {
     [Route("api/[controller]")]
     [ApiController]
+    [ApiVersion("1.0")]
     [Consumes("application/json", "application/json-path+json", "multipart/form-data", "application/form-data")]
     [Produces("application/json")]
     public class PizzasController : ControllerBase
@@ -26,7 +28,7 @@ namespace ePizza_JD.API.Controller
         private readonly IPizzaRepo pizzaRepo;
         private readonly IGenericRepo<Pizza> genericRepo;
 
-        public PizzasController(PizzaServiceDbContext context, IMapper mapper , IPizzaRepo pizzaRepo, IGenericRepo<Pizza> genericRepo)
+        public PizzasController(PizzaServiceDbContext context, IMapper mapper, IPizzaRepo pizzaRepo, IGenericRepo<Pizza> genericRepo )
         {
             _context = context;
             this.mapper = mapper;
@@ -36,12 +38,12 @@ namespace ePizza_JD.API.Controller
 
         // GET: api/Pizzas
         [HttpGet]
+        [ProducesResponseType(typeof(IEnumerable<PizzaDTO>), StatusCodes.Status200OK)]
         public async Task<ActionResult<IEnumerable<PizzaDTO>>> GetPizzas()
         {
             try
             {
-
-                var pizzas = await pizzaRepo.GetPizzasAsync();
+                var pizzas =  await pizzaRepo.GetPizzasAsync();
                 var PizzasDTO = mapper.Map<IEnumerable<PizzaDTO>>(pizzas);
                 return Ok(PizzasDTO);
             }
@@ -52,21 +54,22 @@ namespace ePizza_JD.API.Controller
         }
 
         // GET: api/Pizzas/5
-        [HttpGet("{id}")]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType(typeof(PizzaDTO), (int)HttpStatusCode.OK)]
+        [HttpGet("{id:Guid}")]
         public async Task<ActionResult<PizzaDTO>> GetPizzaById(Guid id)
         {
-            var pizza = new Pizza();
+            Pizza pizza = new Pizza();
             try
             {
-
-                //pizza = await _context.Pizzas.FindAsync(id);
-                pizza = await pizzaRepo.GetPizzaByIdAsync(id);
-                var PizzaDTO = mapper.Map<PizzaDTO>(pizza);
+                pizza = await pizzaRepo.GetPizzaByGuidAsync(id);
                 if (pizza == null)
                 {
                     return NotFound();
                 }
-                return Ok(PizzaDTO);
+                
+                return Ok(mapper.Map<PizzaDTO>(pizza));
             }
             catch (Exception ex)
             {
@@ -140,53 +143,44 @@ namespace ePizza_JD.API.Controller
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status409Conflict)]
         [HttpPost]
-        public async Task<ActionResult<PizzaEditCreateDTO>> PostPizza([FromBody] [Bind("Name")] PizzaEditCreateDTO pizzaDTO)
+        public async Task<ActionResult<PizzaEditCreateDTO>> PostPizza([FromBody] [Bind("Name,Price,ImgUrl,Toppings")] PizzaEditCreateDTO pizzaDTO)
         {
 
             if (pizzaDTO == null)
             {
-                return BadRequest(new { Message = "Geen categorie input" });
+                return BadRequest(new { Message = "Geen Pizza input" });
             };
 
-            //Pizza newPizza = new Pizza()
-            //{
-            //    Name = pizzaDTO.Name,
-            //    Price = pizzaDTO.Price,
-            //    ImgUrl = pizzaDTO.ImgUrl,
-
-            //};
-
-            //foreach (var topping in pizzaDTO.Toppings)
-            //{
-            //    PizzaToppings newTopping = new PizzaToppings(){ 
-            //        ToppingId = topping.Id,
-            //       ToppingName = topping.Name,
-            //       PizzaId = newPizza.PizzaId
-            //    };
-
-            //    newPizza.PizzaToppings.Add(newTopping);
-            //};
-
-
-            //var pizza = mapper.Map<Pizza>(pizzaDTO);
-            //if (pizza == null)
-            //{
-            //    return BadRequest(new { Message = "Onvoldoende data bij de pizza" });
-            //}
 
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-
             try
             {
 
+                var pizza = mapper.Map<Pizza>(pizzaDTO);
+                ICollection<PizzaToppings> pizzaToppingsList = new List<PizzaToppings>();
 
+                foreach (Topping t in pizzaDTO.Toppings)
+                {
+                    PizzaToppings pt = new PizzaToppings
+                    {
+                        PizzaId = pizza.PizzaId,
+                        Topping = t,
+                        Pizza = pizza,
+                        ToppingId = t.ToppingId
+                    };
 
-                //await genericRepo.Create(pizza);
-                return Ok(pizzaDTO);
-                //return CreatedAtAction(nameof(GetPizzaById), new { id = pizza.PizzaId }, mapper.Map<PizzaEditCreateDTO>(pizza));
+                    pizzaToppingsList.Add(pt);
+
+                    
+                }
+                pizza.PizzaToppings = pizzaToppingsList;
+
+                await pizzaRepo.PostPizzaWithToppings(pizza);
+                return CreatedAtAction(nameof(GetPizzaById), new { id = pizza.PizzaId }, mapper.Map<PizzaDTO>(pizza));
+
             }
             catch (Exception exc)
             {
@@ -195,7 +189,7 @@ namespace ePizza_JD.API.Controller
                 return RedirectToAction("HandleErrorCode", "Error", new
                 {
                     statusCode = 400,
-                    //errorMessage = $"Het bewaren van pizza met naam: '{pizza.Name}' is mislukt."
+                    errorMessage = $"Het bewaren van pizza met naam: '{pizzaDTO.Name}' is mislukt."
                 });
             }
         }

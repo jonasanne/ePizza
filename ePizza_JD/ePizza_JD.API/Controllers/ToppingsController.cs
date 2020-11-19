@@ -101,10 +101,10 @@ namespace ePizza_JD.API.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutTopping(Guid id, ToppingDTO toppingDTO)
         {
-            if (id != toppingDTO.Id || toppingDTO == null)
-            {
-                return BadRequest();
-            }
+            //    if (id != toppingDTO.Id || toppingDTO == null)
+            //    {
+            //        return BadRequest();
+            //    }
 
             //2. mapping
             var topping = mapper.Map<Topping>(toppingDTO);
@@ -122,7 +122,7 @@ namespace ePizza_JD.API.Controllers
             
             try
             {
-                Topping toppingSearch = (await genericRepo.GetByExpressionAsync(c => c.ToppingId == toppingDTO.Id)).FirstOrDefault();
+                //Topping toppingSearch = (await genericRepo.GetByExpressionAsync(c => c.ToppingId == toppingDTO.Id)).FirstOrDefault();
                 await genericRepo.Update(mapper.Map<Topping>(toppingDTO), id);
                 //return Ok(new { Message = $"Topping with name: {topping.Name} has been Correctly updated" });
             }

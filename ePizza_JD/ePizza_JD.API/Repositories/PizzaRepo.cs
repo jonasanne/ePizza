@@ -38,7 +38,7 @@ namespace ePizza_JD.Models.Repositories
         {
             try
             {
-                Pizza pizza = await GetPizzaByIdAsync(id);
+                Pizza pizza = await GetPizzaByGuidAsync(id);
                 if(pizza!=null)
                 {
                     var result = context.Pizzas.Remove(pizza);
@@ -50,6 +50,20 @@ namespace ePizza_JD.Models.Repositories
                 Console.WriteLine(exc.InnerException.Message);
             }
         }
+
+        public Task<Pizza> GetPizzaByGuidAsync(Guid Id)
+        {
+            try
+            {
+                return context.Pizzas.Include(p => p.PizzaToppings).ThenInclude(t=> t.Topping).FirstOrDefaultAsync(e => e.PizzaId == Id);
+            }
+            catch (Exception exc)
+            {
+                Console.WriteLine(exc.InnerException.Message);
+                return null;
+            }
+        }
+
         public async Task<IEnumerable<Pizza>> GetPizzasAsync()
         {
             try
@@ -65,17 +79,36 @@ namespace ePizza_JD.Models.Repositories
                 throw null;
             }
         }
-        public Task<Pizza> GetPizzaByIdAsync(Guid Id)
+
+        public async Task<Pizza> PostPizzaWithToppings(Pizza pizza)
         {
-            try
+           if( pizza.PizzaToppings.Count != 0)
             {
-                return context.Pizzas.Include(p => p.PizzaToppings).FirstOrDefaultAsync(e => e.PizzaId == Id);
+                foreach (PizzaToppings t in pizza.PizzaToppings)
+                {
+                    //controleren of topping al bestaat
+                    var exists = context.Toppings.FirstOrDefault(pt => pt.Name == t.Topping.Name);
+                    if(exists == null)
+                    {
+                        //indien nog niet bestaat topping toevoegen
+                        context.Entry<Topping>(t.Topping).State = Microsoft.EntityFrameworkCore.EntityState.Added;
+                        Debug.WriteLine($"De topping met de naam : {t.Topping.Name} is toegevoegd");
+;
+                    }
+                    else
+                    {
+                        //topping bestaat al
+                        //topping wordt toch opnieuw aangemaakt
+                        //een oplossing vinden zodat niet iedere keer een nieuwe topping wordt aangemaakt
+                    }
+
+                }
             }
-            catch (Exception exc)
-            {
-                Console.WriteLine(exc.InnerException.Message);
-                return null;
-            }
+                await context.AddAsync(pizza);
+                await context.SaveChangesAsync();
+                return pizza;
+
+
         }
 
         public async Task<Pizza> UpdatePizza(Pizza pizza)

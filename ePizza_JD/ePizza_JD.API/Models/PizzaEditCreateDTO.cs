@@ -7,8 +7,10 @@ namespace ePizza_JD.Models
 {
     public class PizzaEditCreateDTO
     {
+
         [Key]
-        public Guid Id { get; set; } = Guid.NewGuid();
+        public Guid Id { get; set; }
+
 
         [Required]
         [MaxLength(100)]
@@ -16,9 +18,12 @@ namespace ePizza_JD.Models
 
         [Required]
         public double Price { get; set; }
-        public string ImgUrl { get; set; }
 
-        public ToppingDTO[] Toppings { get; set; }
+        public string ImgUrl { get; set; }
+        public ICollection<Topping> Toppings { get; set; }
+
+
+
 
 
     }

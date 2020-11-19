@@ -23,7 +23,7 @@ namespace ePizza_JD.Models
 
 
         //navigation properties
-        public ICollection<OrderReviews> OrderReviews { get; set; }
+        //public ICollection<OrderReviews> OrderReviews { get; set; }
         public ICollection<PizzaToppings> PizzaToppings { get; set; }
 
 

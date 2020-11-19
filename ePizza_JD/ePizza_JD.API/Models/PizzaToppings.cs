@@ -9,8 +9,6 @@ namespace ePizza_JD.Models
     {
         public Guid PizzaId { get; set; }
         public Guid ToppingId { get; set; }
-        //TODO eruit halen // indeplaatse volledige topping includen of DTO
-        public string ToppingName { get; set; }
 
         //noodzakelijk???
         //[Required]

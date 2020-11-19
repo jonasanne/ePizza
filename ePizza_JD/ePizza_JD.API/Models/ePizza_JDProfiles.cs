@@ -29,7 +29,6 @@ namespace ePizza_JD.Models
             //--- relaties mappen naar vlakke structuur
             //--- Identity Column niet meenemen
             CreateMap<Topping, ToppingDTO>()
-                .ForMember(dest => dest.Id, src => src.MapFrom(t => t.ToppingId))
                 .ReverseMap();
 
         }
@@ -41,15 +40,14 @@ namespace ePizza_JD.Models
             //--- Identity Column niet meenemen
             CreateMap<Pizza, PizzaDTO>()
             .ForMember(dest => dest.Id, src => src.MapFrom(p => p.PizzaId))
-            //.ForMember(dest=> dest.Topppings, src => src.MapFrom(p => p.PizzaToppings))
+            .ForMember(dest => dest.Topppings, src => src.MapFrom(src => src.PizzaToppings.Select(e => e.Topping.Name)))
             .ReverseMap();
+
 
             CreateMap<Pizza, PizzaEditCreateDTO>()
             .ForMember(dest => dest.Id, src => src.MapFrom(p => p.PizzaId))
-            .ForMember(dest => dest.Toppings, src => src.MapFrom(p => p.PizzaToppings))
-            .ReverseMap();
-
-
+            .ForMember(dest => dest.Toppings, src => src.MapFrom(src => src.PizzaToppings.Select(e => e.Topping.Name)))
+            .ReverseMap(); 
 
         }
 

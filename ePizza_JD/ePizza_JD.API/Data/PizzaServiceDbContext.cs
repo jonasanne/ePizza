@@ -23,7 +23,7 @@ namespace ePizza_JD.WebApp.Data
         //create tables
         public virtual DbSet<Pizza> Pizzas  { get; set; }
         public virtual DbSet<Topping> Toppings  { get; set; }
-        public virtual DbSet<PizzaToppings> PizzaToppings  { get; set; }
+        public virtual DbSet<PizzaToppings> PizzaToppings { get; set; }
 
 
 

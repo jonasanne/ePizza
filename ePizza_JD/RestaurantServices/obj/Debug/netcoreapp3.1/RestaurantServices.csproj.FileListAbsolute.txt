@@ -159,3 +159,4 @@ E:\VS2019\projects\FSWD\ePizza\ePizza_JD\RestaurantServices\obj\Debug\netcoreapp
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\RestaurantServices\obj\Debug\netcoreapp3.1\RestaurantServices.dll
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\RestaurantServices\obj\Debug\netcoreapp3.1\RestaurantServices.pdb
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\RestaurantServices\obj\Debug\netcoreapp3.1\RestaurantServices.genruntimeconfig.cache
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\RestaurantServices\obj\Debug\netcoreapp3.1\RestaurantServices.csprojAssemblyReference.cache
