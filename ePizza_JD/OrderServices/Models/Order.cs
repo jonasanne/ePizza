@@ -57,13 +57,17 @@ namespace ePizza_JD.Models
 
 
 
+        //1 op 1 relatie
+        public Review Review { get; set; }
+
+
 
         //navigation Properties
-        public Pizza Pizza { get; set; }
+        //public Pizza Pizza { get; set; }
 
-        public ICollection<OrderReviews> OrderReviews { get; set; }
-        public ICollection<CustomerOrders> CustomerOrders { get; set; }
-        public ICollection<RestaurantOrder> RestaurantOrder { get; set; }
+        //public ICollection<OrderReviews> OrderReviews { get; set; }
+        //public ICollection<CustomerOrders> CustomerOrders { get; set; }
+        //public ICollection<RestaurantOrder> RestaurantOrder { get; set; }
 
 
 

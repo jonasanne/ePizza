@@ -11,9 +11,9 @@ namespace ePizza_JD.Models.Repositories
 {
     public class OrderRepo : IOrderRepo
     {
-        private readonly PizzaServiceDbContext context;
+        private readonly OrderServiceDbContext context;
 
-        public OrderRepo(PizzaServiceDbContext context)
+        public OrderRepo(OrderServiceDbContext context)
         {
             this.context = context;
         }

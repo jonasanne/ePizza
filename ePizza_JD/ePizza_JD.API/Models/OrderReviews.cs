@@ -12,8 +12,8 @@ namespace ePizza_JD.Models
 
 
         //navigation properties
-        public Order Order { get; set; }
-        public Review Review { get; set; }
+        //public Order Order { get; set; }
+        //public Review Review { get; set; }
 
     }
 }

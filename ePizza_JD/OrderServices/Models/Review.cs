@@ -24,7 +24,15 @@ namespace ePizza_JD.Models
 
         public DateTime Date { get; set; } = DateTime.Now;
 
+
+
+        //1 op 1 relatie 
+        public Order Order { get; set; }
+
+
+
+
         //navigation Properties
-        public ICollection<OrderReviews> OrderReviews { get; set; }
+        //public ICollection<OrderReviews> OrderReviews { get; set; }
     }
 }

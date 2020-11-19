@@ -1,9 +1,0 @@
-E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.Models\bin\Release\netcoreapp3.1\ePizza_JD.Models.deps.json
-E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.Models\bin\Release\netcoreapp3.1\ePizza_JD.Models.dll
-E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.Models\bin\Release\netcoreapp3.1\ePizza_JD.Models.pdb
-E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.Models\obj\Release\netcoreapp3.1\ePizza_JD.Models.csprojAssemblyReference.cache
-E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.Models\obj\Release\netcoreapp3.1\ePizza_JD.Models.AssemblyInfoInputs.cache
-E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.Models\obj\Release\netcoreapp3.1\ePizza_JD.Models.AssemblyInfo.cs
-E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.Models\obj\Release\netcoreapp3.1\ePizza_JD.Models.csproj.CoreCompileInputs.cache
-E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.Models\obj\Release\netcoreapp3.1\ePizza_JD.Models.dll
-E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.Models\obj\Release\netcoreapp3.1\ePizza_JD.Models.pdb

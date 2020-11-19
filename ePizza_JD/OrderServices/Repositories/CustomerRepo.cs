@@ -12,9 +12,9 @@ namespace ePizza_JD.Models.Repositories
 {
     public class CustomerRepo : ICustomerRepo
     {
-        private readonly PizzaServiceDbContext context;
+        private readonly OrderServiceDbContext context;
 
-        public CustomerRepo(PizzaServiceDbContext context)
+        public CustomerRepo(OrderServiceDbContext context)
         {
             this.context = context;
         }

@@ -11,9 +11,9 @@ namespace ePizza_JD.Models.Repositories
 {
     public class ReviewRepo : IReviewRepo
     {
-        private readonly PizzaServiceDbContext context;
+        private readonly OrderServiceDbContext context;
 
-        public ReviewRepo(PizzaServiceDbContext context)
+        public ReviewRepo(OrderServiceDbContext context)
         {
             this.context = context;
         }

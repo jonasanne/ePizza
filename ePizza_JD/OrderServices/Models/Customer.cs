@@ -18,7 +18,7 @@ namespace ePizza_JD.Models
 
 
         //navigation properties
-        public ICollection<CustomerOrders> CustomerOrders { get; set; }
+        //public ICollection<CustomerOrders> CustomerOrders { get; set; }
 
 
     }
