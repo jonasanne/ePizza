@@ -158,6 +158,12 @@ namespace ePizza_JD.API.Controller
             }
             try
             {
+                //check if pizza already exists
+                //controle als de pizza al bestaat (op naam)
+                var pizzaExists = _context.Pizzas.FirstOrDefault(p => p.Name ==pizzaDTO.Name);
+
+                if (pizzaExists == null)
+                {
 
                 var pizza = mapper.Map<Pizza>(pizzaDTO);
                 ICollection<PizzaToppings> pizzaToppingsList = new List<PizzaToppings>();
@@ -177,9 +183,16 @@ namespace ePizza_JD.API.Controller
                     
                 }
                 pizza.PizzaToppings = pizzaToppingsList;
-
                 await pizzaRepo.PostPizzaWithToppings(pizza);
                 return CreatedAtAction(nameof(GetPizzaById), new { id = pizza.PizzaId }, mapper.Map<PizzaDTO>(pizza));
+                }
+
+
+                return RedirectToAction("HandleErrorCode", "Error", new
+                {
+                    statusCode = 400,
+                    errorMessage = $"Pizza met naam: '{pizzaDTO.Name}' is bestaat al."
+                });
 
             }
             catch (Exception exc)

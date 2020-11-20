@@ -82,31 +82,39 @@ namespace ePizza_JD.Models.Repositories
 
         public async Task<Pizza> PostPizzaWithToppings(Pizza pizza)
         {
-           if( pizza.PizzaToppings.Count != 0)
+            try
             {
-                foreach (PizzaToppings t in pizza.PizzaToppings)
+                if (pizza.PizzaToppings.Count != 0)
                 {
-                    //controleren of topping al bestaat
-                    var exists = context.Toppings.FirstOrDefault(pt => pt.Name == t.Topping.Name);
-                    if(exists == null)
-                    {
-                        //indien nog niet bestaat topping toevoegen
-                        context.Entry<Topping>(t.Topping).State = Microsoft.EntityFrameworkCore.EntityState.Added;
-                        Debug.WriteLine($"De topping met de naam : {t.Topping.Name} is toegevoegd");
-;
-                    }
-                    else
-                    {
-                        //topping bestaat al
-                        //topping wordt toch opnieuw aangemaakt
-                        //een oplossing vinden zodat niet iedere keer een nieuwe topping wordt aangemaakt
-                    }
+                        foreach (PizzaToppings t in pizza.PizzaToppings)
+                        {
+                            //controleren of topping al bestaat
+                            var exists = context.Toppings.FirstOrDefault(pt => pt.Name == t.Topping.Name);
+                            if (exists == null)
+                            {
+                                //indien nog niet bestaat topping toevoegen
+                                context.Entry<Topping>(t.Topping).State = Microsoft.EntityFrameworkCore.EntityState.Added;
+                                Debug.WriteLine($"De topping met de naam : {t.Topping.Name} is toegevoegd");
+                                
+                            }
+                            else
+                            {
+                                //topping bestaat al
+                                t.Topping = exists;
+                            }
 
+                        }
+                        await context.AddAsync(pizza);
+                        await context.SaveChangesAsync();
                 }
-            }
-                await context.AddAsync(pizza);
-                await context.SaveChangesAsync();
                 return pizza;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
 
 
         }

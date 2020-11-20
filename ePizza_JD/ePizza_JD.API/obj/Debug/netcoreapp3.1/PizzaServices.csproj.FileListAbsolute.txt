@@ -2,9 +2,6 @@ E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API\obj\Debug\netcoreapp3.1\P
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API\obj\Debug\netcoreapp3.1\PizzaServices.AssemblyInfo.cs
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API\bin\Debug\netcoreapp3.1\appsettings.Development.json
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API\bin\Debug\netcoreapp3.1\appsettings.json
-E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
-E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.json
-E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API\bin\Debug\netcoreapp3.1\Properties\ServiceDependencies\ePizza - Web Deploy\profile.arm.json
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API\bin\Debug\netcoreapp3.1\PizzaServices.exe
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API\bin\Debug\netcoreapp3.1\PizzaServices.deps.json
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API\bin\Debug\netcoreapp3.1\PizzaServices.runtimeconfig.json
@@ -166,3 +163,4 @@ E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API\obj\Debug\netcoreapp3.1\P
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API\obj\Debug\netcoreapp3.1\PizzaServices.MvcApplicationPartsAssemblyInfo.cs
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API\obj\Debug\netcoreapp3.1\PizzaServices.MvcApplicationPartsAssemblyInfo.cache
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API\obj\Debug\netcoreapp3.1\PizzaServices.csprojAssemblyReference.cache
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API\obj\Debug\netcoreapp3.1\scopedcss\bundle\PizzaServices.styles.css
