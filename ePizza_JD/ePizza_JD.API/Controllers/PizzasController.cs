@@ -13,6 +13,7 @@ using ePizza_JD.Models.Repositories;
 using Microsoft.VisualStudio.Web.CodeGeneration.Contracts.Messaging;
 using System.Text.Encodings.Web;
 using System.Net;
+using ePizza_JD.API.Controllers;
 
 namespace ePizza_JD.API.Controller
 {
@@ -47,9 +48,14 @@ namespace ePizza_JD.API.Controller
                 var PizzasDTO = mapper.Map<IEnumerable<PizzaDTO>>(pizzas);
                 return Ok(PizzasDTO);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Debug.WriteLine($"expection : {ex}");
+                return RedirectToAction("HandleErrorCode", "Error", new
+                {
+                    Statuscode = 400,
+                    errorMessage = $"ophalen van de pizzas mislukt"
+                });
             }
         }
 
@@ -87,52 +93,77 @@ namespace ePizza_JD.API.Controller
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutPizza(Guid id, PizzaDTO pizzaDTO)
+        public async Task<IActionResult> PutPizza(Guid id, PizzaEditCreateDTO pizzaDTO)
         {
-            //1. altijd null check naast supplementaire Id check
-            if (id != pizzaDTO.Id || pizzaDTO == null)
+            //1. checks
+            if (pizzaDTO == null || id == null) return BadRequest();
+            if (id != pizzaDTO.Id)
             {
                 return BadRequest();
-            }
-
-            ////2. mapping
-            var pizza = mapper.Map<Pizza>(pizzaDTO);
-            if (pizza == null)
-            {
-                return BadRequest(new { Message = "Onvoldoende Data bij de pizza" });
-
-            }
-
-            //3 validatie
+            };
             if (!ModelState.IsValid)
             {
-                return BadRequest(new { Message = $"Geen geldige input. {ModelState}" });
-                
-            }
+                return BadRequest();
+            };
 
+            
             try
             {
-                Pizza pizzaSearch = (await genericRepo.GetByExpressionAsync(c => c.PizzaId == pizza.PizzaId)).FirstOrDefault();
-                await genericRepo.Update(mapper.Map<Pizza>(pizzaDTO), id);
-                //await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!genericRepo.Exists(pizza, id).Result)
+                // 2. mapping
+                var pizza = mapper.Map<Pizza>(pizzaDTO);
+                pizza.PizzaId = pizzaDTO.Id; // indien genegeerd door mapper
+                //bool exists = await genericRepo.Exists(pizza, pizza.PizzaId); //asnotracking;
+                ////3. Controleren of de pizza al bestaat
+                //if(exists == false)
+                //{
+                //    //pizza bestaat nog niet
+                //    return RedirectToAction("HandleErrorCode", "error", new
+                //    {
+                //        statusCode = 400,
+                //        errorMessage = $"Fout bij het updaten van de pizza met naam: '{pizzaDTO.Name}', bestaat nog niet."
+                //    });
+                //} 
+                
+                
+                //pizzatoppings aanmaken
+                ICollection<PizzaToppings> pizzaToppingsList = new List<PizzaToppings>();
+                //controleren of er toppings zijn
 
+                if(pizzaDTO.Toppings != null)
                 {
-                    return NotFound();
-                }
-                else
+                foreach (Topping t in pizzaDTO.Toppings)
                 {
-                    return RedirectToAction("HandleErrorCode", "Error", new
+                    PizzaToppings pt = new PizzaToppings()
                     {
-                        statusCode = 400,
-                        errorMessage = $"De Pizza: '{pizza.Name}' werd niet aangepast."
-                    });
+                        Topping = t,
+                        Pizza = pizza,
+                        PizzaId = pizza.PizzaId,
+                        ToppingId = t.Id
+                    };
+                    pizzaToppingsList.Add(pt);
+
+                }
+
+                pizza.PizzaToppings = pizzaToppingsList;
+                }
+
+
+                var result = await pizzaRepo.UpdatePizzaWithToppings(pizza);
+                if(result == null)
+                {
+                    return BadRequest();
                 }
             }
+            catch (DbUpdateConcurrencyException ex)
+            {
 
+                //Customised gebruikers error
+                return RedirectToAction("HandleErrorCode", "Error", new
+                {
+                    statusCode = 400,
+                    errorMessage = $"Het updaten van pizza met naam: '{pizzaDTO.Name}' is mislukt. {ex}"
+                });
+            }
             return NoContent();
         }
 
@@ -166,6 +197,7 @@ namespace ePizza_JD.API.Controller
                 {
 
                 var pizza = mapper.Map<Pizza>(pizzaDTO);
+
                 ICollection<PizzaToppings> pizzaToppingsList = new List<PizzaToppings>();
 
                 foreach (Topping t in pizzaDTO.Toppings)
@@ -175,20 +207,17 @@ namespace ePizza_JD.API.Controller
                         PizzaId = pizza.PizzaId,
                         Topping = t,
                         Pizza = pizza,
-                        ToppingId = t.ToppingId
+                        ToppingId = t.Id
                     };
 
                     pizzaToppingsList.Add(pt);
-
-                    
                 }
                 pizza.PizzaToppings = pizzaToppingsList;
                 await pizzaRepo.PostPizzaWithToppings(pizza);
                 return CreatedAtAction(nameof(GetPizzaById), new { id = pizza.PizzaId }, mapper.Map<PizzaDTO>(pizza));
                 }
 
-
-                return RedirectToAction("HandleErrorCode", "Error", new
+                return RedirectToAction("HandleErrorCode", "error", new
                 {
                     statusCode = 400,
                     errorMessage = $"Pizza met naam: '{pizzaDTO.Name}' is bestaat al."
@@ -197,7 +226,6 @@ namespace ePizza_JD.API.Controller
             }
             catch (Exception exc)
             {
-
                 //Customised gebruikers error
                 return RedirectToAction("HandleErrorCode", "Error", new
                 {
@@ -206,6 +234,8 @@ namespace ePizza_JD.API.Controller
                 });
             }
         }
+
+
 
         // DELETE: api/Pizzas/5
         [HttpDelete("{id}")]
@@ -218,11 +248,10 @@ namespace ePizza_JD.API.Controller
             }
 
             Pizza pizza= pizzas.FirstOrDefault<Pizza>();
+
             try
             {
-
                 await genericRepo.Delete(pizza);
-
             }
             catch
             {
@@ -232,9 +261,7 @@ namespace ePizza_JD.API.Controller
                     statusCode = 400,
                     errorMessage = $"Het verwijderen van pizza '{pizza.Name}' is mislukt."
                 });
-
             }
-
             return Ok(mapper.Map<PizzaDTO>(pizza));
 
         }

@@ -80,105 +80,105 @@ namespace ePizza_JD.Models.Data
         {
             new Topping()
             {
-                ToppingId = Guid.NewGuid(),
+                Id = Guid.NewGuid(),
                 Name = "Ham",
                 Price = 1.4,
 
             },
             new Topping()
             {
-                ToppingId = Guid.NewGuid(),
+                Id = Guid.NewGuid(),
                 Name = "Mozzarella",
                 Price = 1.4,
 
             },
             new Topping()
             {
-                ToppingId = Guid.NewGuid(),
+                Id = Guid.NewGuid(),
                 Name = "Pepperoni",
                 Price = 1.4,
 
             },
             new Topping()
             {
-                ToppingId = Guid.NewGuid(),
+                Id = Guid.NewGuid(),
                 Name = "Champignons",
                 Price = 1.4,
 
             },
             new Topping()
             {
-                ToppingId = Guid.NewGuid(),
+                Id = Guid.NewGuid(),
                 Name = "Pineapple",
                 Price = 1.4,
 
             },
             new Topping()
             {
-                ToppingId = Guid.NewGuid(),
+                Id = Guid.NewGuid(),
                 Name = "Chilipepper",
                 Price = 1.4,
 
             },
             new Topping()
             {
-                ToppingId = Guid.NewGuid(),
+                Id = Guid.NewGuid(),
                 Name = "Red onion",
                 Price = 1.4,
 
             },
             new Topping()
             {
-                ToppingId = Guid.NewGuid(),
+                Id = Guid.NewGuid(),
                 Name = "Grilled Chicken",
                 Price = 1.4,
 
             },
             new Topping()
             {
-                ToppingId = Guid.NewGuid(),
+                Id = Guid.NewGuid(),
                 Name = "Barbecue sauce",
                 Price = 1.4,
 
             },
             new Topping()
             {
-                ToppingId = Guid.Parse("16a1fa18-101d-4f91-ba66-561e6bd8331b"),
+                Id = Guid.Parse("16a1fa18-101d-4f91-ba66-561e6bd8331b"),
                 Name = "Tomato Sauce",
                 Price = 1.4,
 
             },
             new Topping()
             {
-                ToppingId = Guid.NewGuid(),
+                Id = Guid.NewGuid(),
                 Name = "Pork",
                 Price = 1.4,
 
             },
             new Topping()
             {
-                ToppingId = Guid.Parse("3e153375-e8aa-4c4b-8836-c69213111eb0"),
+                Id = Guid.Parse("3e153375-e8aa-4c4b-8836-c69213111eb0"),
                 Name = "Emmental",
                 Price = 1.4,
 
             },
             new Topping()
             {
-                ToppingId = Guid.NewGuid(),
+                Id = Guid.NewGuid(),
                 Name = "Goat cheese",
                 Price = 1.4,
 
             },
             new Topping()
             {
-                ToppingId = Guid.NewGuid(),
+                Id = Guid.NewGuid(),
                 Name = "Gorgonzola",
                 Price = 1.4,
 
             },
             new Topping()
             {
-                ToppingId = Guid.NewGuid(),
+                Id = Guid.NewGuid(),
                 Name = "Paprika",
                 Price = 1.4,
 

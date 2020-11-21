@@ -22,7 +22,7 @@ namespace ePizza_JD.Models.Repositories
         {
             try
             {
-                topping.ToppingId = Guid.NewGuid();
+                topping.Id = Guid.NewGuid();
                 var result = context.Toppings.AddAsync(topping);//ChangeTracking
                 await context.SaveChangesAsync();
                 return topping; //heeft nu een id (autoidentity)
@@ -56,7 +56,7 @@ namespace ePizza_JD.Models.Repositories
         {
             try
             {
-                return context.Toppings.FirstOrDefaultAsync<Topping>(e => e.ToppingId == Id);
+                return context.Toppings.FirstOrDefaultAsync<Topping>(e => e.Id == Id);
             }
             catch (Exception exc)
             {

@@ -34,6 +34,8 @@ namespace ePizza_JD.Models.Repositories
             }
         }
 
+
+
         public async Task DeletePizza(Guid id)
         {
             try
@@ -82,60 +84,97 @@ namespace ePizza_JD.Models.Repositories
 
         public async Task<Pizza> PostPizzaWithToppings(Pizza pizza)
         {
-            try
+
+        if (pizza.PizzaToppings.Count != 0)
+        {
+            foreach (PizzaToppings t in pizza.PizzaToppings)
             {
-                if (pizza.PizzaToppings.Count != 0)
+                //controleren of topping al bestaat
+                var exists = context.Toppings.FirstOrDefault(pt => pt.Name == t.Topping.Name);
+                if (exists == null)
                 {
-                        foreach (PizzaToppings t in pizza.PizzaToppings)
-                        {
-                            //controleren of topping al bestaat
-                            var exists = context.Toppings.FirstOrDefault(pt => pt.Name == t.Topping.Name);
-                            if (exists == null)
-                            {
-                                //indien nog niet bestaat topping toevoegen
-                                context.Entry<Topping>(t.Topping).State = Microsoft.EntityFrameworkCore.EntityState.Added;
-                                Debug.WriteLine($"De topping met de naam : {t.Topping.Name} is toegevoegd");
-                                
-                            }
-                            else
-                            {
-                                //topping bestaat al
-                                t.Topping = exists;
-                            }
+                    //indien nog niet bestaat topping toevoegen
+                    context.Entry<Topping>(t.Topping).State = Microsoft.EntityFrameworkCore.EntityState.Added;
+                    Debug.WriteLine($"De topping met de naam : {t.Topping.Name} is toegevoegd");
 
-                        }
-                        await context.AddAsync(pizza);
-                        await context.SaveChangesAsync();
                 }
-                return pizza;
+                else
+                {
+                    //topping bestaat al
+                    t.Topping = exists;
+                }
 
             }
-            catch (Exception)
-            {
-
-                throw;
-            }
-
+            await context.AddAsync(pizza);
+            await context.SaveChangesAsync();
+        }
+        return pizza;
 
         }
 
-        public async Task<Pizza> UpdatePizza(Pizza pizza)
+        public async Task<Pizza> UpdatePizzaWithToppings(Pizza pizza)
         {
-            try
+
+            if (pizza.PizzaId != null && pizza.Name != null)
             {
-                context.Pizzas.Update(pizza);
+
+                //controleren of pizza al bestaat
+                var PizzaExists = context.Pizzas.AsNoTracking().FirstOrDefault(p => p.Name == pizza.Name);
+                if (PizzaExists == null)
+                {
+                    //bestaat nog niet
+                    throw new ArgumentNullException($"{nameof(UpdatePizzaWithToppings)} Pizza bestaat niet");
+                }
+
+                if (pizza.PizzaToppings != null)
+                {
+                    //controleren of er toppings aanwezig zijn
+                    foreach (PizzaToppings t in pizza.PizzaToppings)
+                    {
+                        //1. controleren of topping al bestaat
+                        var ToppingExists = context.Toppings.AsNoTracking().FirstOrDefault(pt => pt.Id == t.ToppingId);
+                        if (ToppingExists == null)
+                        {
+                            //topping bestaat niet
+                            //aanmaken of niet?
+                            //for now
+                            throw new ArgumentNullException($"{nameof(UpdatePizzaWithToppings)} Topping bestaat niet");
+                        }
+                        else
+                        {
+                            //topping bestaat al
+                            Topping topping = context.Toppings.AsNoTracking().FirstOrDefault(ot => ot.Id == t.ToppingId);
+                            t.Topping = topping;
+                            //controleren of er al een item in de tussentable zit 
+                            PizzaToppings pt = context.PizzaToppings.AsNoTracking().FirstOrDefault(ot => ot.ToppingId == t.ToppingId);
+                            if (pt == null)
+                            {
+                                context.Entry<PizzaToppings>(t).State = EntityState.Detached;
+                                context.Entry<PizzaToppings>(t).State = EntityState.Added;
+                            }
+
+                        }
+                    }
+
+                    //yess or no?
+                    
+                    context.Entry<Pizza>(pizza).State = EntityState.Detached;
+                    context.Entry<Pizza>(pizza).State = EntityState.Modified;
+                    context.Pizzas.Update(pizza);
+                    await context.SaveChangesAsync();
+                }
+                else
+                {
+                context.Entry(pizza).State = EntityState.Detached;
+                context.Entry(PizzaExists).CurrentValues.SetValues(pizza);
+                context.Set<Pizza>().Update(pizza);
                 await context.SaveChangesAsync();
-                return pizza;
             }
-            catch (Exception exc)
-            {
-                Console.WriteLine(exc.InnerException.Message);
-                throw null;
-            }
+
+        }
+
+            return pizza;
         }
     }
 }
 
-
-//restaurant project, order project,  class library verliezen en models inside api's
-//program.cs aanpassen 

@@ -12,7 +12,7 @@ namespace ePizza_JD.Models.Repositories
         Task<Pizza> GetPizzaByGuidAsync(Guid Id);
         Task<Pizza> AddPizza(Pizza pizza);
         Task DeletePizza(Guid id);
-        Task<Pizza> UpdatePizza(Pizza pizza);
+        Task<Pizza> UpdatePizzaWithToppings(Pizza pizza);
 
         Task<Pizza> PostPizzaWithToppings(Pizza pizza);
 

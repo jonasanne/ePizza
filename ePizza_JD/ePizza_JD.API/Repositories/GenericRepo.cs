@@ -114,15 +114,11 @@ public class GenericRepo<TEntity> : IGenericRepo<TEntity> where TEntity : class
         await _context.SaveChangesAsync();
     }
 
-
     public async Task<bool> Exists(TEntity entity, object key)
     {
         TEntity exist = await _context.Set<TEntity>().FindAsync(key);
         if (exist != null) return true;
         return false;
     }
-
-
-
 }
 

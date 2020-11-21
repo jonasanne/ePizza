@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace ePizza_JD.API.Controllers
 {
     [ApiExplorerSettings(IgnoreApi = true)]
-    [Route("Error/")]
+    [Route("error/")]
     [ApiController]
     public class ErrorController : ControllerBase
     {
@@ -36,7 +36,7 @@ namespace ePizza_JD.API.Controllers
                         exceptionMessage = new ExceptionMessageUser()
                         {
                             Error = "Request Error",
-                            Message = $"Jouw request bevat een fout met status code {statusCode}",
+                            Message = $"Jouw request bevat een fout met status code {statusCode}. {errorMessage}",
                             ErrorRoute = (statusCodeData?.OriginalPath != null) ? "Jouw route:" + (statusCodeData?.OriginalPath != null) : null
                         };
                         break;
@@ -46,6 +46,7 @@ namespace ePizza_JD.API.Controllers
             }
             //JsonResult of StatusCode zorgt voor serialisatie (obj -> string), System.Text.JsonSerialize onnodig
             return StatusCode(statusCode.Value, exceptionMessage);
+
         }
     }
 }

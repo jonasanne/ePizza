@@ -34,6 +34,7 @@ namespace ePizza_JD.WebApp.Data
             base.OnModelCreating(builder);
             builder.Entity<Pizza>(e =>
             {
+                e.HasKey(e => e.PizzaId);
                 e.Property(e => e.Name).IsRequired();
                 e.Property(e => e.Price).IsRequired();
             });

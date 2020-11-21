@@ -55,7 +55,7 @@ namespace ePizza_JD.API.Controllers
         [HttpGet("{id:Guid}")]
         public async Task<ActionResult<ToppingDTO>> GetToppingById(Guid id)
         {
-            var toppings = await genericRepo.GetByExpressionAsync(m => m.ToppingId == id);
+            var toppings = await genericRepo.GetByExpressionAsync(m => m.Id == id);
 
             // Vergeet de count niet! categories is een collectie en nooit null
             if (toppings == null || toppings.Count() == 0)
@@ -174,7 +174,7 @@ namespace ePizza_JD.API.Controllers
             try
             {
                 await genericRepo.Create(topping);
-                return CreatedAtAction(nameof(GetToppingById), new { id = topping.ToppingId }, mapper.Map<ToppingDTO>(topping));
+                return CreatedAtAction(nameof(GetToppingById), new { id = topping.Id }, mapper.Map<ToppingDTO>(topping));
             }
             catch (Exception exc)
             {
@@ -192,7 +192,7 @@ namespace ePizza_JD.API.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<Topping>> DeleteTopping(Guid id)
         {
-            var toppings = await genericRepo.GetByExpressionAsync(c => c.ToppingId == id);
+            var toppings = await genericRepo.GetByExpressionAsync(c => c.Id == id);
             if (toppings == null || toppings.Count() == 0)
             {
                 return NotFound(new { message = "Topping niet gevonden." });
@@ -221,7 +221,7 @@ namespace ePizza_JD.API.Controllers
 
         private bool ToppingExists(Guid id)
         {
-            return _context.Toppings.Any(e => e.ToppingId == id);
+            return _context.Toppings.Any(e => e.Id == id);
         }
     }
 }

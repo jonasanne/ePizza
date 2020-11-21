@@ -48,7 +48,7 @@ namespace ePizza_JD.API
             //var connectionString = Configuration.GetConnectionString("DB");
             //local
             var connectionString = Configuration.GetConnectionString("LocalDB");
-            services.AddDbContext<PizzaServiceDbContext>(options => options.UseSqlServer(connectionString));
+            services.AddDbContext<PizzaServiceDbContext>(options => options.UseSqlServer(connectionString), ServiceLifetime.Scoped);
             services.AddDefaultIdentity<IdentityUser>().AddRoles<IdentityRole>().AddEntityFrameworkStores<PizzaServiceDbContext>();
 
             //2b. Cors 

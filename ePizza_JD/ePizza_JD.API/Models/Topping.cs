@@ -10,7 +10,7 @@ namespace ePizza_JD.Models
     public class Topping
     {
         [Key]
-        public Guid ToppingId { get; set; } = Guid.NewGuid();
+        public Guid Id { get; set; } = Guid.NewGuid();
 
         [Required(ErrorMessage = "Naam is verplicht")]
         [MaxLength(100)]
