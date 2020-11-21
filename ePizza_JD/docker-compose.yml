@@ -1,0 +1,23 @@
+version: '3.4'
+
+services:
+  pizzaservices:
+    image: ${DOCKER_REGISTRY-}jonasanne/pizzaservices
+    build:
+      context: .
+      dockerfile: ePizza_JD.API/Dockerfile
+
+
+  restaurantservices:
+    image: ${DOCKER_REGISTRY-}jonasanne/restaurantservices
+    build:
+      context: .
+      dockerfile: RestaurantServices/Dockerfile
+
+
+  orderservices:
+    image: ${DOCKER_REGISTRY-}jonasanne/orderservices
+    build:
+      context: .
+      dockerfile: OrderServices/Dockerfile
+

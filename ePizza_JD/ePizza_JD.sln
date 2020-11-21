@@ -9,7 +9,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{D73E
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestaurantServices", "RestaurantServices\RestaurantServices.csproj", "{69413A41-604E-4A2F-A39A-E9C05F19C954}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderServices", "OrderServices\OrderServices.csproj", "{6E67F6AF-0CD1-4284-A779-4BCA9C559D87}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderServices", "OrderServices\OrderServices.csproj", "{6E67F6AF-0CD1-4284-A779-4BCA9C559D87}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{C6804C3C-81A3-46E0-9E9B-6C52A00ED39B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +31,10 @@ Global
 		{6E67F6AF-0CD1-4284-A779-4BCA9C559D87}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E67F6AF-0CD1-4284-A779-4BCA9C559D87}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E67F6AF-0CD1-4284-A779-4BCA9C559D87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6804C3C-81A3-46E0-9E9B-6C52A00ED39B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6804C3C-81A3-46E0-9E9B-6C52A00ED39B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6804C3C-81A3-46E0-9E9B-6C52A00ED39B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6804C3C-81A3-46E0-9E9B-6C52A00ED39B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -37,6 +43,7 @@ Global
 		{C4F39A0E-4C5E-4BA4-AEAB-26D969E8ED55} = {D73E2531-1DC3-4BBE-B8A2-652BBE0F39E0}
 		{69413A41-604E-4A2F-A39A-E9C05F19C954} = {D73E2531-1DC3-4BBE-B8A2-652BBE0F39E0}
 		{6E67F6AF-0CD1-4284-A779-4BCA9C559D87} = {D73E2531-1DC3-4BBE-B8A2-652BBE0F39E0}
+		{C6804C3C-81A3-46E0-9E9B-6C52A00ED39B} = {D73E2531-1DC3-4BBE-B8A2-652BBE0F39E0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C37EE34A-02E2-439A-BCBD-3FE0787EA7CD}

@@ -26,18 +26,18 @@
     "id": "F684EC5C-16C0-4581-8306-2B180AF55954",
     "name": "Parma",
     "price": 8.1,
-    "imgUrl": "nieuweUrl",
+    "imgUrl": "https://cdn-catalog.pizzahut.be/images/be/20170830145618975.jpg",
     "toppings": [{
-            "Id": "3E153375-E8AA-4C4B-8836-C69213111EB0",
-            "Name": "Emmental"
+            "Id": "5F6B364B-8A29-4C91-A08C-7528F9307AAE",
+            "Name": "Mozzarella"
         },
         {
-            "Id": "D3014066-855B-441C-BC7D-EAD5D804A8E7",
-            "Name": "Gorgonzola"
+            "Id": "16A1FA18-101D-4F91-BA66-561E6BD8331B",
+            "Name": "Tomato Sauce"
         },
         {
-            "Id": "001F2E83-EE12-4B42-8ABF-B68BFD677ED5",
-            "Name": "Grilled Chicken"
+            "Id": "DF898E3D-4ACF-47C2-91AB-DE758832D49B",
+            "Name": "Ham"
         },
     ]
 }

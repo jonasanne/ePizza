@@ -1,6 +1,5 @@
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\OrderServices\bin\Debug\netcoreapp3.1\appsettings.Development.json
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\OrderServices\bin\Debug\netcoreapp3.1\appsettings.json
-E:\VS2019\projects\FSWD\ePizza\ePizza_JD\OrderServices\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\OrderServices\bin\Debug\netcoreapp3.1\OrderServices.StaticWebAssets.xml
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\OrderServices\bin\Debug\netcoreapp3.1\OrderServices.exe
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\OrderServices\bin\Debug\netcoreapp3.1\OrderServices.deps.json
@@ -173,3 +172,4 @@ E:\VS2019\projects\FSWD\ePizza\ePizza_JD\OrderServices\obj\Debug\netcoreapp3.1\s
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\OrderServices\obj\Debug\netcoreapp3.1\OrderServices.dll
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\OrderServices\obj\Debug\netcoreapp3.1\OrderServices.pdb
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\OrderServices\obj\Debug\netcoreapp3.1\OrderServices.genruntimeconfig.cache
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\OrderServices\obj\Debug\netcoreapp3.1\scopedcss\bundle\OrderServices.styles.css

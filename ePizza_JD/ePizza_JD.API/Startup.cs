@@ -45,9 +45,9 @@ namespace ePizza_JD.API
 
             //1. context
             //online server
-            //var connectionString = Configuration.GetConnectionString("DB");
+            var connectionString = Configuration.GetConnectionString("DB");
             //local
-            var connectionString = Configuration.GetConnectionString("LocalDB");
+            //var connectionString = Configuration.GetConnectionString("LocalDB");
             services.AddDbContext<PizzaServiceDbContext>(options => options.UseSqlServer(connectionString), ServiceLifetime.Scoped);
             services.AddDefaultIdentity<IdentityUser>().AddRoles<IdentityRole>().AddEntityFrameworkStores<PizzaServiceDbContext>();
 

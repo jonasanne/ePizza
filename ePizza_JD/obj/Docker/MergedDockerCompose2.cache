@@ -1,0 +1,38 @@
+services:
+  pizzaservices:
+    build:
+      context: E:\VS2019\projects\FSWD\ePizza\ePizza_JD
+      dockerfile: ePizza_JD.API/Dockerfile
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: PizzaServices
+      target: base
+    container_name: PizzaServices
+    entrypoint: tail -f /dev/null
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS: "true"
+      ASPNETCORE_URLS: https://+:443;http://+:80
+      DOTNET_USE_POLLING_FILE_WATCHER: '1'
+      NUGET_FALLBACK_PACKAGES: /root/.nuget/fallbackpackages
+    image: pizzaservices:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages
+        --additionalProbingPath /root/.nuget/fallbackpackages  "/app/bin/Debug/netcoreapp3.1/PizzaServices.dll"'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/sh -c "if PID=$$(pidof
+        dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    ports:
+    - target: 80
+    - target: 443
+    tty: true
+    volumes:
+    - E:\VS2019\projects\FSWD\ePizza\ePizza_JD\ePizza_JD.API:/app:rw
+    - C:\Users\Rick\vsdbg\vs2017u5:/remote_debugger:rw
+    - C:\Users\Rick\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\Rick\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+    - C:\Microsoft\Xamarin\NuGet:/root/.nuget/fallbackpackages:ro
+    - C:\Users\Rick\.nuget\packages:/root/.nuget/packages:ro
+    - E:\VS2019\projects\FSWD\ePizza\ePizza_JD:/src:rw
+version: '3.4'

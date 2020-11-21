@@ -38,9 +38,9 @@ namespace OrderServices
 
             //1. context
             //online server
-            //var connectionString = Configuration.GetConnectionString("DB");
+            var connectionString = Configuration.GetConnectionString("DB");
             //local
-            var connectionString = Configuration.GetConnectionString("LocalDB");
+            //var connectionString = Configuration.GetConnectionString("LocalDB");
             services.AddDbContext<OrderServiceDbContext>(options => options.UseSqlServer(connectionString));
             //services.AddDefaultIdentity<IdentityUser>().AddRoles<IdentityRole>().AddEntityFrameworkStores<RestaurantServicesDbContext>(); //nodig??
 
