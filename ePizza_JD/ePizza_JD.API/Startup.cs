@@ -51,18 +51,20 @@ namespace ePizza_JD.API
             services.AddDbContext<PizzaServiceDbContext>(options => options.UseSqlServer(connectionString), ServiceLifetime.Scoped);
             services.AddDefaultIdentity<IdentityUser>().AddRoles<IdentityRole>().AddEntityFrameworkStores<PizzaServiceDbContext>();
 
+            //TODO cors terug aanleggen => testing met de apigateway
+
             //2b. Cors 
-            services.AddCors(options =>
-            {
-                options.AddPolicy("MyAllowOrigins", builder =>
-                {
-                    builder.AllowAnyMethod()
-                    .AllowAnyHeader()
-                    //.AllowAnyOrigin() // niet toegelaten indien credentials
-                    .WithOrigins("https://localhost", "http://localhost:8080", "https://epizza.netlify.app")
-                    .AllowCredentials();
-                });
-            });
+            //services.AddCors(options =>
+            //{
+            //    options.AddPolicy("MyAllowOrigins", builder =>
+            //    {
+            //        builder.AllowAnyMethod()
+            //        .AllowAnyHeader()
+            //        //.AllowAnyOrigin() // niet toegelaten indien credentials
+            //        .WithOrigins("https://localhost", "http://localhost:8080", "https://epizza.netlify.app")
+            //        .AllowCredentials();
+            //    });
+            //});
             //3. Repos
             services.AddScoped(typeof(IToppingRepo), typeof(ToppingRepo));
             services.AddScoped(typeof(IPizzaRepo), typeof(PizzaRepo));
@@ -99,7 +101,7 @@ namespace ePizza_JD.API
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "ePizza_JD");
             });
 
-            app.UseCors("MyAllowOrigins");
+            //app.UseCors("MyAllowOrigins");
 
             app.UseHttpsRedirection();
 
@@ -112,8 +114,8 @@ namespace ePizza_JD.API
                 endpoints.MapControllers();
             });
 
-            context.SeedRoles(roleManager);
-            context.SeedUsers(userManager);
+            //context.SeedRoles(roleManager);
+            //context.SeedUsers(userManager);
         }
     }
 }

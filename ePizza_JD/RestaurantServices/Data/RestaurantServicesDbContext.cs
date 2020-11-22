@@ -31,20 +31,11 @@ namespace ePizza_JD.WebApp.Data
         {
             base.OnModelCreating(builder);
 
-            //builder.Entity<RestaurantOrder>(e =>
-            //{
-            //    e.HasKey(e => new { e.OrderId, e.RestaurantId });
-            //    e.HasOne(e => e.Restaurant).WithMany(r => r.RestaurantOrder).HasForeignKey(r => r.RestaurantId);
-            //    //e.HasOne(e => e.Order).WithMany(r => r.RestaurantOrder).HasForeignKey(r => r.OrderId);
-            //});
-
-
             builder.Entity<Restaurant>(e =>
             {
-                e.HasMany(e => e.Orders).WithOne(e => e.Restaurant);
-
+                e.HasKey(e => e.RestaurantId);
+                e.Property(e => e.RestaurantName).IsRequired();
             });
-
 
 
             OnModelCreatingPartial(builder);

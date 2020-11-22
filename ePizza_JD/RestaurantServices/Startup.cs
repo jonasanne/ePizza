@@ -40,25 +40,25 @@ namespace RestaurantServices
 
             //1. context
             //online server
-            var connectionString = Configuration.GetConnectionString("DB");
+            //var connectionString = Configuration.GetConnectionString("DB");
             //local
-            //var connectionString = Configuration.GetConnectionString("LocalDB");
-            services.AddDbContext<RestaurantServicesDbContext>(options => options.UseSqlServer(connectionString));
-            //services.AddDefaultIdentity<IdentityUser>().AddRoles<IdentityRole>().AddEntityFrameworkStores<RestaurantServicesDbContext>(); //nodig??
+            var connectionString = Configuration.GetConnectionString("LocalDB");
+            services.AddDbContext<RestaurantServicesDbContext>(options => options.UseSqlServer(connectionString), ServiceLifetime.Scoped);
+            services.AddDefaultIdentity<IdentityUser>().AddRoles<IdentityRole>().AddEntityFrameworkStores<RestaurantServicesDbContext>(); //nodig??
 
 
             //2b. Cors 
-            services.AddCors(options =>
-            {
-                options.AddPolicy("MyAllowOrigins", builder =>
-                {
-                    builder.AllowAnyMethod()
-                    .AllowAnyHeader()
-                    //.AllowAnyOrigin() // niet toegelaten indien credentials
-                    .WithOrigins("https://localhost", "http://localhost:8080", "https://epizza.netlify.app")
-                    .AllowCredentials();
-                });
-            });
+            //services.AddCors(options =>
+            //{
+            //    options.AddPolicy("MyAllowOrigins", builder =>
+            //    {
+            //        builder.AllowAnyMethod()
+            //        .AllowAnyHeader()
+            //        //.AllowAnyOrigin() // niet toegelaten indien credentials
+            //        .WithOrigins("https://localhost", "http://localhost:8080", "https://epizza.netlify.app")
+            //        .AllowCredentials();
+            //    });
+            //});
             //3. Repos
             services.AddScoped(typeof(IGenericRepo<>), typeof(GenericRepo<>));
 
@@ -104,7 +104,7 @@ namespace RestaurantServices
                 c.RoutePrefix = "swagger"; //path naar de UI: /swagger/index.html
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "RestaurantServce v1");
             });
-            app.UseCors("MyAllowOrigins");
+            //app.UseCors("MyAllowOrigins");
 
             app.UseHttpsRedirection();
 

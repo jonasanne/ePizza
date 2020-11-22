@@ -27,7 +27,7 @@ namespace RestaurantServices.Repositories
 
         public async Task<IEnumerable<Restaurant>> GetRestaurantsAsync()
         {
-            return await context.Restaurant.OrderBy(e => e.RestaurantName).Include(r => r.Orders).ToListAsync();
+            return await context.Restaurant.OrderBy(e => e.RestaurantName).ToListAsync();
         }
 
 

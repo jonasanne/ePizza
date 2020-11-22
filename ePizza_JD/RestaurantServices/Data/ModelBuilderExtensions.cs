@@ -57,7 +57,5 @@ namespace ePizza_JD.WebApp.Data
             Console.WriteLine("Seeding Tables with restaurants");
             modelBuilder.Entity<Restaurant>().HasData(_restaurants);
         }
-
-
     }
 }

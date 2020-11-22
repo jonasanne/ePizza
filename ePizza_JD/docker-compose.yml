@@ -21,3 +21,10 @@ services:
       context: .
       dockerfile: OrderServices/Dockerfile
 
+
+  apigateway:
+    image: ${DOCKER_REGISTRY-}apigateway
+    build:
+      context: .
+      dockerfile: APIGateway/Dockerfile
+
