@@ -49,7 +49,7 @@ namespace ePizza_JD.API
             //local
             var connectionString = Configuration.GetConnectionString("LocalDB");
             services.AddDbContext<PizzaServiceDbContext>(options => options.UseSqlServer(connectionString), ServiceLifetime.Scoped);
-            services.AddDefaultIdentity<IdentityUser>().AddRoles<IdentityRole>().AddEntityFrameworkStores<PizzaServiceDbContext>();
+            
 
             //TODO cors terug aanleggen => testing met de apigateway
 

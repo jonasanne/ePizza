@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ePizza_JD.WebApp.Data
 {
-    public partial class RestaurantServicesDbContext : IdentityDbContext
+    public partial class RestaurantServicesDbContext : DbContext
     {
         public RestaurantServicesDbContext()
         {
