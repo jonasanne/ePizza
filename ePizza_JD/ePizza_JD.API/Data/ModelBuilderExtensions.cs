@@ -207,15 +207,15 @@ namespace ePizza_JD.Models.Data
         {
             new Review()
             {
-                Date= DateTime.Now,
+                Date= DateTime.Today.Date.ToString("dd/MM/yyyy"),
                 Title = "Amazing pizza!",
                 Rating = 4,
                 PizzaId =  Guid.Parse("b3117bca-96da-463b-a433-62587fd8bd88")
             },
             new Review()
             {
-                Date= DateTime.Now,
-                Title = "Pizzashop online",
+                Date= DateTime.Today.Date.ToString("dd/MM/yyyy"),
+                Title = "The best pizza i ever ate!",
                 Description = "Fast delivery and amazingly great taste!",
                 Rating = 4.5,
                 PizzaId =  Guid.Parse("b3117bca-96da-463b-a433-62587fd8bd88")
@@ -223,8 +223,8 @@ namespace ePizza_JD.Models.Data
             },
             new Review()
             {
-                Date= DateTime.Now,
-                Title = "Lovely taste",
+                Date= DateTime.Today.Date.ToString("dd/MM/yyyy"),
+                Title = "Was good",
                 Description = "amazing pizza! I would buy again!",
                 Rating = 4.5,
                 PizzaId =  Guid.Parse("6bd07325-bda2-451f-bbcb-3bf1025834c4")

@@ -8,7 +8,6 @@ namespace ePizza_JD.Models.Repositories
     public interface IReviewRepo
     {
         Task<IEnumerable<Review>> GetReviewsAsync();
-
         Task<Review> GetReviewByIdAsync(Guid Id);
         Task<Review> AddReview(Review review);
         Task DeleteReview(Guid id);

@@ -55,15 +55,7 @@ namespace ePizza_JD.Models.Repositories
 
         public Task<Review> GetReviewByIdAsync(Guid Id)
         {
-            try
-            {
-                return context.Reviews.FirstOrDefaultAsync<Review>(e => e.ReviewId == Id);
-            }
-            catch (Exception exc)
-            {
-                Console.WriteLine(exc.InnerException.Message);
-                return null;
-            }
+            return context.Reviews.Include(r => r.PizzaId).FirstOrDefaultAsync(r => r.ReviewId == Id);
         }
 
         public async Task<IEnumerable<Review>> GetReviewsAsync()
