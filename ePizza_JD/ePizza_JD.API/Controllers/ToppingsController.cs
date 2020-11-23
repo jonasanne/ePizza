@@ -157,7 +157,7 @@ namespace ePizza_JD.API.Controllers
         {
             if (toppingDTO == null)
             {
-                return BadRequest(new { Message = "Geen categorie input" });
+                return BadRequest(new { Message = "Geen Topping input" });
             };
 
             var topping = mapper.Map<Topping>(toppingDTO);
@@ -219,9 +219,5 @@ namespace ePizza_JD.API.Controllers
             return Ok(mapper.Map<ToppingDTO>(topping));
         }
 
-        private bool ToppingExists(Guid id)
-        {
-            return _context.Toppings.Any(e => e.Id == id);
-        }
     }
 }

@@ -13,7 +13,7 @@ namespace ePizza_JD.Models
 
         //navigation properties
         public Restaurant Restaurant { get; set; }
-        public Order Order { get; set; }
+        //public Order Order { get; set; }
 
     }
 }

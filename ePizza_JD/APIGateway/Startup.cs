@@ -65,7 +65,20 @@ namespace APIGateway
             {
                 endpoints.MapGet("/", async context =>
                 {
-                    await context.Response.WriteAsync("Hello World!");
+                    if (env.IsDevelopment())
+                    {
+                        await context.Response.WriteAsync(
+                                $"<div>Hello World van (Docker en)  Ocelot gateway op {currentUrl} !</div>" +
+                                "<ul>" +
+                                "<li><a href='api/pizzas'>Lijst van pizza-API </a></li>" +
+                                "<li><a href='api/toppings'>Lijst van topping-API </a></li>" +
+                                "<li><a href='api/reviews'>lijst Review-API</a></li>" +
+                                   "</ul></br>" +
+                                "<ul>" +
+                                "<li><a href='https://localhost:44361' target='_blank' rel='noopener noreferrer'/>AdminCorner op andere webserver.(IdentityServices)</a></li>" +
+                                "</ul>")
+                            ;
+                    };
                 });
             });
 

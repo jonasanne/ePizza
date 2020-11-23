@@ -1,34 +1,110 @@
 
   {
     "Routes": [
+      //Pizza services
       {
         "DownstreamHostAndPorts": [
           {
             "Host": "localhost",
-            "Port": 44360 //https poort van de service
+            "Port": 32771 //https poort van de service
           }
         ],
-        "DownstreamPathTemplate": "/swagger/{page}",
-        "DownstreamScheme": "https",
-        "UpstreamPathTemplate": "/swagger/{page}",
+        "DownstreamPathTemplate": "/api/Pizzas",
+        "DownstreamScheme": "http",
+        "UpstreamPathTemplate": "/Pizzas",
         "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ]
       },
       {
         "DownstreamHostAndPorts": [
           {
             "Host": "localhost",
-            "Port": 44360 //https poort van de service
+            "Port": 32771 //https poort van de service
           }
         ],
-        "DownstreamPathTemplate": "/api/{allServices}",
-        "DownstreamScheme": "https",
-        "UpstreamPathTemplate": "/{allServices}",
+        "DownstreamPathTemplate": "/api/Pizzas/{params}",
+        "DownstreamScheme": "http",
+        "UpstreamPathTemplate": "/Pizzas/{params}",
         "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ]
-      }
+      },
+      //topping services
+      {
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "localhost",
+            "Port": 32771 //https poort van de service
+          }
+        ],
+        "DownstreamPathTemplate": "/api/Toppings",
+        "DownstreamScheme": "http",
+        "UpstreamPathTemplate": "/Toppings",
+        "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ]
+      },
+      {
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "localhost",
+            "Port": 32771 //https poort van de service
+          }
+        ],
+        "DownstreamPathTemplate": "/api/Toppings/{params}",
+        "DownstreamScheme": "http",
+        "UpstreamPathTemplate": "/Toppings/{params}",
+        "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ]
+      },
+      //review services
+      {
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "localhost",
+            "Port": 32771 //https poort van de service
+          }
+        ],
+        "DownstreamPathTemplate": "/api/Reviews",
+        "DownstreamScheme": "http",
+        "UpstreamPathTemplate": "/Reviews",
+        "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ]
+      },
+      {
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "localhost",
+            "Port": 32771 //https poort van de service
+          }
+        ],
+        "DownstreamPathTemplate": "/api/Reviews/{params}",
+        "DownstreamScheme": "http",
+        "UpstreamPathTemplate": "/Reviews/{params}",
+        "UpstreamHttpMethod": [ "GET", "POST", "DELETE" ]
+      },
+      //Restaurant services
+      {
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "localhost",
+            "Port": 32773 //https poort van de service
+          }
+        ],
+        "DownstreamPathTemplate": "/api/Restaurants",
+        "DownstreamScheme": "http",
+        "UpstreamPathTemplate": "/Restaurants",
+        "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ]
+      },
+      {
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "localhost",
+            "Port": 32773 //https poort van de service
+          }
+        ],
+        "DownstreamPathTemplate": "/api/Restaurants/{params}",
+        "DownstreamScheme": "http",
+        "UpstreamPathTemplate": "/Restaurants/{params}",
+        "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ]
+      },
     ],
     "GlobalConfiguration": {
       "RequestIdKey": "OcRequestId",
-      "BaseUrl": null,
+      "BaseUrl": https://localhost:44382,
       "https": 44382 //localhost:44382 //https poort van de gateway
     }
   }
