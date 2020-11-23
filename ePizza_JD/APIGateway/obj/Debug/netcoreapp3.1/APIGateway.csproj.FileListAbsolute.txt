@@ -16,6 +16,7 @@ E:\VS2019\projects\FSWD\ePizza\ePizza_JD\APIGateway\bin\Debug\netcoreapp3.1\Micr
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\APIGateway\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\APIGateway\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\APIGateway\bin\Debug\netcoreapp3.1\Ocelot.dll
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\APIGateway\obj\Debug\netcoreapp3.1\APIGateway.csprojAssemblyReference.cache
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\APIGateway\obj\Debug\netcoreapp3.1\APIGateway.AssemblyInfoInputs.cache
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\APIGateway\obj\Debug\netcoreapp3.1\APIGateway.AssemblyInfo.cs
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\APIGateway\obj\Debug\netcoreapp3.1\APIGateway.csproj.CoreCompileInputs.cache
@@ -29,4 +30,3 @@ E:\VS2019\projects\FSWD\ePizza\ePizza_JD\APIGateway\obj\Debug\netcoreapp3.1\APIG
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\APIGateway\obj\Debug\netcoreapp3.1\APIGateway.dll
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\APIGateway\obj\Debug\netcoreapp3.1\APIGateway.pdb
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\APIGateway\obj\Debug\netcoreapp3.1\APIGateway.genruntimeconfig.cache
-E:\VS2019\projects\FSWD\ePizza\ePizza_JD\APIGateway\obj\Debug\netcoreapp3.1\APIGateway.csprojAssemblyReference.cache

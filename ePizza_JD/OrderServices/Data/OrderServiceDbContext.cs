@@ -22,7 +22,7 @@ namespace ePizza_JD.WebApp.Data
         }
         //create tables
         public virtual DbSet<Order> Orders  { get; set; }
-        public virtual DbSet<Review> Reviews  { get; set; }
+        //public virtual DbSet<Review> Reviews  { get; set; }
         public virtual DbSet<Customer> Customers  { get; set; }
         //public virtual DbSet<CustomerOrders> CustomerOrders  { get; set; }
         //public virtual DbSet<OrderReviews> OrderReviews  { get; set; }
@@ -53,15 +53,8 @@ namespace ePizza_JD.WebApp.Data
 
             builder.Entity<Order>(e =>
             {
-                e.HasOne(e => e.Review).WithOne(e => e.Order);
+                e.HasKey(e => e.OrderId);
             });
-            builder.Entity<Review>(e =>
-            {
-                e.HasOne(e => e.Order).WithOne(e => e.Review);
-            });
-
-
-
             OnModelCreatingPartial(builder);
             builder.Seed(); // seeden van testdata
         }

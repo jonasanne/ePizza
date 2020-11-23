@@ -24,6 +24,7 @@ namespace ePizza_JD.WebApp.Data
         public virtual DbSet<Pizza> Pizzas  { get; set; }
         public virtual DbSet<Topping> Toppings  { get; set; }
         public virtual DbSet<PizzaToppings> PizzaToppings { get; set; }
+        public virtual DbSet<Review> Reviews { get; set; }
 
 
 
@@ -37,6 +38,12 @@ namespace ePizza_JD.WebApp.Data
                 e.HasKey(e => e.PizzaId);
                 e.Property(e => e.Name).IsRequired();
                 e.Property(e => e.Price).IsRequired();
+                e.HasMany(e => e.Reviews).WithOne(e => e.Pizza);
+            });
+            builder.Entity<Review>(e =>
+            {
+                e.HasKey(e =>e.ReviewId);
+                e.HasOne(e => e.Pizza).WithMany(e => e.Reviews);
             });
 
             builder.Entity<PizzaToppings>(e =>
@@ -45,6 +52,8 @@ namespace ePizza_JD.WebApp.Data
                 e.HasOne(e => e.Topping).WithMany(m => m.PizzaToppings).HasForeignKey(m => m.ToppingId);
                 e.HasOne(e => e.Pizza).WithMany(m => m.PizzaToppings).HasForeignKey(m => m.PizzaId);
             });
+
+            
 
 
             OnModelCreatingPartial(builder);

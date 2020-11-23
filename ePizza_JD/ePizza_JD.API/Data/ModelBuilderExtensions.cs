@@ -11,6 +11,7 @@ namespace ePizza_JD.Models.Data
 {
     public static class ModelBuilderExtensions
     {
+        static Guid pizzaid1 = Guid.Parse("b3117bca-96da-463b-a433-62587fd8bd88");
         private static List<Pizza> _pizzas = new List<Pizza>()
         {
             //prijzen
@@ -202,6 +203,33 @@ namespace ePizza_JD.Models.Data
             },
 
         };
+        private static List<Review> _reviews = new List<Review>()
+        {
+            new Review()
+            {
+                Date= DateTime.Now,
+                Title = "Amazing pizza!",
+                Rating = 4,
+                PizzaId =  Guid.Parse("b3117bca-96da-463b-a433-62587fd8bd88")
+            },
+            new Review()
+            {
+                Date= DateTime.Now,
+                Title = "Pizzashop online",
+                Description = "Fast delivery and amazingly great taste!",
+                Rating = 4.5,
+                PizzaId =  Guid.Parse("b3117bca-96da-463b-a433-62587fd8bd88")
+                         
+            },
+            new Review()
+            {
+                Date= DateTime.Now,
+                Title = "Lovely taste",
+                Description = "amazing pizza! I would buy again!",
+                Rating = 4.5,
+                PizzaId =  Guid.Parse("6bd07325-bda2-451f-bbcb-3bf1025834c4")
+            },
+        };
 
 
         public static PizzaServiceDbContext _context { get; set; }
@@ -209,10 +237,11 @@ namespace ePizza_JD.Models.Data
 
         public static void Seed(this ModelBuilder modelBuilder)
         {
-            Console.WriteLine("Seeding Tables");
+            Console.WriteLine("Seeding Tables with pizzas, toppings, pizzatoppings, reviews");
             modelBuilder.Entity<Pizza>().HasData(_pizzas);
             modelBuilder.Entity<Topping>().HasData(_toppings);
             modelBuilder.Entity<PizzaToppings>().HasData(_pizzaToppings);
+            modelBuilder.Entity<Review>().HasData(_reviews);
         }
 
 

@@ -54,7 +54,7 @@ namespace ePizza_JD.API.Controller
                 return RedirectToAction("HandleErrorCode", "Error", new
                 {
                     Statuscode = 400,
-                    errorMessage = $"ophalen van de pizzas mislukt"
+                    errorMessage = $"ophalen van de pizzas mislukt message:{ex}"
                 });
             }
         }

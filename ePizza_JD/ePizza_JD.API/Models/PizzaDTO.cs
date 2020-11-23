@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PizzaServices.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -15,5 +16,6 @@ namespace ePizza_JD.Models
         public string ImgUrl { get; set; }
 
         public string[] Topppings { get; set; }
+        public IEnumerable<ReviewDTO> Reviews { get; set; }
     }
 }

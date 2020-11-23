@@ -71,7 +71,7 @@ namespace ePizza_JD.Models.Repositories
             try
             {
                 //TODO verder uitwerken
-                return await context.Pizzas.OrderBy(n => n.Name).Include(p=> p.PizzaToppings).ThenInclude(t => t.Topping).ToListAsync();
+                return await context.Pizzas.OrderBy(n => n.Name).Include(r => r.Reviews).Include(p=> p.PizzaToppings).ThenInclude(t => t.Topping).ToListAsync();
             
             }
             catch (Exception ex)
@@ -146,7 +146,7 @@ namespace ePizza_JD.Models.Repositories
                             Topping topping = context.Toppings.AsNoTracking().FirstOrDefault(ot => ot.Id == t.ToppingId);
                             t.Topping = topping;
                             //controleren of er al een item in de tussentable zit 
-                            PizzaToppings pt = context.PizzaToppings.AsNoTracking().FirstOrDefault(ot => ot.ToppingId == t.ToppingId);
+                            PizzaToppings pt = context.PizzaToppings.AsNoTracking().FirstOrDefault(ot => ot.ToppingId == t.ToppingId && ot.PizzaId == t.PizzaId );
                             if (pt == null)
                             {
                                 context.Entry<PizzaToppings>(t).State = EntityState.Detached;

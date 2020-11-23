@@ -21,7 +21,7 @@ namespace ePizza_JD.Models
         public string ImgUrl { get; set; }
 
 
-
+        public ICollection<Review> Reviews { get; set; }
         //navigation properties
         //public ICollection<OrderReviews> OrderReviews { get; set; }
         public ICollection<PizzaToppings> PizzaToppings { get; set; }

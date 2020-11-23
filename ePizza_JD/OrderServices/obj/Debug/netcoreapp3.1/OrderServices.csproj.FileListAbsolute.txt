@@ -165,11 +165,11 @@ E:\VS2019\projects\FSWD\ePizza\ePizza_JD\OrderServices\obj\Debug\netcoreapp3.1\O
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\OrderServices\obj\Debug\netcoreapp3.1\OrderServices.csproj.CoreCompileInputs.cache
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\OrderServices\obj\Debug\netcoreapp3.1\OrderServices.MvcApplicationPartsAssemblyInfo.cs
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\OrderServices\obj\Debug\netcoreapp3.1\OrderServices.MvcApplicationPartsAssemblyInfo.cache
-E:\VS2019\projects\FSWD\ePizza\ePizza_JD\OrderServices\obj\Debug\netcoreapp3.1\OrderServices.RazorTargetAssemblyInfo.cache
-E:\VS2019\projects\FSWD\ePizza\ePizza_JD\OrderServices\obj\Debug\netcoreapp3.1\OrderServices.csproj.CopyComplete
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\OrderServices\obj\Debug\netcoreapp3.1\staticwebassets\OrderServices.StaticWebAssets.Manifest.cache
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\OrderServices\obj\Debug\netcoreapp3.1\staticwebassets\OrderServices.StaticWebAssets.xml
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\OrderServices\obj\Debug\netcoreapp3.1\scopedcss\bundle\OrderServices.styles.css
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\OrderServices\obj\Debug\netcoreapp3.1\OrderServices.RazorTargetAssemblyInfo.cache
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\OrderServices\obj\Debug\netcoreapp3.1\OrderServices.csproj.CopyComplete
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\OrderServices\obj\Debug\netcoreapp3.1\OrderServices.dll
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\OrderServices\obj\Debug\netcoreapp3.1\OrderServices.pdb
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\OrderServices\obj\Debug\netcoreapp3.1\OrderServices.genruntimeconfig.cache
-E:\VS2019\projects\FSWD\ePizza\ePizza_JD\OrderServices\obj\Debug\netcoreapp3.1\scopedcss\bundle\OrderServices.styles.css
