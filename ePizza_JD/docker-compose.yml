@@ -23,7 +23,7 @@ services:
 
 
   apigateway:
-    image: ${DOCKER_REGISTRY-}apigateway
+    image: ${DOCKER_REGISTRY-}jonasanne/apigateway
     build:
       context: .
       dockerfile: APIGateway/Dockerfile

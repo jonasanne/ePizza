@@ -13,13 +13,10 @@ E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\Microsoft.AspNetCore.Identity
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\Microsoft.EntityFrameworkCore.dll
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\Microsoft.AspNetCore.Mvc.Versioning.dll
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\AutoMapper.dll
-E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\Newtonsoft.Json.dll
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\Microsoft.Extensions.Configuration.Abstractions.dll
-E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\Microsoft.Extensions.Identity.Core.dll
-E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\Microsoft.Extensions.Identity.Stores.dll
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\Swashbuckle.AspNetCore.SwaggerGen.dll
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -28,6 +25,9 @@ E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\AutoMapper.Extensions.Microso
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\Swashbuckle.AspNetCore.Swagger.dll
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\Microsoft.EntityFrameworkCore.SqlServer.dll
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\Microsoft.OpenApi.dll
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\Microsoft.Extensions.Identity.Stores.dll
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\Microsoft.Extensions.Identity.Core.dll
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\Ocelot.dll
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\Microsoft.Extensions.Options.dll
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\System.Diagnostics.DiagnosticSource.dll

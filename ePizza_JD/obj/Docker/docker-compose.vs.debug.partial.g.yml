@@ -2,7 +2,7 @@ version: '3.4'
 
 services:
   apigateway:
-    image: apigateway:dev
+    image: jonasanne/apigateway:dev
     container_name: APIGateway
     build:
       target: base

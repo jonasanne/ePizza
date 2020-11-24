@@ -5,8 +5,8 @@
       {
         "DownstreamHostAndPorts": [
           {
-            "Host": "localhost",
-            "Port": 32771 //https poort van de service
+            "Host": "PizzaServices",
+            "Port": 80 //https poort van de service
           }
         ],
         "DownstreamPathTemplate": "/api/Pizzas",
@@ -17,8 +17,8 @@
       {
         "DownstreamHostAndPorts": [
           {
-            "Host": "localhost",
-            "Port": 32771 //https poort van de service
+            "Host": "PizzaServices",
+            "Port": 80 //https poort van de service
           }
         ],
         "DownstreamPathTemplate": "/api/Pizzas/{params}",
@@ -30,8 +30,8 @@
       {
         "DownstreamHostAndPorts": [
           {
-            "Host": "localhost",
-            "Port": 32771 //https poort van de service
+            "Host": "PizzaServices",
+            "Port": 80 //https poort van de service
           }
         ],
         "DownstreamPathTemplate": "/api/Toppings",
@@ -42,8 +42,8 @@
       {
         "DownstreamHostAndPorts": [
           {
-            "Host": "localhost",
-            "Port": 32771 //https poort van de service
+            "Host": "PizzaServices",
+            "Port": 80 //https poort van de service
           }
         ],
         "DownstreamPathTemplate": "/api/Toppings/{params}",
@@ -55,8 +55,8 @@
       {
         "DownstreamHostAndPorts": [
           {
-            "Host": "localhost",
-            "Port": 32771 //https poort van de service
+            "Host": "PizzaServices",
+            "Port": 80 //https poort van de service
           }
         ],
         "DownstreamPathTemplate": "/api/Reviews",
@@ -67,8 +67,8 @@
       {
         "DownstreamHostAndPorts": [
           {
-            "Host": "localhost",
-            "Port": 32771 //https poort van de service
+            "Host": "PizzaServices",
+            "Port": 80 //https poort van de service
           }
         ],
         "DownstreamPathTemplate": "/api/Reviews/{params}",
@@ -80,8 +80,8 @@
       {
         "DownstreamHostAndPorts": [
           {
-            "Host": "localhost",
-            "Port": 32773 //https poort van de service
+            "Host": "RestaurantServices",
+            "Port": 80 //https poort van de service
           }
         ],
         "DownstreamPathTemplate": "/api/Restaurants",
@@ -92,8 +92,8 @@
       {
         "DownstreamHostAndPorts": [
           {
-            "Host": "localhost",
-            "Port": 32773 //https poort van de service
+            "Host": "RestaurantServices",
+            "Port": 80 //https poort van de service
           }
         ],
         "DownstreamPathTemplate": "/api/Restaurants/{params}",
@@ -104,8 +104,8 @@
     ],
     "GlobalConfiguration": {
       "RequestIdKey": "OcRequestId",
-      "BaseUrl": https://localhost:44382,
-      "https": 44382 //localhost:44382 //https poort van de gateway
+      "BaseUrl": "https://localhost:32776",
+      "https": 32776 //localhost:44382 //https poort van de gateway
     }
   }
 

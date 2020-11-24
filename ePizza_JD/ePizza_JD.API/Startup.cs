@@ -84,7 +84,7 @@ namespace ePizza_JD.API
 
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, PizzaServiceDbContext context, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager )
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, PizzaServiceDbContext context )
         {
             if (env.IsDevelopment())
             {
@@ -104,7 +104,7 @@ namespace ePizza_JD.API
 
             //app.UseCors("MyAllowOrigins");
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseRouting();
 
