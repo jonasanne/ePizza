@@ -235,8 +235,6 @@ namespace ePizza_JD.API.Controller
             }
         }
 
-
-
         // DELETE: api/Pizzas/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<Pizza>> DeletePizza(Guid id)

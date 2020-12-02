@@ -160,3 +160,12 @@ E:\VS2019\projects\FSWD\ePizza\ePizza_JD\RestaurantServices\obj\Debug\netcoreapp
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\RestaurantServices\obj\Debug\netcoreapp3.1\RestaurantServices.dll
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\RestaurantServices\obj\Debug\netcoreapp3.1\RestaurantServices.pdb
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\RestaurantServices\obj\Debug\netcoreapp3.1\RestaurantServices.genruntimeconfig.cache
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\RestaurantServices\bin\Debug\netcoreapp3.1\DnsClient.dll
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\RestaurantServices\bin\Debug\netcoreapp3.1\MongoDB.Bson.dll
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\RestaurantServices\bin\Debug\netcoreapp3.1\MongoDB.Driver.dll
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\RestaurantServices\bin\Debug\netcoreapp3.1\MongoDB.Driver.Core.dll
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\RestaurantServices\bin\Debug\netcoreapp3.1\MongoDB.Libmongocrypt.dll
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\RestaurantServices\bin\Debug\netcoreapp3.1\SharpCompress.dll
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\RestaurantServices\bin\Debug\netcoreapp3.1\runtimes\win\native\libzstd.dll
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\RestaurantServices\bin\Debug\netcoreapp3.1\runtimes\win\native\snappy32.dll
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\RestaurantServices\bin\Debug\netcoreapp3.1\runtimes\win\native\snappy64.dll

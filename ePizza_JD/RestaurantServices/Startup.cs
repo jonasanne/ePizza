@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using ePizza_JD.Models;
-using ePizza_JD.WebApp.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -15,7 +14,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
+using RestaurantServices.Data;
 using RestaurantServices.Repositories;
 
 namespace RestaurantServices
@@ -33,62 +34,23 @@ namespace RestaurantServices
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            //zonder dit error bij ophalen data
-            services.AddControllersWithViews()
-            .AddNewtonsoftJson(options =>
-            options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
-            //1. context
-            //online server
-            //var connectionString = Configuration.GetConnectionString("DB");
-            //local
-            var connectionString = Configuration.GetConnectionString("LocalDB");
-            services.AddDbContext<RestaurantServicesDbContext>(options => options.UseSqlServer(connectionString), ServiceLifetime.Scoped);
-            services.AddDefaultIdentity<IdentityUser>().AddRoles<IdentityRole>().AddEntityFrameworkStores<RestaurantServicesDbContext>(); //nodig??
+            //MongoDB-configuratie
+            services.Configure<MongoSettings>(Configuration.GetSection(nameof(MongoSettings)));
+            //MongoDB-registraties
+            services.AddSingleton<IMongoSettings>(sp => sp.GetRequiredService<IOptions<MongoSettings>>().Value);
 
 
-            //2b. Cors 
-            //services.AddCors(options =>
-            //{
-            //    options.AddPolicy("MyAllowOrigins", builder =>
-            //    {
-            //        builder.AllowAnyMethod()
-            //        .AllowAnyHeader()
-            //        //.AllowAnyOrigin() // niet toegelaten indien credentials
-            //        .WithOrigins("https://localhost", "http://localhost:8080", "https://epizza.netlify.app")
-            //        .AllowCredentials();
-            //    });
-            //});
-            //3. Repos
-            services.AddScoped(typeof(IGenericRepo<>), typeof(GenericRepo<>));
-
+            //context en repo's
+            services.AddSingleton<RestaurantServicesContext>();
             services.AddScoped(typeof(IRestaurantRepo), typeof(RestaurantRepo));
+            services.AddScoped(typeof(IReviewRepo), typeof(ReviewRepo));
 
-
-            //4. Mapper
-            services.AddAutoMapper(typeof(ePizza_JDProfiles));
-
-
-            //5. Swagger
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { 
-                    Title = "RestaurantServce v1",
-                    Version = "v1" ,
-                    Description = "Een API voor het bevragen van de restaurants",
-                    Contact = new OpenApiContact
-                    {
-                        Name = "JonasA",
-                        Email = "jonas.anne@student.howest.be"
-                    }
-                    
-                
-                });
-            });
+            services.AddScoped<Seeder>(); // geen singleton mogelijk
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, RestaurantServicesDbContext context)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, RestaurantServicesContext context, Seeder seeder)
         {
             if (env.IsDevelopment())
             {
@@ -98,13 +60,6 @@ namespace RestaurantServices
             {
                 app.UseExceptionHandler("/error");
             };
-            app.UseSwagger(); //enable swagger
-            app.UseSwaggerUI(c =>
-            {
-                c.RoutePrefix = "swagger"; //path naar de UI: /swagger/index.html
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "RestaurantServce v1");
-            });
-            //app.UseCors("MyAllowOrigins");
 
             app.UseHttpsRedirection();
 
@@ -116,6 +71,7 @@ namespace RestaurantServices
             {
                 endpoints.MapControllers();
             });
+            seeder.initDatabase();
         }
     }
 }
