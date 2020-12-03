@@ -13,7 +13,7 @@ namespace RestaurantServices.Data
         public IMongoDatabase Database;
         public RestaurantServicesContext(IMongoSettings settings)
         {
-            MongoClient client = new MongoClient(settings.ConnectionStringHost);
+            MongoClient client = new MongoClient(settings.ConnectionStringLive);
             Database = client.GetDatabase(settings.DatabaseName);
         }
         //namen van collecties zijn casesensitive !!!

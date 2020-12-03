@@ -70,6 +70,8 @@ namespace RestaurantServices.Data
 
         public void initDatabase()
         {
+            Console.WriteLine("Seeding Mongodb with restaurants and reviews");
+
             //geen data blijven toevoegen (MongoDB.Driver)
             try
             {

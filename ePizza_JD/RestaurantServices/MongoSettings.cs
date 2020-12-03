@@ -9,12 +9,14 @@ namespace RestaurantServices
     {
         string ConnectionString { get; set; }
         string ConnectionStringHost { get; set; }
+        string ConnectionStringLive { get; set; }
         string DatabaseName { get; set; }
     }
     public class MongoSettings : IMongoSettings
     {
         public string ConnectionString { get; set; }
         public string ConnectionStringHost { get; set; }
+        public string ConnectionStringLive { get; set; }
         public string DatabaseName { get; set; }
 
     }
