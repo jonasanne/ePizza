@@ -6,7 +6,6 @@ namespace ePizza_JD.Models
 {
     public class CustomerDTO
     {
-        public Guid Id { get; set; }
         public string Name { get; set; }
         public string StreetName { get; set; }
         public string City { get; set; }

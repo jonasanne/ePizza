@@ -25,11 +25,11 @@ E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\AutoMapper.Extensions.Microso
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\Swashbuckle.AspNetCore.Swagger.dll
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\Microsoft.EntityFrameworkCore.SqlServer.dll
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\Microsoft.OpenApi.dll
-E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\Microsoft.Extensions.Identity.Stores.dll
-E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\Microsoft.Extensions.Identity.Core.dll
-E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
-E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\Ocelot.dll
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\MongoDB.Bson.dll
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\MongoDB.Driver.dll
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\MongoDB.Driver.Core.dll
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\Microsoft.Extensions.Options.dll
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\Ocelot.dll
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\System.Diagnostics.DiagnosticSource.dll
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\Microsoft.Extensions.Caching.Abstractions.dll
@@ -42,6 +42,9 @@ E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\Microsoft.Extensions.Caching.
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\Microsoft.AspNetCore.JsonPatch.dll
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\Newtonsoft.Json.Bson.dll
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\Microsoft.Data.SqlClient.dll
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\MongoDB.Libmongocrypt.dll
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\DnsClient.dll
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\SharpCompress.dll
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\Microsoft.Extensions.DiagnosticAdapter.dll
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\FluentValidation.dll
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\Microsoft.AspNetCore.MiddlewareAnalysis.dll

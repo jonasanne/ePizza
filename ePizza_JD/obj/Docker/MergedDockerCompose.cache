@@ -21,13 +21,11 @@ services:
       dockerfile: OrderServices/Dockerfile
     environment:
       ASPNETCORE_ENVIRONMENT: Development
-      ASPNETCORE_URLS: https://+:443;http://+:80
+      ASPNETCORE_URLS: http://+:80
     image: jonasanne/orderservices
     ports:
     - published: 32774
       target: 80
-    - published: 32775
-      target: 443
     volumes:
     - C:\Users\Rick\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
     - C:\Users\Rick\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
@@ -51,13 +49,11 @@ services:
       dockerfile: RestaurantServices/Dockerfile
     environment:
       ASPNETCORE_ENVIRONMENT: Development
-      ASPNETCORE_URLS: https://+:443;http://+:80
+      ASPNETCORE_URLS: http://+:80
     image: jonasanne/restaurantservices
     ports:
     - published: 32772
       target: 80
-    - published: 32773
-      target: 443
     volumes:
     - C:\Users\Rick\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
     - C:\Users\Rick\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro

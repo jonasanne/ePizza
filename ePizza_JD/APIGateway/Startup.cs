@@ -73,6 +73,7 @@ namespace APIGateway
                                 "<li><a href='pizzas'>Lijst van pizza-API </a></li>" +
                                 "<li><a href='toppings'>Lijst van topping-API </a></li>" +
                                 "<li><a href='reviews'>lijst Review-API</a></li>" +
+                                "<li><a href='restaurants'>lijst Restaurant-API</a></li>" +
                                    "</ul></br>" +
                                 "<ul>" +
                                 "<li><a href='https://localhost:44361' target='_blank' rel='noopener noreferrer'/>AdminCorner op andere webserver.(IdentityServices)</a></li>" +

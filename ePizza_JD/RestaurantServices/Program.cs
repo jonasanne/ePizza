@@ -16,29 +16,7 @@ namespace RestaurantServices
         public static void Main(string[] args)
         {
             var host = CreateHostBuilder(args).Build();
-
-            using(var scope = host.Services.CreateScope())
-            {
-                var services = scope.ServiceProvider;
-                try
-                {
-                    //var context = services.GetRequiredService<>();
-                    ////context.Database.EnsureDeleted();//verwijder (-> niet doen in productie)
-                    //context.Database.EnsureCreated(); //maakt db aan, indien onbestaand, volgens modellen
-                    //context.Database.Migrate();//maakt db aan, indien onbestaand en voert migraties uit (HasData)
-                    ////context kan je via property dependancy doorgeven indien nodig
-
-                }
-                catch (Exception ex)
-                {
-
-                    var logger = services.GetRequiredService<ILogger<Program>>();
-                    logger.LogError(ex, "An error occurred creating the DB.");
-                }
-            };
             host.Run();
-
-
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
