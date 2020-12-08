@@ -1,0 +1,46 @@
+services:
+  apigateway:
+    build:
+      context: E:\VS2019\projects\FSWD\ePizza\ePizza_JD
+      dockerfile: APIGateway/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: https://+:443;http://+:80
+    image: jonasanne/apigateway
+    ports:
+    - published: 32776
+      target: 80
+    - published: 32777
+      target: 443
+    volumes:
+    - C:\Users\Rick\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\Rick\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+  orderservices:
+    build:
+      context: E:\VS2019\projects\FSWD\ePizza\ePizza_JD
+      dockerfile: OrderServices/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:80
+    image: jonasanne/orderservices
+    ports:
+    - published: 32774
+      target: 80
+    volumes:
+    - C:\Users\Rick\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\Rick\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+  restaurantservices:
+    build:
+      context: E:\VS2019\projects\FSWD\ePizza\ePizza_JD
+      dockerfile: RestaurantServices/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:80
+    image: jonasanne/restaurantservices
+    ports:
+    - published: 32772
+      target: 80
+    volumes:
+    - C:\Users\Rick\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\Rick\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+version: '3.4'

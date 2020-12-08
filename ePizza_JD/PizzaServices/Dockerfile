@@ -7,10 +7,10 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
-COPY ["ePizza_JD.API/PizzaServices.csproj", "ePizza_JD.API/"]
-RUN dotnet restore "ePizza_JD.API/PizzaServices.csproj"
+COPY ["PizzaServices/PizzaServices.csproj", "PizzaServices/"]
+RUN dotnet restore "PizzaServices/PizzaServices.csproj"
 COPY . .
-WORKDIR "/src/ePizza_JD.API"
+WORKDIR "/src/PizzaServices"
 RUN dotnet build "PizzaServices.csproj" -c Release -o /app/build
 
 FROM build AS publish

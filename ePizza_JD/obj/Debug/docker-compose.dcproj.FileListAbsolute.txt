@@ -46,3 +46,12 @@ E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\APIGateway.pdb
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\obj\Debug\docker-compose.dcprojAssemblyReference.cache
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\obj\Debug\docker-compose.dcproj.CoreCompileInputs.cache
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\obj\Debug\docker-compose.dcproj.CopyComplete
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\PizzaServices.exe
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\PizzaServices.dll
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\Microsoft.AspNetCore.Mvc.Versioning.dll
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\Swashbuckle.AspNetCore.SwaggerGen.dll
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\Microsoft.EntityFrameworkCore.Relational.dll
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\Microsoft.EntityFrameworkCore.SqlServer.dll
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\Microsoft.Data.SqlClient.dll
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\PizzaServices.pdb

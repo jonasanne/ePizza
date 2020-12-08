@@ -101,6 +101,31 @@
         "UpstreamPathTemplate": "/Restaurants/{params}",
         "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ]
       },
+      //Cart services
+      {
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "CartServices",
+            "Port": 80 //https poort van de service
+          }
+        ],
+        "DownstreamPathTemplate": "/api/Carts",
+        "DownstreamScheme": "http",
+        "UpstreamPathTemplate": "/Carts",
+        "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ]
+      },
+      {
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "CartServices",
+            "Port": 80 //https poort van de service
+          }
+        ],
+        "DownstreamPathTemplate": "/api/Carts/{params}",
+        "DownstreamScheme": "http",
+        "UpstreamPathTemplate": "/Carts/{params}",
+        "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ]
+      },
     ],
     "GlobalConfiguration": {
       "RequestIdKey": "OcRequestId",

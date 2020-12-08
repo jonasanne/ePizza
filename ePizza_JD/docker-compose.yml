@@ -1,12 +1,6 @@
 version: '3.4'
 
 services:
-  pizzaservices:
-    image: ${DOCKER_REGISTRY-}jonasanne/pizzaservices
-    build:
-      context: .
-      dockerfile: ePizza_JD.API/Dockerfile
-
 
   restaurantservices:
     image: ${DOCKER_REGISTRY-}jonasanne/restaurantservices
@@ -27,4 +21,11 @@ services:
     build:
       context: .
       dockerfile: APIGateway/Dockerfile
+
+
+  pizzaservices:
+    image: ${DOCKER_REGISTRY-}pizzaservices
+    build:
+      context: .
+      dockerfile: PizzaServices/Dockerfile
 
