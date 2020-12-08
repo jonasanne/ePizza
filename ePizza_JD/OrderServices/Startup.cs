@@ -36,9 +36,9 @@ namespace OrderServices
 
             //2.RabbitMQ
 
-            services.Configure<RabbitMqConfiguration>(Configuration.GetSection("RabbitMq"));
-            services.AddTransient<IOrderCreateService, OrderCreateService>();
-            services.AddHostedService<OrderCreateReceiver>();
+            //services.Configure<RabbitMqConfiguration>(Configuration.GetSection("RabbitMq"));
+            //services.AddTransient<IOrderCreateService, OrderCreateService>();
+            //services.AddHostedService<OrderCreateReceiver>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -211,32 +211,32 @@ namespace ePizza_JD.Models.Data
         //        PhoneNumber = "0472 56 03 05"
         //    },
         //};
-        private static List<Order> _orders = new List<Order>()
-        {
-            new Order()
-            {
-                OrderId = Guid.Parse("e68a3f79-ba5a-49f3-95c7-5e38298e7fde"),
-                Date= DateTime.Now,
-                Time = 30, //minutes
-                PizzaId = Guid.Parse("b3117bca-96da-463b-a433-62587fd8bd88"),
-                Quantity = 1,
-                Size= Order.Sizes.Medium,
-                PizzaType=Order.PizzaTypes.Normal,
-                OrderType = Order.OrderTypes.delivery
-            },
-            new Order()
-            {
-                OrderId = Guid.Parse("bba2eded-d219-4618-b0ce-c3a983772772"),
-                Date= DateTime.Now,
-                Time = 30, //minutes
-                PizzaId = Guid.Parse("6bd07325-bda2-451f-bbcb-3bf1025834c4"),
-                Quantity = 1,
-                Size= Order.Sizes.Large,
-                PizzaType=Order.PizzaTypes.Vegetarian,
-                OrderType = Order.OrderTypes.takeaway
-            },
+        //private static List<Order> _orders = new List<Order>()
+        //{
+        //    new Order()
+        //    {
+        //        OrderId = Guid.Parse("e68a3f79-ba5a-49f3-95c7-5e38298e7fde"),
+        //        Date= DateTime.Now,
+        //        Time = 30, //minutes
+        //        PizzaId = Guid.Parse("b3117bca-96da-463b-a433-62587fd8bd88"),
+        //        Quantity = 1,
+        //        Size= Order.Sizes.Medium,
+        //        PizzaType=Order.PizzaTypes.Normal,
+        //        OrderType = Order.OrderTypes.delivery
+        //    },
+        //    new Order()
+        //    {
+        //        OrderId = Guid.Parse("bba2eded-d219-4618-b0ce-c3a983772772"),
+        //        Date= DateTime.Now,
+        //        Time = 30, //minutes
+        //        PizzaId = Guid.Parse("6bd07325-bda2-451f-bbcb-3bf1025834c4"),
+        //        Quantity = 1,
+        //        Size= Order.Sizes.Large,
+        //        PizzaType=Order.PizzaTypes.Vegetarian,
+        //        OrderType = Order.OrderTypes.takeaway
+        //    },
 
-        };
+        //};
 
 
         public static OrderServiceDbContext _context { get; set; }
@@ -245,7 +245,7 @@ namespace ePizza_JD.Models.Data
         public static void Seed(this ModelBuilder modelBuilder)
         {
             Console.WriteLine("Seeding Tables with orders");
-            modelBuilder.Entity<Order>().HasData(_orders);
+            //modelBuilder.Entity<Order>().HasData(_orders);
             //modelBuilder.Entity<Pizza>().HasData(_pizzas);
             //mode/*l*/Builder.Entity<Topping>().HasData(_toppings);
             //modelBuilder.Entity<Customer>().HasData(_customers);
