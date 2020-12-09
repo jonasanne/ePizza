@@ -10,6 +10,7 @@ using CartServices.Models;
 using CartServices.Repositories;
 using System.Diagnostics;
 using AutoMapper;
+using System.Security.Claims;
 
 namespace CartServices.Controllers
 {
@@ -21,6 +22,8 @@ namespace CartServices.Controllers
         private readonly ICartRepo cartRepo;
         private readonly IMapper mapper;
 
+        private readonly Guid TESTUSERID = ModelBuilderExtensions.TESTUSERID; // enkel in dev
+
         public CartsController(CartServicesContext context, ICartRepo cartRepo, IMapper mapper)
         {
             _context = context;
@@ -28,23 +31,48 @@ namespace CartServices.Controllers
             this.mapper = mapper;
         }
 
-
-
         // GET: api/Carts?c=Guid
+        //[Authorize]
         [HttpGet]
-        public async Task<ActionResult<CartItemDTO>> Get([FromQuery(Name = "c")] Guid id)
+        public async Task<ActionResult<CartItemDTO>> Get([FromQuery(Name = "c")] Guid cartId, [FromQuery(Name ="u")] Guid userId)
         {
-            if (id == null || id == Guid.Empty) // kan 0000 zijn
+            userId = TESTUSERID;
+            if (cartId == null || cartId == Guid.Empty) // kan 0000 zijn
             { 
-                return BadRequest(new { Message = $"cartid :{id} niet ingevuld." });
+                return BadRequest(new { Message = $"cartid :{cartId} niet ingevuld." });
             }
-            var cartItems = await cartRepo.GetCartItems(id); //async!
+            IList<Claim> lstClaims = this.User.Claims.Cast<Claim>().ToList();
+            //IDentityServices plaatst data in this.user.claims (IEnumerable<CLaim>)
+            //rede: UserManager kan maar vraagt  (zeker bij customising) ontdubbeling
+            if(userId == null || userId == Guid.Empty)
+            {
+                string userName = this.User.Claims.ElementAt(0).Value;
+                userName = lstClaims[0].Value;
+                string extraKey = lstClaims.ElementAt(2).Value;
+                Claim extraClaimObj = this.User.Claims.Where(c => c.Type == "myExtraKey").FirstOrDefault();
+                var thisUserId = User.FindFirst(ClaimTypes.NameIdentifier);
+                var thisUserEmail = User.FindFirst(ClaimTypes.Email);
+
+                string role = lstClaims[3].Value;
+                userId = Guid.Parse(lstClaims[3].Value);
+            }
+            else
+            {
+                var thisUserId = Guid.Parse(lstClaims[3].Value);
+
+                if(userId != thisUserId)
+                {
+                    return BadRequest(new { Message = $"User :{userId} niet correct." });
+                }
+            }
+
+            var cartItems = await cartRepo.GetCartItems(cartId); //async!
             var cartDTO = mapper.Map<IEnumerable<CartItemDTO>>(cartItems);
             return Ok(cartDTO);
 
         }
         
-        
+
         // GET: api/carts/customer?u=Guid
         [HttpGet("customer/")]
         public async Task<ActionResult<CartDTO>> GetCartsByCustomer([FromQuery(Name = "u")] Guid id)

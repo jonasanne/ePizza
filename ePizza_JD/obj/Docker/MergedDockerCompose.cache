@@ -15,6 +15,15 @@ services:
     volumes:
     - C:\Users\Rick\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
     - C:\Users\Rick\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+  cartservices:
+    build:
+      context: E:\VS2019\projects\FSWD\ePizza\ePizza_JD
+      dockerfile: CartServices/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    image: jonasanne/cartservices
+    ports:
+    - target: 80
   orderservices:
     build:
       context: E:\VS2019\projects\FSWD\ePizza\ePizza_JD
@@ -32,13 +41,13 @@ services:
   pizzaservices:
     build:
       context: E:\VS2019\projects\FSWD\ePizza\ePizza_JD
-      dockerfile: ePizza_JD.API/Dockerfile
+      dockerfile: PizzaServices/Dockerfile
     environment:
       ASPNETCORE_ENVIRONMENT: Development
-      ASPNETCORE_URLS: http://+:80
+      ASPNETCORE_URLS: https://+:443;http://+:80
     image: jonasanne/pizzaservices
     ports:
-    - published: 32770
+    - published: 32771
       target: 80
     volumes:
     - C:\Users\Rick\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
