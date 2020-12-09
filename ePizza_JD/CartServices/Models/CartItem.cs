@@ -30,15 +30,14 @@ namespace CartServices.Models
         public Guid ItemId { get; set; } = Guid.NewGuid();
         public string PizzaName { get; set; } //wordt Recipe (Name of Id) of iets anders
         public double PizzaPrice { get; set; } //wordt RecipePrice of …
-
         public PizzaTypes PizzaType { get; set; }
-
         [Required]
         [EnumDataType(typeof(Sizes), ErrorMessage = "{0} is geen geldige keuze.")]
         [Range(0, 1, ErrorMessage = "Wrong Choice.")]
         public Sizes Size { get; set; }
-
         public int Quantity { get; set; }
+
+
         //een virtuele collectie voor relatie aanmaak public Guid CartId { get; set; }
         public Guid CartId { get; set; }
         public virtual Cart Cart { get; set; }

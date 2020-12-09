@@ -55,3 +55,6 @@ E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\AutoMapper.Extensions.Microso
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\Microsoft.EntityFrameworkCore.SqlServer.dll
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\Microsoft.Data.SqlClient.dll
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\PizzaServices.pdb
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\CartServices.exe
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\CartServices.dll
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\bin\Debug\CartServices.pdb

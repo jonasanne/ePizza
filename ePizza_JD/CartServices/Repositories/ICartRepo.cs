@@ -9,9 +9,8 @@ namespace CartServices.Repositories
 {
     public interface ICartRepo
     {
-        Task<IEnumerable<CartItem>> GetCartItems(Guid userId);
-        Task<CartItem> InsertCartItem(Guid userId, CartItem cartItem);
-        Task UpdateCartItem(Guid userId, CartItem cartItem);
-        Task DeleteCartItem(Guid userId, Guid cartItemId);
+        Task<IEnumerable<CartItem>> GetCartItems(Guid cartId);
+        Task<IEnumerable<Cart>> GetCartsByUser(Guid userId);
+        Task<Cart> CreateCartWithItems(Guid userId, Cart cart);
     }
 }

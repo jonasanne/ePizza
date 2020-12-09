@@ -24,8 +24,15 @@ services:
 
 
   pizzaservices:
-    image: ${DOCKER_REGISTRY-}pizzaservices
+    image: ${DOCKER_REGISTRY-}jonasanne/pizzaservices
     build:
       context: .
       dockerfile: PizzaServices/Dockerfile
+
+
+  cartservices:
+    image: ${DOCKER_REGISTRY-}jonasanne/cartservices
+    build:
+      context: .
+      dockerfile: CartServices/Dockerfile
 

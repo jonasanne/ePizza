@@ -9,6 +9,7 @@ using CartServices.Data;
 using CartServices.Models;
 using CartServices.Repositories;
 using System.Diagnostics;
+using AutoMapper;
 
 namespace CartServices.Controllers
 {
@@ -18,56 +19,81 @@ namespace CartServices.Controllers
     {
         private readonly CartServicesContext _context;
         private readonly ICartRepo cartRepo;
+        private readonly IMapper mapper;
 
-        public CartsController(CartServicesContext context, ICartRepo cartRepo)
+        public CartsController(CartServicesContext context, ICartRepo cartRepo, IMapper mapper)
         {
             _context = context;
             this.cartRepo = cartRepo;
+            this.mapper = mapper;
         }
 
 
 
-        // GET: api/Carts?u=Guid
+        // GET: api/Carts?c=Guid
         [HttpGet]
-        public async Task<ActionResult<Cart>> Get([FromQuery(Name = "u")] Guid id)
+        public async Task<ActionResult<CartItemDTO>> Get([FromQuery(Name = "c")] Guid id)
+        {
+            if (id == null || id == Guid.Empty) // kan 0000 zijn
+            { 
+                return BadRequest(new { Message = $"cartid :{id} niet ingevuld." });
+            }
+            var cartItems = await cartRepo.GetCartItems(id); //async!
+            var cartDTO = mapper.Map<IEnumerable<CartItemDTO>>(cartItems);
+            return Ok(cartDTO);
+
+        }
+        
+        
+        // GET: api/carts/customer?u=Guid
+        [HttpGet("customer/")]
+        public async Task<ActionResult<CartDTO>> GetCartsByCustomer([FromQuery(Name = "u")] Guid id)
         {
             if (id == null || id == Guid.Empty) // kan 0000 zijn
             { 
                 return BadRequest(new { Message = $"User {id} niet ingevuld." });
             }
-            var cartItems = await cartRepo.GetCartItems(id); //async!
-            return Ok(cartItems);
-    }
+            var carts = await cartRepo.GetCartsByUser(id); //async!
+            var cartsDTO = mapper.Map<IEnumerable<CartDTO>>(carts);
 
-        // PUT: api/Carts/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutCart([FromQuery(Name = "u")] Guid userId, [FromBody] CartItem cartItem)
-        {
-            //TODO LATER UITWERKEN
-            return null;
+            return Ok(cartsDTO);
+
         }
 
         // POST: api/Carts
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Cart>> PostCart([FromQuery(Name = "u")] Guid userId, [FromBody] CartItem cartItem)
+        public async Task<ActionResult<Cart>> PostCart([FromQuery(Name = "u")] Guid userId, [FromBody] Cart cart)
         {
-
             //TODO: error checks
             if (userId == null || userId == Guid.Empty) // kan 0000 zijn
             {
                 return BadRequest(new { Message = $"User {userId} niet ingevuld." });
             }
-            if(cartItem == null)
+            if(cart == null)
             {
-                return BadRequest(new { Message = $"Geen geldig cartItem meegegeven" });
-
+                return BadRequest(new { Message = $"Geen geldig cart meegegeven" });
             }
-            await cartRepo.InsertCartItem(userId, cartItem);
-            return new OkResult();
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            try
+            {
+                await cartRepo.CreateCartWithItems(userId,cart);
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                //Customised gebruikers error
+                return RedirectToAction("HandleErrorCode", "Error", new
+                {
+                    statusCode = 400,
+                    errorMessage = $"het toevoegen van cart met id: {cart.CartId} is niet gelukt."
+                });
+            }
+
         }
 
         // DELETE: api/Carts/5
@@ -84,6 +110,9 @@ namespace CartServices.Controllers
                 return BadRequest(new { Message = $"geen user meegegeven" });
             }
             var items = cartRepo.GetCartItems(userId);
+
+
+
 
             return null;
         }

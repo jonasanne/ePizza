@@ -29,6 +29,35 @@ services:
       com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
       com.microsoft.visualstudio.debuggee.killprogram: "/bin/sh -c \"if PID=$$(pidof dotnet); then kill $$PID; fi\""
     tty: true
+  cartservices:
+    image: jonasanne/cartservices:dev
+    container_name: CartServices
+    build:
+      target: base
+      labels:
+        com.microsoft.created-by: "visual-studio"
+        com.microsoft.visual-studio.project-name: "CartServices"
+    environment:
+      - DOTNET_USE_POLLING_FILE_WATCHER=1
+      - ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS=true
+      - NUGET_FALLBACK_PACKAGES=/root/.nuget/fallbackpackages
+    volumes:
+      - E:\VS2019\projects\FSWD\ePizza\ePizza_JD\CartServices:/app
+      - E:\VS2019\projects\FSWD\ePizza\ePizza_JD:/src
+      - C:\Users\Rick\vsdbg\vs2017u5:/remote_debugger:rw
+      - C:\Users\Rick\.nuget\packages\:/root/.nuget/packages:ro
+      - C:\Microsoft\Xamarin\NuGet\:/root/.nuget/fallbackpackages:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+
+    entrypoint: tail -f /dev/null
+    labels:
+      com.microsoft.visualstudio.debuggee.program: "dotnet"
+      com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /root/.nuget/packages --additionalProbingPath /root/.nuget/fallbackpackages  \"/app/bin/Debug/netcoreapp3.1/CartServices.dll\""
+      com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
+      com.microsoft.visualstudio.debuggee.killprogram: "/bin/sh -c \"if PID=$$(pidof dotnet); then kill $$PID; fi\""
+    tty: true
+
   orderservices:
     image: jonasanne/orderservices:dev
     container_name: OrderServices_1
@@ -59,7 +88,7 @@ services:
     tty: true
 
   pizzaservices:
-    image: pizzaservices:dev
+    image: jonasanne/pizzaservices:dev
     container_name: PizzaServices
     build:
       target: base

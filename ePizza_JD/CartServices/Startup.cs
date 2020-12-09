@@ -6,12 +6,17 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
+using AutoMapper;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using CartServices.Data;
 using CartServices.Repositories;
+using Microsoft.OpenApi.Models;
+using System.Reflection;
+using System.IO;
+using CartServices.Models;
 
 namespace CartServices
 {
@@ -52,7 +57,15 @@ namespace CartServices
             services.AddScoped(typeof(ICartRepo), typeof(CartRepo));
             services.AddScoped(typeof(IGenericRepo<>), typeof(GenericRepo<>));
 
+            ////4. Mapper 
+            services.AddAutoMapper(typeof(CartServicesProfiles));
 
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1.0", new OpenApiInfo { Title = "CartService v1.0", Version = "v1.0" });
+                //c.IncludeXmlComments(xmlPath);
+
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -62,6 +75,12 @@ namespace CartServices
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseSwagger(); //enable swagger
+            app.UseSwaggerUI(c =>
+            {
+                c.RoutePrefix = "swagger"; //path naar de UI: /swagger/index.html
+                c.SwaggerEndpoint("/swagger/v1.0/swagger.json", "CartService v1.0");
+            });
 
             app.UseRouting();
 

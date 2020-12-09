@@ -45,9 +45,10 @@ namespace ePizza_JD.API
 
             //1. context
             //online server
-            //var connectionString = Configuration.GetConnectionString("DB");
+            var connectionString = Configuration.GetConnectionString("DB");
             //local
-            var connectionString = Configuration.GetConnectionString("LocalDB");
+
+            //var connectionString = Configuration.GetConnectionString("LocalDB");
             services.AddDbContext<PizzaServiceDbContext>(options => options.UseSqlServer(connectionString), ServiceLifetime.Scoped);
             
 
@@ -102,9 +103,6 @@ namespace ePizza_JD.API
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "ePizza_JD");
             });
 
-            //app.UseCors("MyAllowOrigins");
-
-            //app.UseHttpsRedirection();
 
             app.UseRouting();
 
@@ -114,9 +112,6 @@ namespace ePizza_JD.API
             {
                 endpoints.MapControllers();
             });
-
-            //context.SeedRoles(roleManager);
-            //context.SeedUsers(userManager);
         }
     }
 }

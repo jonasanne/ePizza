@@ -24,7 +24,7 @@
       "useSSL": true
     },
     "PizzaServices": {
-      "commandName": "Project"
+      "commandName": "Docker"
     }
   }
 }

@@ -14,17 +14,13 @@ namespace CartServices.Repositories
         {
 
         }
-        public Task DeleteCartItem(Guid userId, Guid cartItemId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<IEnumerable<CartItem>> GetCartItems(Guid userId)
+        //GET
+        public async Task<IEnumerable<CartItem>> GetCartItems(Guid cartId)
         {
             Cart cart = await _context.Carts
                 .Include(c => c.CartItems)
                 .AsNoTracking()
-                .Where(c => c.CustomerId == userId).FirstOrDefaultAsync();
+                .Where(c => c.CartId == cartId).FirstOrDefaultAsync();
             //FirstOrDefault niet vergeten (=must voor single Cart return)
             if (cart != null)
             {
@@ -35,6 +31,15 @@ namespace CartServices.Repositories
                 return new List<CartItem>();
             }
         }
+
+        public async Task<Cart> CreateCartWithItems(Guid userId, Cart cart)
+        {
+            cart.CustomerId = userId;
+            await _context.Carts.AddAsync(cart);
+            await _context.SaveChangesAsync();
+            return cart;
+        }
+
 
         public async Task<CartItem> InsertCartItem(Guid userId, CartItem cartItem)
         {
@@ -64,6 +69,7 @@ namespace CartServices.Repositories
                         else
                         {
                             //TODO:afspreken met front -> add of update bij wijziging? 
+
                             cartItem.Quantity += existsItem.Quantity;
                             _context.Entry<CartItem>(cartItem).State = EntityState.Added;
                         }
@@ -86,9 +92,17 @@ namespace CartServices.Repositories
 
         }
 
-        public Task UpdateCartItem(Guid userId, CartItem cartItem)
+
+        public async Task<IEnumerable<Cart>> GetCartsByUser(Guid userId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return await _context.Carts.OrderBy(c => c.DateOfEntry).Include(c => c.CartItems).Where(c => c.CustomerId == userId).ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

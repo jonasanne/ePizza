@@ -28,10 +28,10 @@ namespace CartServices.Models
         public OrderTypes OrderType { get; set; }
 
         public int TimeToPrepare { get; set; } // minutes
-
+        public DateTime DateOfEntry { get; set; } = DateTime.Now;
 
         [Required]
-        public Guid CustomerId { get; set; } = Guid.NewGuid(); // virtuele collectie in een oneToMany relatie
+        public Guid CustomerId { get; set; }
         public ICollection<CartItem> CartItems { get; set; } = new List<CartItem>();
     }
 }
