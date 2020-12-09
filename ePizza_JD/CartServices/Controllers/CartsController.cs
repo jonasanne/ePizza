@@ -70,7 +70,7 @@ namespace CartServices.Controllers
             var cartDTO = mapper.Map<IEnumerable<CartItemDTO>>(cartItems);
             return Ok(cartDTO);
 
-        }
+        } 
         
 
         // GET: api/carts/customer?u=Guid
