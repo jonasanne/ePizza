@@ -64,7 +64,7 @@ namespace CartServices.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Cart>> PostCart([FromQuery(Name = "u")] Guid userId, [FromBody] Cart cart)
+        public async Task<ActionResult<Cart>> PostCart([FromQuery(Name = "u")] Guid userId, [FromBody][Bind("OrderType, CustomerId, CartItems, TimeToPrepare")] Cart cart)
         {
             //TODO: error checks
             if (userId == null || userId == Guid.Empty) // kan 0000 zijn
