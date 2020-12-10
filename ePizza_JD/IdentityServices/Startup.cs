@@ -30,15 +30,27 @@ namespace IdentityServices
         {
             //1. context
             //online server
-            //var connectionString = Configuration.GetConnectionString("DB");
+            var connectionString = Configuration.GetConnectionString("DB");
             //local
-            var connectionString = Configuration.GetConnectionString("LocalDB");
+            //var connectionString = Configuration.GetConnectionString("LocalDB");
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(connectionString));
 
+            //2b. Cors 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("MyAllowOrigins", builder =>
+                {
+                    builder.AllowAnyMethod()
+                    .AllowAnyHeader()
+                    //.AllowAnyOrigin() // niet toegelaten indien credentials
+                    .WithOrigins("https://localhost", "http://localhost:8080", "https://epizza.netlify.app")
+                    .AllowCredentials();
+                });
+            });
 
             //>>>aanpassen voor customised user en rol -----------------------------------------
-            
+
             //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
             //    .AddEntityFrameworkStores<ApplicationDbContext>();
 
@@ -68,6 +80,7 @@ namespace IdentityServices
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseCors("MyAllowOrigins");
 
             app.UseRouting();
 

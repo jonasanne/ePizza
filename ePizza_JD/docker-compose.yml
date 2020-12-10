@@ -36,3 +36,10 @@ services:
       context: .
       dockerfile: CartServices/Dockerfile
 
+
+  identityservices:
+    image: ${DOCKER_REGISTRY-}jonasanne/identityservices
+    build:
+      context: .
+      dockerfile: IdentityServices/Dockerfile
+

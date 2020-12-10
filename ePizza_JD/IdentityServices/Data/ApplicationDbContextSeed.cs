@@ -52,11 +52,10 @@ namespace IdentityServices.Data
                 User customer1 = new User
                 {
                     Id = Guid.NewGuid().ToString(),
-                    UserName = "Customer@1",
+                    UserName = "customer1@howest.be",
                     Email = "customer1@howest.be",
-                    CardNumber = "2222 2222 2222 2222"
+                    CardNumber = "3333 3333 3333 3333"
                 };
-
                 var userResult = await userManager.CreateAsync(customer1, "Customer@1");
                 await userManager.AddToRoleAsync(customer1, "Customer");
 
@@ -70,30 +69,46 @@ namespace IdentityServices.Data
 
         private async static Task SeedAdmins(UserManager<User> userManager, RoleManager<Role> roleManager)
         {
-            var nmbrAdmins = 2;
-            for (var i = 1; i <= nmbrAdmins; i++)
+
+            if (userManager.FindByNameAsync("docent@howest.be").Result == null)
             {
-
-                if (userManager.FindByNameAsync("Admin@" + i).Result == null)
+                User admin = new User
                 {
-                    User admin = new User
-                    {
-                        Id = Guid.NewGuid().ToString(),
-                        UserName = "Admin@" + i,
-                        Email = "emailAdmin" + i + "@howest.be",
-                        CardNumber = "1111 1111 1111 1111"
-                    };
+                    Id = Guid.NewGuid().ToString(),
+                    UserName = "docent@howest.be",
+                    Email = "docent@howest.be",
+                    CardNumber = "1111 1111 1111 1111"
+                };
 
-                    var userResult = await userManager.CreateAsync(admin, "Admin@" + i);
-                    var role = roleManager.Roles.Where(r => r.Name.StartsWith("Admin")).FirstAsync().Result;
-                    await userManager.AddToRoleAsync(admin, role.Name);
 
-                    if (!userResult.Succeeded)
-                    {
-                        throw new Exception($"{admin.Email} not logged in");
-                    }
+                var userResult = await userManager.CreateAsync(admin, "Docent@1");
+                var role = roleManager.Roles.Where(r => r.Name.StartsWith("Admin")).FirstAsync().Result;
+                await userManager.AddToRoleAsync(admin, role.Name);
+                if (!userResult.Succeeded)
+                {
+                    throw new Exception($"{admin.Email} not logged in");
                 }
             }
+            if (userManager.FindByNameAsync("Jonas").Result == null)
+            {
+                User admin = new User
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    UserName = "Jonas",
+                    Email = "jonasanne@outlook.com",
+                    CardNumber = "1111 1111 1111 1111"
+                };
+
+                var userResult = await userManager.CreateAsync(admin, "Student@1");
+                var role = roleManager.Roles.Where(r => r.Name.StartsWith("Admin")).FirstAsync().Result;
+                await userManager.AddToRoleAsync(admin, role.Name);
+
+                if (!userResult.Succeeded)
+                {
+                    throw new Exception($"{admin.Email} not logged in");
+                }
+            }
+
         }
 
         private static async Task SeedRoles(RoleManager<Role> roleManager)

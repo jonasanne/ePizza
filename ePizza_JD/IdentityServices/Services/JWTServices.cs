@@ -39,7 +39,7 @@ public class JWTServices<TEntity> where TEntity : IdentityUser
 
         //1. Gebruiker opzoeken in de database met async UserManager en hash vergelijking
 
-        TEntity user ;
+        TEntity user;
         
         try
         {

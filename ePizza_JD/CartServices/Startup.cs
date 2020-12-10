@@ -45,10 +45,10 @@ namespace CartServices
             //1. context
 
             //online server
-            //var connectionString = Configuration.GetConnectionString("DB");
+            var connectionString = Configuration.GetConnectionString("DB");
 
             //local
-            var connectionString = Configuration.GetConnectionString("LocalDB");
+            //var connectionString = Configuration.GetConnectionString("LocalDB");
             services.AddDbContext<CartServicesContext>(options => options.UseSqlServer(connectionString), ServiceLifetime.Scoped);
 
 
@@ -56,6 +56,20 @@ namespace CartServices
             //3. Repos
             services.AddScoped(typeof(ICartRepo), typeof(CartRepo));
             services.AddScoped(typeof(IGenericRepo<>), typeof(GenericRepo<>));
+
+            //Cors 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("MyAllowOrigins", builder =>
+                {
+                    builder.AllowAnyMethod()
+                    .AllowAnyHeader()
+                    //.AllowAnyOrigin() // niet toegelaten indien credentials
+                    .WithOrigins("https://localhost", "http://localhost:8080", "https://epizza.netlify.app")
+                    .AllowCredentials();
+                });
+            });
+
 
             ////4. Mapper 
             services.AddAutoMapper(typeof(CartServicesProfiles));
@@ -81,7 +95,7 @@ namespace CartServices
                 c.RoutePrefix = "swagger"; //path naar de UI: /swagger/index.html
                 c.SwaggerEndpoint("/swagger/v1.0/swagger.json", "CartService v1.0");
             });
-
+            app.UseCors("MyAllowOrigins");
             app.UseRouting();
 
             app.UseAuthorization();

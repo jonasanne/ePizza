@@ -47,6 +47,20 @@ namespace RestaurantServices
             services.AddScoped(typeof(IReviewRepo), typeof(ReviewRepo));
 
             services.AddScoped<Seeder>(); // geen singleton mogelijk
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("MyAllowOrigins", builder =>
+                {
+                    builder.AllowAnyMethod()
+                    .AllowAnyHeader()
+                    //.AllowAnyOrigin() // niet toegelaten indien credentials
+                    .WithOrigins("https://localhost", "http://localhost:8080", "https://epizza.netlify.app")
+                    .AllowCredentials();
+                });
+            });
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -62,6 +76,8 @@ namespace RestaurantServices
             };
 
             app.UseHttpsRedirection();
+
+            app.UseCors("MyAllowOrigins");
 
             app.UseRouting();
 
