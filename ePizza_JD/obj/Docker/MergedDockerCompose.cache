@@ -23,7 +23,8 @@ services:
       ASPNETCORE_ENVIRONMENT: Development
     image: jonasanne/cartservices
     ports:
-    - target: 80
+    - published: 32779
+      target: 80
   identityservices:
     build:
       context: E:\VS2019\projects\FSWD\ePizza\ePizza_JD

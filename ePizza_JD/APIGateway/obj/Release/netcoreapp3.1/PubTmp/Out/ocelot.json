@@ -1,0 +1,189 @@
+
+  {
+    "Routes": [
+      //Pizza services
+      {
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "PizzaServices",
+            "Port": 80 //https poort van de service
+          }
+        ],
+        "DownstreamPathTemplate": "/api/Pizzas",
+        "DownstreamScheme": "http",
+        "UpstreamPathTemplate": "/Pizzas",
+        "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+        "AuthenticationOptions": {
+          "AuthenticationProviderKey": "PizzasAPIKey", //default is Bearer"
+          "AllowedScopes": []
+        }
+      },
+      {
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "PizzaServices",
+            "Port": 80 //https poort van de service
+          }
+        ],
+        "DownstreamPathTemplate": "/api/Pizzas/{params}",
+        "DownstreamScheme": "http",
+        "UpstreamPathTemplate": "/Pizzas/{params}",
+        "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+        "AuthenticationOptions": {
+          "AuthenticationProviderKey": "PizzasAPIKey", //default is Bearer"
+          "AllowedScopes": []
+        }
+      },
+      //topping services
+      {
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "PizzaServices",
+            "Port": 80 //https poort van de service
+          }
+        ],
+        "DownstreamPathTemplate": "/api/Toppings",
+        "DownstreamScheme": "http",
+        "UpstreamPathTemplate": "/Toppings",
+        "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+        "AuthenticationOptions": {
+          "AuthenticationProviderKey": "PizzasAPIKey", //default is Bearer"
+          "AllowedScopes": []
+        }
+      },
+      {
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "PizzaServices",
+            "Port": 80 //https poort van de service
+          }
+        ],
+        "DownstreamPathTemplate": "/api/Toppings/{params}",
+        "DownstreamScheme": "http",
+        "UpstreamPathTemplate": "/Toppings/{params}",
+        "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+        "AuthenticationOptions": {
+          "AuthenticationProviderKey": "PizzasAPIKey", //default is Bearer"
+          "AllowedScopes": []
+        }
+      },
+      //review services
+      {
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "PizzaServices",
+            "Port": 80 //https poort van de service
+          }
+        ],
+        "DownstreamPathTemplate": "/api/Reviews",
+        "DownstreamScheme": "http",
+        "UpstreamPathTemplate": "/Reviews",
+        "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+        "AuthenticationOptions": {
+          "AuthenticationProviderKey": "PizzasAPIKey", //default is Bearer"
+          "AllowedScopes": []
+        }
+      },
+      {
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "PizzaServices",
+            "Port": 80 //https poort van de service
+          }
+        ],
+        "DownstreamPathTemplate": "/api/Reviews/{params}",
+        "DownstreamScheme": "http",
+        "UpstreamPathTemplate": "/Reviews/{params}",
+        "UpstreamHttpMethod": [ "GET", "POST", "DELETE" ],
+        "AuthenticationOptions": {
+          "AuthenticationProviderKey": "PizzasAPIKey", //default is Bearer"
+          "AllowedScopes": []
+        }
+      },
+      //Restaurant services
+      {
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "RestaurantServices",
+            "Port": 80 //https poort van de service
+          }
+        ],
+        "DownstreamPathTemplate": "/api/Restaurants",
+        "DownstreamScheme": "http",
+        "UpstreamPathTemplate": "/Restaurants",
+        "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+        "AuthenticationOptions": {
+          "AuthenticationProviderKey": "PizzasAPIKey", //default is Bearer"
+          "AllowedScopes": []
+        }
+      },
+      {
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "RestaurantServices",
+            "Port": 80 //https poort van de service
+          }
+        ],
+        "DownstreamPathTemplate": "/api/Restaurants/{params}",
+        "DownstreamScheme": "http",
+        "UpstreamPathTemplate": "/Restaurants/{params}",
+        "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+        "AuthenticationOptions": {
+          "AuthenticationProviderKey": "PizzasAPIKey", //default is Bearer"
+          "AllowedScopes": []
+        }
+      },
+      //Cart services
+      {
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "CartServices",
+            "Port": 80 //https poort van de service
+          }
+        ],
+        "DownstreamPathTemplate": "/api/Carts",
+        "DownstreamScheme": "http",
+        "UpstreamPathTemplate": "/Carts",
+        "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+        "AuthenticationOptions": {
+          "AuthenticationProviderKey": "PizzasAPIKey", //default is Bearer"
+          "AllowedScopes": []
+        }
+      },
+      {
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "CartServices",
+            "Port": 80 //https poort van de service
+          }
+        ],
+        "DownstreamPathTemplate": "/api/Carts/{params}",
+        "DownstreamScheme": "http",
+        "UpstreamPathTemplate": "/Carts/{params}",
+        "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+        "AuthenticationOptions": {
+          "AuthenticationProviderKey": "PizzasAPIKey", //default is Bearer"
+          "AllowedScopes": []
+        }
+      },
+      //Identity services
+      {
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "IdentityServices",
+            "Port": 80 //https poort van de service
+          }
+        ],
+        "DownstreamPathTemplate": "/api/auth/login",
+        "DownstreamScheme": "http",
+        "UpstreamPathTemplate": "/auth/login",
+        "UpstreamHttpMethod": ["POST"]
+      }
+    ],
+    "GlobalConfiguration": {
+      "RequestIdKey": "OcRequestId",
+      "BaseUrl": "https://localhost:32776",
+      "https": 32776 //localhost:44382 //https poort van de gateway
+    }
+  }
+

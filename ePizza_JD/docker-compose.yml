@@ -7,39 +7,47 @@ services:
     build:
       context: .
       dockerfile: RestaurantServices/Dockerfile
-
+    ports:
+        - "32772:80"
+        
 
   orderservices:
     image: ${DOCKER_REGISTRY-}jonasanne/orderservices
     build:
       context: .
       dockerfile: OrderServices/Dockerfile
-
-
+    ports:
+        - "32774:80"
   apigateway:
     image: ${DOCKER_REGISTRY-}jonasanne/apigateway
     build:
       context: .
       dockerfile: APIGateway/Dockerfile
-
-
+    ports:
+        - "32776:80"
+        - "32777:443"
   pizzaservices:
     image: ${DOCKER_REGISTRY-}jonasanne/pizzaservices
     build:
       context: .
       dockerfile: PizzaServices/Dockerfile
-
+    ports:
+        - "32771:80"
 
   cartservices:
     image: ${DOCKER_REGISTRY-}jonasanne/cartservices
     build:
       context: .
       dockerfile: CartServices/Dockerfile
-
+    ports:
+        - "32779:80"
 
   identityservices:
     image: ${DOCKER_REGISTRY-}jonasanne/identityservices
     build:
       context: .
       dockerfile: IdentityServices/Dockerfile
+    ports:
+        - "32778:80"
+
 
