@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using ePizza_JD.Models;
 using ePizza_JD.Models.Data;
 using ePizza_JD.Models.Repositories;
 using ePizza_JD.WebApp.Data;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -20,6 +22,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 
 namespace ePizza_JD.API
@@ -43,6 +46,30 @@ namespace ePizza_JD.API
             .AddNewtonsoftJson(options =>
             options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
+
+            services.AddAuthentication(svc =>
+            {
+                svc.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                svc.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(Configuration.GetSection("Tokens:AuthenticationProviderKey").Value,
+            options =>
+            {
+                options.RequireHttpsMetadata = false;
+                //options.Audience = //Configuration.GetSection("Tokens:Audience").Value;
+                //options.ClaimsIssuer = Configuration.GetSection("Tokens:Issuer").Value;
+                options.TokenValidationParameters = new TokenValidationParameters()
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = Configuration["Tokens:Issuer"],
+                    ValidAudience = Configuration["Tokens:Audience"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Tokens:Key"]))
+                };
+                options.SaveToken = true;
+            });
+            
             //1. context
             //online server
             var connectionString = Configuration.GetConnectionString("DB");

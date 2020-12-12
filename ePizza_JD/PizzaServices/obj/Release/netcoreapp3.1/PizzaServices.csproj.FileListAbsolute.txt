@@ -186,3 +186,4 @@ E:\VS2019\projects\FSWD\ePizza\ePizza_JD\PizzaServices\obj\Release\netcoreapp3.1
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\PizzaServices\obj\Release\netcoreapp3.1\PizzaServices.dll
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\PizzaServices\obj\Release\netcoreapp3.1\PizzaServices.pdb
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\PizzaServices\obj\Release\netcoreapp3.1\PizzaServices.genruntimeconfig.cache
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\PizzaServices\bin\Release\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll

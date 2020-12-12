@@ -22,9 +22,9 @@ namespace OrderServices
                 var services = scope.ServiceProvider;
                 try
                 {
-                    var context = services.GetRequiredService<OrderServiceDbContext>();
+                    //var context = services.GetRequiredService<OrderServiceDbContext>();
                     //context.Database.EnsureDeleted();//verwijder (-> niet doen in productie)
-                    context.Database.EnsureCreated(); //maakt db aan, indien onbestaand, volgens modellen
+                    //context.Database.EnsureCreated(); //maakt db aan, indien onbestaand, volgens modellen
 
                     //context.Database.Migrate();//maakt db aan, indien onbestaand en voert migraties uit (HasData)
                     //context kan je via property dependancy doorgeven indien nodig

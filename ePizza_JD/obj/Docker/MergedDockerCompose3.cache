@@ -1,0 +1,170 @@
+services:
+  apigateway:
+    build:
+      context: E:\VS2019\projects\FSWD\ePizza\ePizza_JD
+      dockerfile: APIGateway/Dockerfile
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: APIGateway
+    container_name: APIGateway
+    entrypoint: tail -f /dev/null
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: https://+:443;http://+:80
+    image: jonasanne/apigateway
+    labels:
+      com.microsoft.visual-studio.project-name: APIGateway
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages
+        --additionalProbingPath /root/.nuget/fallbackpackages  "/app/APIGateway.dll"'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/sh -c "if PID=$$(pidof
+        dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    ports:
+    - target: 80
+    - target: 443
+    tty: true
+    volumes:
+    - C:\Users\Rick\vsdbg\vs2017u5:/remote_debugger:rw
+    - C:\Users\Rick\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\Rick\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+  cartservices:
+    build:
+      context: E:\VS2019\projects\FSWD\ePizza\ePizza_JD
+      dockerfile: CartServices/Dockerfile
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: CartServices
+    container_name: CartServices
+    entrypoint: tail -f /dev/null
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    image: jonasanne/cartservices
+    labels:
+      com.microsoft.visual-studio.project-name: CartServices
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages
+        --additionalProbingPath /root/.nuget/fallbackpackages  "/app/CartServices.dll"'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/sh -c "if PID=$$(pidof
+        dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    ports:
+    - target: 80
+    tty: true
+    volumes:
+    - C:\Users\Rick\vsdbg\vs2017u5:/remote_debugger:rw
+    - C:\Users\Rick\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\Rick\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+  identityservices:
+    build:
+      context: E:\VS2019\projects\FSWD\ePizza\ePizza_JD
+      dockerfile: IdentityServices/Dockerfile
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: IdentityServices
+    container_name: IdentityServices
+    entrypoint: tail -f /dev/null
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:80
+    image: jonasanne/identityservices
+    labels:
+      com.microsoft.visual-studio.project-name: IdentityServices
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages
+        --additionalProbingPath /root/.nuget/fallbackpackages  "/app/IdentityServices.dll"'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/sh -c "if PID=$$(pidof
+        dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    ports:
+    - target: 80
+    tty: true
+    volumes:
+    - C:\Users\Rick\vsdbg\vs2017u5:/remote_debugger:rw
+    - C:\Users\Rick\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\Rick\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+  orderservices:
+    build:
+      context: E:\VS2019\projects\FSWD\ePizza\ePizza_JD
+      dockerfile: OrderServices/Dockerfile
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: OrderServices
+    container_name: OrderServices
+    entrypoint: tail -f /dev/null
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:80
+    image: jonasanne/orderservices
+    labels:
+      com.microsoft.visual-studio.project-name: OrderServices
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages
+        --additionalProbingPath /root/.nuget/fallbackpackages  "/app/OrderServices.dll"'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/sh -c "if PID=$$(pidof
+        dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    ports:
+    - target: 80
+    tty: true
+    volumes:
+    - C:\Users\Rick\vsdbg\vs2017u5:/remote_debugger:rw
+    - C:\Users\Rick\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\Rick\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+  pizzaservices:
+    build:
+      context: E:\VS2019\projects\FSWD\ePizza\ePizza_JD
+      dockerfile: PizzaServices/Dockerfile
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: PizzaServices
+    container_name: PizzaServices
+    entrypoint: tail -f /dev/null
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: https://+:443;http://+:80
+    image: jonasanne/pizzaservices
+    labels:
+      com.microsoft.visual-studio.project-name: PizzaServices
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages
+        --additionalProbingPath /root/.nuget/fallbackpackages  "/app/PizzaServices.dll"'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/sh -c "if PID=$$(pidof
+        dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    ports:
+    - target: 80
+    tty: true
+    volumes:
+    - C:\Users\Rick\vsdbg\vs2017u5:/remote_debugger:rw
+    - C:\Users\Rick\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\Rick\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+  restaurantservices:
+    build:
+      context: E:\VS2019\projects\FSWD\ePizza\ePizza_JD
+      dockerfile: RestaurantServices/Dockerfile
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: RestaurantServices
+    container_name: RestaurantServices
+    entrypoint: tail -f /dev/null
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:80
+    image: jonasanne/restaurantservices
+    labels:
+      com.microsoft.visual-studio.project-name: RestaurantServices
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages
+        --additionalProbingPath /root/.nuget/fallbackpackages  "/app/RestaurantServices.dll"'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/sh -c "if PID=$$(pidof
+        dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    ports:
+    - target: 80
+    tty: true
+    volumes:
+    - C:\Users\Rick\vsdbg\vs2017u5:/remote_debugger:rw
+    - C:\Users\Rick\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\Rick\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+version: '3.4'

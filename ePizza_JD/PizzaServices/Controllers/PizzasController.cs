@@ -14,6 +14,7 @@ using Microsoft.VisualStudio.Web.CodeGeneration.Contracts.Messaging;
 using System.Text.Encodings.Web;
 using System.Net;
 using ePizza_JD.API.Controllers;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ePizza_JD.API.Controller
 {
@@ -38,6 +39,7 @@ namespace ePizza_JD.API.Controller
         }
 
         // GET: api/Pizzas
+        [AllowAnonymous]
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<PizzaDTO>), StatusCodes.Status200OK)]
         public async Task<ActionResult<IEnumerable<PizzaDTO>>> GetPizzas()
@@ -63,6 +65,7 @@ namespace ePizza_JD.API.Controller
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(PizzaDTO), (int)HttpStatusCode.OK)]
+        [AllowAnonymous]
         [HttpGet("{id:Guid}")]
         public async Task<ActionResult<PizzaDTO>> GetPizzaById(Guid id)
         {
@@ -93,6 +96,7 @@ namespace ePizza_JD.API.Controller
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> PutPizza(Guid id, PizzaEditCreateDTO pizzaDTO)
         {
             //1. checks
@@ -172,6 +176,7 @@ namespace ePizza_JD.API.Controller
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status409Conflict)]
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<PizzaEditCreateDTO>> PostPizza([FromBody] [Bind("Name,Price,ImgUrl,Toppings")] PizzaEditCreateDTO pizzaDTO)
         {
 
@@ -235,6 +240,7 @@ namespace ePizza_JD.API.Controller
 
         // DELETE: api/Pizzas/5
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<Pizza>> DeletePizza(Guid id)
         {
             var pizzas = await genericRepo.GetByExpressionAsync(c => c.PizzaId == id);
