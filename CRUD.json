@@ -68,3 +68,16 @@
     "rating": 0, //op 5
     "pizzaId": "string"
 }
+
+
+//--------------- Restaurants ---------------
+// CREATE Restaurant
+{
+    "name": "string",
+    "street": "string",
+    "houseNumber": "string",
+    "postalCode": "string",
+    "main_city_name": "string",
+    "phone1": "string",
+    "description": "string"
+}
