@@ -1,6 +1,6 @@
 //--------------- pizzas --------------- klaar
 
-// CREATE with toppings
+// CREATE pizza with toppings
 {
     "name": "Pizza jonas",
     "price": 10,
@@ -46,3 +46,25 @@
 
 
 //--------------- toppings ---------------
+// CREATE TOPPING
+{
+    "name": "Topping name",
+    "price": 1.2,
+}
+
+// UPDATE TOPPING
+{
+    "id": "GUID",
+    "name": "Topping name",
+    "price": 1.2,
+}
+
+
+//--------------- pizzareviews ---------------
+// CREATE PIZZAREVIEW
+{
+    "title": "string",
+    "description": "string",
+    "rating": 0, //op 5
+    "pizzaId": "string"
+}
