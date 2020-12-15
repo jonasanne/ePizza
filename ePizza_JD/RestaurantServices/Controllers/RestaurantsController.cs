@@ -38,14 +38,11 @@ namespace RestaurantServices.Controllers
             {
                 return BadRequest();
             }
-
             var resto = await restaurantRepo.Get(id);
-
             if (resto == null)
             {
                 return NotFound();
             }
-
             // var restoDTO = mapper.Map<RestaurantDTO>(resto);
             return Ok(resto);
         }

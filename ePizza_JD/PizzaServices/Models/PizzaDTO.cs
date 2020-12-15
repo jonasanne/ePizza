@@ -14,8 +14,7 @@ namespace ePizza_JD.Models
         public string Name { get; set; }
         public double Price { get; set; }
         public string ImgUrl { get; set; }
-
-        public string[] Topppings { get; set; }
+        public string[] Toppings { get; set; }
         public IEnumerable<ReviewDTO> Reviews { get; set; }
     }
 }
