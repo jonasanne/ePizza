@@ -14,8 +14,8 @@ namespace IdentityServices.Models
         [Required]
         public string Password { get; set; }
 
-        [Required]
-        public string CardNumber { get; set; }
+        //[Required]
+        //public string CardNumber { get; set; }
 
 
 
