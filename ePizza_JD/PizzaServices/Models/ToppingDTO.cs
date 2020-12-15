@@ -8,7 +8,7 @@ namespace ePizza_JD.Models
     public class ToppingDTO
     {
         //[Key]
-        //public Guid Id { get; set; } = Guid.NewGuid();
+        public Guid Id { get; set; }
         public string Name { get; set; }
         public double Price { get; set; }
 

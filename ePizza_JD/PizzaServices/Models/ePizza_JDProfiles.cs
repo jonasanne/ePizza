@@ -47,7 +47,7 @@ namespace ePizza_JD.Models
             //Pizza Mapping:------------------------------------------------
             CreateMap<Pizza, PizzaDTO>()
             .ForMember(dest => dest.Id, src => src.MapFrom(p => p.PizzaId))
-            .ForMember(dest => dest.Topppings, src => src.MapFrom(src => src.PizzaToppings.Select(e => e.Topping.Name)))
+            .ForMember(dest => dest.Toppings, src => src.MapFrom(src => src.PizzaToppings.Select(e => e.Topping.Name)))
             .ForMember(dest => dest.Reviews, src => src.MapFrom(src => src.Reviews.ToList()))
             .ReverseMap();
 
