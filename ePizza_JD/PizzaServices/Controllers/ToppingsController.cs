@@ -34,10 +34,8 @@ namespace ePizza_JD.API.Controllers
         {
             try
             {
-
                 var toppings = await genericRepo.GetAllAsync();
                 var toppingDTOs = mapper.Map<IEnumerable<ToppingDTO>>(toppings);
-
                 return Ok(toppingDTOs);
 
             }

@@ -176,7 +176,7 @@ namespace ePizza_JD.API.Controller
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status409Conflict)]
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<ActionResult<PizzaEditCreateDTO>> PostPizza([FromBody] [Bind("Name,Price,ImgUrl,Toppings")] PizzaEditCreateDTO pizzaDTO)
         {
 
@@ -240,7 +240,7 @@ namespace ePizza_JD.API.Controller
 
         // DELETE: api/Pizzas/5
         [HttpDelete("{id}")]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<ActionResult<Pizza>> DeletePizza(Guid id)
         {
             var pizzas = await genericRepo.GetByExpressionAsync(c => c.PizzaId == id);
