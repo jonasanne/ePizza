@@ -51,7 +51,7 @@ namespace RestaurantServices.Repositories
             //guid convertie returnt lower chars!!! Guids met hoofdletters worden hierdoor niet gevonden.      
             Guid restaurantId = (!Guid.TryParse(id, out restaurantId)) ? Guid.Empty : Guid.Parse(id);
 
-            var query = context.Restaurants.Find(r => r.RestaurantId == restaurantId || r.Id == bsonId.ToString()); //cursor
+            var query = context.Restaurants.Find(r => r.RestaurantId == restaurantId); //cursor
             Restaurant restoEntity = await query.FirstOrDefaultAsync<Restaurant>();
             return restoEntity;
         }
@@ -115,7 +115,7 @@ namespace RestaurantServices.Repositories
             ObjectId bsonId = (!ObjectId.TryParse(id, out bsonId)) ? ObjectId.Empty : ObjectId.Parse(id);
             Guid restaurantId = (!Guid.TryParse(id, out restaurantId)) ? Guid.Empty : Guid.Parse(id);
 
-            await context.Restaurants.DeleteOneAsync(r => r.RestaurantId == restaurantId || r.Id == bsonId.ToString());
+            await context.Restaurants.DeleteOneAsync(r => r.RestaurantId == restaurantId);
             return id;
         }
 

@@ -1,4 +1,5 @@
 ﻿using ePizza_JD.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
@@ -156,5 +157,28 @@ namespace RestaurantServices.Controllers
             }
 
         }
+
+        // DELETE: api/Restaurant/Guid
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<Restaurant>> DeleteTRestaurant(string id)
+        {
+            var restoExists = await restaurantRepo.Get(id);
+            if (restoExists == null)
+            {
+                return NotFound(new { message = "resto niet gevonden." });
+            }
+
+            try
+            {
+                await restaurantRepo.RemoveAsync(id);
+                return null;
+            }
+            catch(Exception exc)
+            {
+                throw new Exception(exc.Message);
+            }
+
+        }
+
     }
 }
