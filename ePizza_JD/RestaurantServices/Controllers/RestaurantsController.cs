@@ -31,7 +31,7 @@ namespace RestaurantServices.Controllers
         }
 
         [HttpGet]
-        [Route("/api/Restaurant/{id}")]
+        [Route("/api/Restaurants/{id}")]
         public async Task<ActionResult<Restaurant>> GetRestaurant(string id)
         {
             if (id == null || id == "")

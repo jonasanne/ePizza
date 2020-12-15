@@ -27,19 +27,10 @@ namespace ePizza_JD.Models
         [BsonElement("City")]
         [Column("City")]
         public string Main_city_name { get; set; }
-        [BsonIgnoreIfNull()]
-        [BsonElement("Latitude")]
-        [BsonRepresentation(BsonType.Decimal128)]
-        public decimal Lat { get; set; }
-        [BsonIgnoreIfNull]
-        [BsonElement("Longitude")]
-        [BsonRepresentation(BsonType.Decimal128)]
-        [Column("Longitude")]
-        public decimal Long { get; set; }
         [BsonIgnoreIfNull]
         [BsonElement("Phone")]
         [Column("Phone")]
-        public string Phone1 { get; set; }
+        public string Phone { get; set; }
         [BsonIgnoreIfNull]
         public string Description { get; set; }
 

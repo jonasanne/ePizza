@@ -42,7 +42,6 @@ E:\VS2019\projects\FSWD\ePizza\ePizza_JD\APIGateway\bin\Release\netcoreapp3.1\ru
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\APIGateway\bin\Release\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\APIGateway\bin\Release\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\APIGateway\bin\Release\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
-E:\VS2019\projects\FSWD\ePizza\ePizza_JD\APIGateway\obj\Release\netcoreapp3.1\APIGateway.csprojAssemblyReference.cache
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\APIGateway\obj\Release\netcoreapp3.1\APIGateway.AssemblyInfoInputs.cache
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\APIGateway\obj\Release\netcoreapp3.1\APIGateway.AssemblyInfo.cs
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\APIGateway\obj\Release\netcoreapp3.1\APIGateway.csproj.CoreCompileInputs.cache
@@ -56,3 +55,4 @@ E:\VS2019\projects\FSWD\ePizza\ePizza_JD\APIGateway\obj\Release\netcoreapp3.1\AP
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\APIGateway\obj\Release\netcoreapp3.1\APIGateway.dll
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\APIGateway\obj\Release\netcoreapp3.1\APIGateway.pdb
 E:\VS2019\projects\FSWD\ePizza\ePizza_JD\APIGateway\obj\Release\netcoreapp3.1\APIGateway.genruntimeconfig.cache
+E:\VS2019\projects\FSWD\ePizza\ePizza_JD\APIGateway\obj\Release\netcoreapp3.1\APIGateway.csprojAssemblyReference.cache

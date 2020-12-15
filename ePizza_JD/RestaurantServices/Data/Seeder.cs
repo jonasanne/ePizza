@@ -26,9 +26,7 @@ namespace RestaurantServices.Data
             PostalCode = "8000",
             Street = "Lange Elzenstraat 370",
             Name= "pizza italia",
-            Phone1 = "0487 20 98992",
-            Lat =  60,
-            Long = 55
+            Phone = "0487 20 98992",
         },
         new Restaurant()
         {
@@ -39,9 +37,7 @@ namespace RestaurantServices.Data
             PostalCode = "8400",
             Street = "koornstraat",
             Name= "Passione",
-            Phone1 = "0471 47 12228",
-            Lat =  62,
-            Long = 57
+            Phone = "0471 47 12228",
         },
         new Restaurant()
         {
@@ -52,9 +48,7 @@ namespace RestaurantServices.Data
             PostalCode = "8670",
             Street = "Netelaan",
             Name= "Il Trullo",
-            Phone1 = "0472 97 98959",
-            Lat =  58,
-            Long = 51
+            Phone = "0472 97 98959",
         },
         
         };

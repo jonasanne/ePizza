@@ -1,6 +1,7 @@
 {
   "Routes": [
     //Pizza services
+    //zonder security
     {
       "DownstreamHostAndPorts": [
         {
@@ -11,8 +12,27 @@
       "DownstreamPathTemplate": "/api/Pizzas",
       "DownstreamScheme": "http",
       "UpstreamPathTemplate": "/Pizzas",
-      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ]
+      "UpstreamHttpMethod": [ "GET" ]
     },
+    //met security
+    {
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "PizzaServices",
+          "Port": 80 //https poort van de service
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Pizzas",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/Pizzas",
+      "UpstreamHttpMethod": [ "POST", "PUT", "DELETE" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "PizzasAPIKey", //default is Bearer"
+        "AllowedScopes": []
+      }
+
+    },
+    //zonder security
     {
       "DownstreamHostAndPorts": [
         {
@@ -23,9 +43,28 @@
       "DownstreamPathTemplate": "/api/Pizzas/{params}",
       "DownstreamScheme": "http",
       "UpstreamPathTemplate": "/Pizzas/{params}",
-      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ]
+      "UpstreamHttpMethod": [ "GET"]
+    },
+    //met security
+    {
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "PizzaServices",
+          "Port": 80 //https poort van de service
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Pizzas/{params}",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/Pizzas/{params}",
+      "UpstreamHttpMethod": [  "POST", "PUT", "DELETE" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "PizzasAPIKey", //default is Bearer"
+        "AllowedScopes": []
+      }
+
     },
     //topping services
+    //zonder
     {
       "DownstreamHostAndPorts": [
         {
@@ -36,7 +75,21 @@
       "DownstreamPathTemplate": "/api/Toppings",
       "DownstreamScheme": "http",
       "UpstreamPathTemplate": "/Toppings",
-      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+      "UpstreamHttpMethod": [ "GET" ],
+
+    },
+    //met security
+    {
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "PizzaServices",
+          "Port": 80 //https poort van de service
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Toppings",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/Toppings",
+      "UpstreamHttpMethod": [ "POST", "PUT", "DELETE" ],
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "PizzasAPIKey", //default is Bearer"
         "AllowedScopes": []
@@ -66,9 +119,9 @@
           "Port": 80 //https poort van de service
         }
       ],
-      "DownstreamPathTemplate": "/api/Reviews",
+      "DownstreamPathTemplate": "/api/PizzaReviews",
       "DownstreamScheme": "http",
-      "UpstreamPathTemplate": "/Reviews",
+      "UpstreamPathTemplate": "/PizzaReviews",
       "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "PizzasAPIKey", //default is Bearer"
@@ -82,9 +135,9 @@
           "Port": 80 //https poort van de service
         }
       ],
-      "DownstreamPathTemplate": "/api/Reviews/{params}",
+      "DownstreamPathTemplate": "/api/PizzaReviews/{params}",
       "DownstreamScheme": "http",
-      "UpstreamPathTemplate": "/Reviews/{params}",
+      "UpstreamPathTemplate": "/PizzaReviews/{params}",
       "UpstreamHttpMethod": [ "GET", "POST", "DELETE" ],
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "PizzasAPIKey", //default is Bearer"
@@ -102,7 +155,19 @@
       "DownstreamPathTemplate": "/api/Restaurants",
       "DownstreamScheme": "http",
       "UpstreamPathTemplate": "/Restaurants",
-      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "RestaurantServices",
+          "Port": 80 //https poort van de service
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Restaurants",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/Restaurants",
+      "UpstreamHttpMethod": [ "POST", "PUT", "DELETE" ],
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "PizzasAPIKey", //default is Bearer"
         "AllowedScopes": []
